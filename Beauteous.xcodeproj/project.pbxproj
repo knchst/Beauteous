@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */; };
-		27E4FCE81B67A8E5005CE9EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE41B67A8E5005CE9EB /* ViewController.m */; };
+		27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */; };
+		27E4FCEB1B67AA2E005CE9EB /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCEA1B67AA2E005CE9EB /* SigninViewController.m */; };
+		27E4FCF01B67AA9E005CE9EB /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCEF1B67AA9E005CE9EB /* SignupViewController.m */; };
 		27ED34F91B67934100C86498 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED34F81B67934100C86498 /* main.m */; };
 		27ED35021B67934100C86498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35001B67934100C86498 /* Main.storyboard */; };
 		27ED35041B67934100C86498 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35031B67934100C86498 /* Images.xcassets */; };
@@ -31,8 +33,12 @@
 		215CE886FBFF839F6E314373 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		27E4FCE31B67A8E5005CE9EB /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		27E4FCE41B67A8E5005CE9EB /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		27E4FCE31B67A8E5005CE9EB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		27E4FCE91B67AA2E005CE9EB /* SigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninViewController.h; sourceTree = "<group>"; };
+		27E4FCEA1B67AA2E005CE9EB /* SigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninViewController.m; sourceTree = "<group>"; };
+		27E4FCEE1B67AA9E005CE9EB /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		27E4FCEF1B67AA9E005CE9EB /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		27ED34F31B67934100C86498 /* Beauteous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beauteous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED34F71B67934100C86498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27ED34F81B67934100C86498 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,8 +86,12 @@
 			children = (
 				27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */,
 				27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */,
-				27E4FCE31B67A8E5005CE9EB /* ViewController.h */,
-				27E4FCE41B67A8E5005CE9EB /* ViewController.m */,
+				27E4FCE31B67A8E5005CE9EB /* HomeViewController.h */,
+				27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */,
+				27E4FCE91B67AA2E005CE9EB /* SigninViewController.h */,
+				27E4FCEA1B67AA2E005CE9EB /* SigninViewController.m */,
+				27E4FCEE1B67AA9E005CE9EB /* SignupViewController.h */,
+				27E4FCEF1B67AA9E005CE9EB /* SignupViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,9 +320,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E4FCE81B67A8E5005CE9EB /* ViewController.m in Sources */,
+				27E4FCEB1B67AA2E005CE9EB /* SigninViewController.m in Sources */,
+				27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
+				27E4FCF01B67AA9E005CE9EB /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

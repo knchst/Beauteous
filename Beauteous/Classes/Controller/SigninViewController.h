@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SigninViewController.h
 //  Beauteous
 //
 //  Created by Kenichi Saito on 7/28/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface SigninViewController : UIViewController
 
 @end
-
