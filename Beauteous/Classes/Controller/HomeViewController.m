@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SigninViewController.h"
+#import "ComposeViewController.h"
 #import "BOUtility.h"
 
 #import "Parse.h"
@@ -88,8 +89,7 @@
     if ([PFUser currentUser]) {
         return;
     } else {
-        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        SigninViewController* siginVC = [storyboard instantiateViewControllerWithIdentifier:@"Signin"];
+        SigninViewController* siginVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Signin"];
         
         [self.navigationController presentViewController:siginVC animated:YES completion:nil];
     }
@@ -97,7 +97,8 @@
 
 - (IBAction)compose:(id)sender
 {
-    
+    ComposeViewController* composeVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
+    [self.navigationController presentViewController:composeVC animated:YES completion:nil];
 }
 
 @end

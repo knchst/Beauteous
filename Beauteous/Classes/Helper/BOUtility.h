@@ -11,4 +11,5 @@
 @interface BOUtility : NSObject
 + (UIFont*)fontTypeBookWithSize:(CGFloat)size;
 + (UIFont*)fontTypeHeavyWithSize:(CGFloat)size;
++ (UIStoryboard*)storyboard;
 @end

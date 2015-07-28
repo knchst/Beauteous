@@ -104,8 +104,7 @@
 
 - (IBAction)signUp:(id)sender
 {
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SignupViewController* signUpVC = [storyboard instantiateViewControllerWithIdentifier:@"SignUp"];
+    SignupViewController* signUpVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"SignUp"];
     [self presentViewController:signUpVC animated:YES completion:nil];
     
 }

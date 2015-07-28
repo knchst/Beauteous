@@ -20,4 +20,10 @@
 {
     return [UIFont fontWithName:BO_FONT_HEAVY size:size];
 }
+
++ (UIStoryboard*)storyboard
+{
+    return [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+}
+
 @end

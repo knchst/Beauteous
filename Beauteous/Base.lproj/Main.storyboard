@@ -280,6 +280,89 @@
             </objects>
             <point key="canvasLocation" x="994" y="-371"/>
         </scene>
+        <!--New-->
+        <scene sceneID="1M4-w7-xM4">
+            <objects>
+                <viewController id="Lcx-cX-00J" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hvb-E0-qgl"/>
+                        <viewControllerLayoutGuide type="bottom" id="frF-fj-dVG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XWq-Cd-wN4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAD-K4-0ZU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="frF-fj-dVG" firstAttribute="top" secondItem="kAD-K4-0ZU" secondAttribute="bottom" id="Joc-R7-PwE"/>
+                            <constraint firstItem="kAD-K4-0ZU" firstAttribute="top" secondItem="XWq-Cd-wN4" secondAttribute="top" id="Qpr-iY-cIv"/>
+                            <constraint firstItem="kAD-K4-0ZU" firstAttribute="leading" secondItem="XWq-Cd-wN4" secondAttribute="leading" id="VB5-3Z-n74"/>
+                            <constraint firstAttribute="trailing" secondItem="kAD-K4-0ZU" secondAttribute="trailing" id="rG8-da-Sht"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New" id="zWt-g0-gU0">
+                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" systemItem="done" id="PZT-Mt-VoN">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="done:" destination="Lcx-cX-00J" id="PJL-5t-fPx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Preview" id="16b-2o-l6D">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="preview:" destination="Lcx-cX-00J" id="brQ-5n-4TF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="Joc-R7-PwE" id="HnH-Xa-UMD"/>
+                        <outlet property="textView" destination="kAD-K4-0ZU" id="pjB-EP-KeD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5qc-Wl-2xo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2320" y="-371"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="4tj-IX-tmB">
+            <objects>
+                <viewController storyboardIdentifier="Preview" id="4sW-Ge-wrj" customClass="PreviewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jJi-lv-gSD"/>
+                        <viewControllerLayoutGuide type="bottom" id="8zJ-5P-f8p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bdU-lq-C2t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ip7-Zj-zMq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ip7-Zj-zMq" secondAttribute="trailing" id="13v-OD-46B"/>
+                            <constraint firstItem="Ip7-Zj-zMq" firstAttribute="leading" secondItem="bdU-lq-C2t" secondAttribute="leading" id="OhF-vT-DuK"/>
+                            <constraint firstItem="8zJ-5P-f8p" firstAttribute="top" secondItem="Ip7-Zj-zMq" secondAttribute="bottom" id="X3t-77-RhO"/>
+                            <constraint firstItem="Ip7-Zj-zMq" firstAttribute="top" secondItem="bdU-lq-C2t" secondAttribute="top" id="aC9-cU-eRe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Ip7-Zj-zMq" id="sdT-Sw-e98"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IyY-x7-613" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2993" y="-371"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="bBL-ey-8Az">
             <objects>
@@ -297,6 +380,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jus-v8-gBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="318" y="-371"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WTp-HV-lSI">
+            <objects>
+                <navigationController storyboardIdentifier="Compose" automaticallyAdjustsScrollViewInsets="NO" id="GVT-7w-FXx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3DB-Yk-DVd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Lcx-cX-00J" kind="relationship" relationship="rootViewController" id="Ehx-Ot-Zgq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="69A-eO-NaY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1670" y="-371"/>
         </scene>
     </scenes>
 </document>
