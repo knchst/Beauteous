@@ -265,7 +265,13 @@
                             <constraint firstItem="Bgm-t3-fC5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="WfJ-yD-gwM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ut7-cr-4Jz"/>
+                    <navigationItem key="navigationItem" id="ut7-cr-4Jz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="j1u-JE-BL5">
+                            <connections>
+                                <action selector="compose:" destination="vXZ-lx-hvc" id="lPg-uE-8XU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Bgm-t3-fC5" id="PFg-fT-uYs"/>
                     </connections>

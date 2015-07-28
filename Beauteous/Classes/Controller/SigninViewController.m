@@ -9,6 +9,7 @@
 #import "SigninViewController.h"
 #import "SignupViewController.h"
 #import "BOConst.h"
+#import "BOUtility.h"
 
 #import "Parse.h"
 #import "SVProgressHUD.h"
@@ -28,8 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.emailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSFontAttributeName: [UIFont fontWithName:BO_FONT_HEAVY size:15]}];
-    self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSFontAttributeName: [UIFont fontWithName:BO_FONT_HEAVY size:15]}];
+    self.emailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSFontAttributeName: [BOUtility fontTypeHeavyWithSize:15]}];
+    self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSFontAttributeName: [BOUtility fontTypeHeavyWithSize:15]}];
     
     self.emailTextField.delegate = self;
     self.passwordTextField.delegate = self;

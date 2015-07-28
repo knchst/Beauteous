@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SigninViewController.h"
+#import "BOUtility.h"
 
 #import "Parse.h"
 
@@ -24,6 +25,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.title = @"Home";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -65,9 +68,19 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     cell.textLabel.text = _menuArray[indexPath.row];
+    cell.textLabel.font = [BOUtility fontTypeBookWithSize:15];
     
     return cell;
+}
+
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 - (void)checkUser
@@ -80,6 +93,11 @@
         
         [self.navigationController presentViewController:siginVC animated:YES completion:nil];
     }
+}
+
+- (IBAction)compose:(id)sender
+{
+    
 }
 
 @end
