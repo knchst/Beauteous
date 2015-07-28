@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */; };
+		27E4FCE81B67A8E5005CE9EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE41B67A8E5005CE9EB /* ViewController.m */; };
 		27ED34F91B67934100C86498 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED34F81B67934100C86498 /* main.m */; };
-		27ED34FC1B67934100C86498 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED34FB1B67934100C86498 /* AppDelegate.m */; };
-		27ED34FF1B67934100C86498 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED34FE1B67934100C86498 /* ViewController.m */; };
 		27ED35021B67934100C86498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35001B67934100C86498 /* Main.storyboard */; };
 		27ED35041B67934100C86498 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35031B67934100C86498 /* Images.xcassets */; };
 		27ED35071B67934100C86498 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35051B67934100C86498 /* LaunchScreen.xib */; };
@@ -29,13 +29,13 @@
 
 /* Begin PBXFileReference section */
 		215CE886FBFF839F6E314373 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		27E4FCE31B67A8E5005CE9EB /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		27E4FCE41B67A8E5005CE9EB /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		27ED34F31B67934100C86498 /* Beauteous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beauteous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED34F71B67934100C86498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27ED34F81B67934100C86498 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		27ED34FA1B67934100C86498 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		27ED34FB1B67934100C86498 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		27ED34FD1B67934100C86498 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		27ED34FE1B67934100C86498 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		27ED35011B67934100C86498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27ED35031B67934100C86498 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		27ED35061B67934100C86498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -65,6 +65,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27E4FCDF1B67A8E5005CE9EB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				27E4FCE01B67A8E5005CE9EB /* Controller */,
+				27E4FCE51B67A8E5005CE9EB /* Model */,
+				27E4FCE61B67A8E5005CE9EB /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		27E4FCE01B67A8E5005CE9EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */,
+				27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */,
+				27E4FCE31B67A8E5005CE9EB /* ViewController.h */,
+				27E4FCE41B67A8E5005CE9EB /* ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		27E4FCE51B67A8E5005CE9EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27E4FCE61B67A8E5005CE9EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		27ED34EA1B67934100C86498 = {
 			isa = PBXGroup;
 			children = (
@@ -88,10 +123,7 @@
 		27ED34F51B67934100C86498 /* Beauteous */ = {
 			isa = PBXGroup;
 			children = (
-				27ED34FA1B67934100C86498 /* AppDelegate.h */,
-				27ED34FB1B67934100C86498 /* AppDelegate.m */,
-				27ED34FD1B67934100C86498 /* ViewController.h */,
-				27ED34FE1B67934100C86498 /* ViewController.m */,
+				27E4FCDF1B67A8E5005CE9EB /* Classes */,
 				27ED35001B67934100C86498 /* Main.storyboard */,
 				27ED35031B67934100C86498 /* Images.xcassets */,
 				27ED35051B67934100C86498 /* LaunchScreen.xib */,
@@ -278,8 +310,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27ED34FF1B67934100C86498 /* ViewController.m in Sources */,
-				27ED34FC1B67934100C86498 /* AppDelegate.m in Sources */,
+				27E4FCE81B67A8E5005CE9EB /* ViewController.m in Sources */,
+				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
