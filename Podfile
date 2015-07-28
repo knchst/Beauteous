@@ -4,6 +4,9 @@ pod 'SVProgressHUD', '~> 1.1.0'
 pod 'AFNetworking', '~> 2.5.0'
 pod 'FontAwesome+iOS'
 pod 'BlocksKit'
-pod 'Kiwi', '~> 2.3.0'
 pod 'Realm'
 pod 'RFKeyboardToolbar', '~> 1.3'
+
+target :BeauteousTests do
+  pod 'Kiwi', '~> 2.3.0'
+end

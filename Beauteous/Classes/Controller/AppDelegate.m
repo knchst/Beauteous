@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "BOConst.h"
+
 #import "Parse.h"
+
 
 @interface AppDelegate ()
 
@@ -20,8 +23,8 @@
     // Override point for customization after application launch.
     
     // Parse
-    [Parse setApplicationId:@"q8XvaN8U0OPXhy1aVfEBLNN9nsGCgHPur3kP60Fx"
-                  clientKey:@"1zPyNRLf3KQ25SbwXsLCFcZ7iuIdkuMLOZXg1pfi"];
+    [Parse setApplicationId:PARSE_ID
+                  clientKey:PARSE_CLIENT_KEY];
     
     return YES;
 }
