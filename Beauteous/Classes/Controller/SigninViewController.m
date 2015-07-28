@@ -7,6 +7,7 @@
 //
 
 #import "SigninViewController.h"
+#import "SignupViewController.h"
 #import "BOConst.h"
 
 #import "Parse.h"
@@ -64,7 +65,7 @@
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     if (_activeField != nil) {
-        CGPoint scrollPoint = CGPointMake(0.0, _activeField.frame.origin.y - 150);
+        CGPoint scrollPoint = CGPointMake(0.0, _activeField.frame.origin.y - 180);
         [self.scrollView setContentOffset:scrollPoint animated:YES];
     }
 }
@@ -102,6 +103,9 @@
 
 - (IBAction)signUp:(id)sender
 {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SignupViewController* signUpVC = [storyboard instantiateViewControllerWithIdentifier:@"SignUp"];
+    [self presentViewController:signUpVC animated:YES completion:nil];
     
 }
 
