@@ -70,11 +70,16 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.textLabel.text = _menuArray[indexPath.row];
     cell.textLabel.font = [BOUtility fontTypeBookWithSize:15];
     
+    [self configureCell:cell andIndexPath:indexPath];
+    
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
+{
+    cell.textLabel.text = _menuArray[indexPath.row];
 }
 
 #pragma mark UITableViewDelegate

@@ -9,5 +9,16 @@
 #import "Note.h"
 
 @implementation Note
-
++ (NSDictionary *)defaultPropertyValues
+{
+    NSDate *created_at = [NSDate date];
+    NSDate *updated_at = [NSDate date];
+    return @{
+             @"title"       : @"No title.",
+             @"planeString" : @"",
+             @"htmlString"  : @"",
+             @"created_at"  : created_at,
+             @"updated_at"  : updated_at
+             };
+}
 @end

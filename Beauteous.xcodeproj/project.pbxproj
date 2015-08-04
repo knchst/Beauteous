@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5BE1B70B2190083D487 /* StarredViewController.m */; };
+		2718E5C21B70B2280083D487 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C11B70B2280083D487 /* PhotosViewController.m */; };
+		2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C41B70B2360083D487 /* SettingsViewController.m */; };
+		2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C81B70C4050083D487 /* AllTableViewCell.m */; };
 		27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */; };
 		27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */; };
 		27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCF81B67B669005CE9EB /* BOConst.m */; };
@@ -38,6 +42,14 @@
 
 /* Begin PBXFileReference section */
 		215CE886FBFF839F6E314373 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2718E5BD1B70B2190083D487 /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
+		2718E5BE1B70B2190083D487 /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
+		2718E5C01B70B2280083D487 /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
+		2718E5C11B70B2280083D487 /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
+		2718E5C31B70B2360083D487 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		2718E5C41B70B2360083D487 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		2718E5C71B70C4050083D487 /* AllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTableViewCell.h; sourceTree = "<group>"; };
+		2718E5C81B70C4050083D487 /* AllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTableViewCell.m; sourceTree = "<group>"; };
 		27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27E4FCE31B67A8E5005CE9EB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -93,11 +105,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2718E5C61B70C3C30083D487 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2718E5C71B70C4050083D487 /* AllTableViewCell.h */,
+				2718E5C81B70C4050083D487 /* AllTableViewCell.m */,
+			);
+			name = View;
+			path = Beauteous/Classes/View;
+			sourceTree = SOURCE_ROOT;
+		};
 		27E4FCDF1B67A8E5005CE9EB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				27E4FCF61B67B669005CE9EB /* Helper */,
 				27E4FCE01B67A8E5005CE9EB /* Controller */,
+				2718E5C61B70C3C30083D487 /* View */,
 				27E4FCE51B67A8E5005CE9EB /* Model */,
 			);
 			path = Classes;
@@ -116,6 +139,12 @@
 				27E4FD011B67F258005CE9EB /* PreviewViewController.m */,
 				27E4FD0E1B68F63C005CE9EB /* AllViewController.h */,
 				27E4FD0F1B68F63C005CE9EB /* AllViewController.m */,
+				2718E5BD1B70B2190083D487 /* StarredViewController.h */,
+				2718E5BE1B70B2190083D487 /* StarredViewController.m */,
+				2718E5C01B70B2280083D487 /* PhotosViewController.h */,
+				2718E5C11B70B2280083D487 /* PhotosViewController.m */,
+				2718E5C31B70B2360083D487 /* SettingsViewController.h */,
+				2718E5C41B70B2360083D487 /* SettingsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -390,15 +419,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E4FD0D1B68D785005CE9EB /* NoteManager.m in Sources */,
+				2718E5C21B70B2280083D487 /* PhotosViewController.m in Sources */,
 				27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
 				27E4FD021B67F258005CE9EB /* PreviewViewController.m in Sources */,
+				2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */,
 				27E4FCFC1B67E859005CE9EB /* BOUtility.m in Sources */,
 				27E4FCFF1B67EB63005CE9EB /* ComposeViewController.m in Sources */,
 				27E4FD0A1B68D584005CE9EB /* Note.m in Sources */,
+				2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */,
 				27E4FD101B68F63C005CE9EB /* AllViewController.m in Sources */,
+				2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

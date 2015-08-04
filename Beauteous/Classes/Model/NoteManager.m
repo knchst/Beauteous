@@ -38,7 +38,9 @@ static NoteManager *sharedManager = nil;
 
 - (RLMResults*)getAllNotesForParse
 {
-    return [Note allObjects];
+    RLMResults *notes = [Note allObjects];
+    [notes sortedResultsUsingProperty:@"updated_at" ascending:NO];
+    return notes;
 }
 
 - (void)saveNoteWithDictionary:(NSMutableDictionary*)dictionary
@@ -47,11 +49,12 @@ static NoteManager *sharedManager = nil;
     note.title = dictionary[@"title"];
     note.planeString = dictionary[@"planeString"];
     note.htmlString = dictionary[@"htmlString"];
+    note.created_at = dictionary[@"created_at"];
+    note.updated_at = dictionary[@"updated_at"];
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
     [[RLMRealm defaultRealm] addObject:note];
     [[RLMRealm defaultRealm] commitWriteTransaction];
-    
 }
 
 @end

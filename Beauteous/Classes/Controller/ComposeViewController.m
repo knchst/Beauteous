@@ -28,8 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -71,7 +69,7 @@
 
 - (IBAction)preview:(id)sender
 {
-    PreviewViewController* previewVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Preview"];
+    PreviewViewController *previewVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Preview"];
     previewVC.htmlString = [BOUtility renderHTMLWithString:_textView.text];
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:previewVC animated:YES];
@@ -83,13 +81,15 @@
     NSMutableDictionary *note = [NSMutableDictionary dictionary];
     
     if (_textView.text.length <= 0) {
-        note[@"title"] = @"";
+        note[@"title"] = @"No title";
     } else {
         note[@"title"] = [_textView.text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]][0];
     }
     
     note[@"planeString"] = _textView.text;
     note[@"htmlString"] = [BOUtility renderHTMLWithString:_textView.text];
+    note[@"created_at"] = [NSDate date];
+    note[@"updated_at"] = [NSDate date];
     
     [[NoteManager sharedManager] saveNoteWithDictionary:note];
     

@@ -7,8 +7,13 @@
 //
 
 #import "AllViewController.h"
+#import "PreviewViewController.h"
+#import "BOUtility.h"
+#import "BOConst.h"
 #import "Note.h"
 #import "NoteManager.h"
+
+#import "AllTableViewCell.h"
 
 @interface AllViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -20,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"All";
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -51,23 +58,33 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    RLMObject *note = [NoteManager sharedManager].notes[indexPath.row];
-    
-    cell.textLabel.text = note[@"title"];
+    [self configureCell:cell andIndexPath:indexPath];
     
     return cell;
+}
+
+- (void)configureCell:(AllTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
+{
+    Note *note = [NoteManager sharedManager].notes[indexPath.row];
+    [cell setDate:note];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%@", [NoteManager sharedManager].notes[indexPath.row]);
+    Note *note = [NoteManager sharedManager].notes[indexPath.row];
+        
+    PreviewViewController *previewVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Preview"];
+    previewVC.htmlString = [BOUtility renderHTMLWithString:note.htmlString];
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController pushViewController:previewVC animated:YES];
 }
 
 /*

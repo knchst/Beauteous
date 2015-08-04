@@ -5,6 +5,7 @@ pod 'AFNetworking', '~> 2.5.0'
 pod 'FontAwesome+iOS'
 pod 'Realm', '~> 0.94.0'
 pod 'RFKeyboardToolbar', '~> 1.3'
+pod 'MCSwipeTableViewCell', '~> 2.1.4'
 
 target :BeauteousTests do
   pod 'Kiwi', '~> 2.3.0'

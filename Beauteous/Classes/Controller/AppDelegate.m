@@ -31,11 +31,12 @@
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
     [UINavigationBar appearance].tintColor = [UIColor blackColor];
     [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
+    [UITextView appearance].tintColor = [UIColor blackColor];
     
     RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
         NSLog(@"Migration complete.");
     };
-    [RLMRealm setDefaultRealmSchemaVersion:4 withMigrationBlock:migrationBlock];
+    [RLMRealm setDefaultRealmSchemaVersion:5 withMigrationBlock:migrationBlock];
     
     return YES;
 }
