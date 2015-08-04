@@ -9,9 +9,14 @@
 /* Begin PBXBuildFile section */
 		27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */; };
 		27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */; };
-		27E4FCEB1B67AA2E005CE9EB /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCEA1B67AA2E005CE9EB /* SigninViewController.m */; };
-		27E4FCF01B67AA9E005CE9EB /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCEF1B67AA9E005CE9EB /* SignupViewController.m */; };
 		27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCF81B67B669005CE9EB /* BOConst.m */; };
+		27E4FCFC1B67E859005CE9EB /* BOUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCFB1B67E859005CE9EB /* BOUtility.m */; };
+		27E4FCFF1B67EB63005CE9EB /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCFE1B67EB63005CE9EB /* ComposeViewController.m */; };
+		27E4FD021B67F258005CE9EB /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FD011B67F258005CE9EB /* PreviewViewController.m */; };
+		27E4FD041B67F665005CE9EB /* github-markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = 27E4FD031B67F665005CE9EB /* github-markdown.css */; };
+		27E4FD0A1B68D584005CE9EB /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FD091B68D584005CE9EB /* Note.m */; };
+		27E4FD0D1B68D785005CE9EB /* NoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FD0C1B68D785005CE9EB /* NoteManager.m */; };
+		27E4FD101B68F63C005CE9EB /* AllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FD0F1B68F63C005CE9EB /* AllViewController.m */; };
 		27ED34F91B67934100C86498 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED34F81B67934100C86498 /* main.m */; };
 		27ED35021B67934100C86498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35001B67934100C86498 /* Main.storyboard */; };
 		27ED35041B67934100C86498 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35031B67934100C86498 /* Images.xcassets */; };
@@ -37,12 +42,21 @@
 		27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27E4FCE31B67A8E5005CE9EB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		27E4FCE91B67AA2E005CE9EB /* SigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninViewController.h; sourceTree = "<group>"; };
-		27E4FCEA1B67AA2E005CE9EB /* SigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninViewController.m; sourceTree = "<group>"; };
-		27E4FCEE1B67AA9E005CE9EB /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
-		27E4FCEF1B67AA9E005CE9EB /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		27E4FCF71B67B669005CE9EB /* BOConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOConst.h; sourceTree = "<group>"; };
 		27E4FCF81B67B669005CE9EB /* BOConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOConst.m; sourceTree = "<group>"; };
+		27E4FCFA1B67E859005CE9EB /* BOUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOUtility.h; sourceTree = "<group>"; };
+		27E4FCFB1B67E859005CE9EB /* BOUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOUtility.m; sourceTree = "<group>"; };
+		27E4FCFD1B67EB63005CE9EB /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		27E4FCFE1B67EB63005CE9EB /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		27E4FD001B67F258005CE9EB /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		27E4FD011B67F258005CE9EB /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		27E4FD031B67F665005CE9EB /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown.css"; sourceTree = "<group>"; };
+		27E4FD081B68D584005CE9EB /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		27E4FD091B68D584005CE9EB /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		27E4FD0B1B68D785005CE9EB /* NoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteManager.h; sourceTree = "<group>"; };
+		27E4FD0C1B68D785005CE9EB /* NoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteManager.m; sourceTree = "<group>"; };
+		27E4FD0E1B68F63C005CE9EB /* AllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllViewController.h; sourceTree = "<group>"; };
+		27E4FD0F1B68F63C005CE9EB /* AllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllViewController.m; sourceTree = "<group>"; };
 		27ED34F31B67934100C86498 /* Beauteous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beauteous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED34F71B67934100C86498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27ED34F81B67934100C86498 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,10 +110,12 @@
 				27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */,
 				27E4FCE31B67A8E5005CE9EB /* HomeViewController.h */,
 				27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */,
-				27E4FCE91B67AA2E005CE9EB /* SigninViewController.h */,
-				27E4FCEA1B67AA2E005CE9EB /* SigninViewController.m */,
-				27E4FCEE1B67AA9E005CE9EB /* SignupViewController.h */,
-				27E4FCEF1B67AA9E005CE9EB /* SignupViewController.m */,
+				27E4FCFD1B67EB63005CE9EB /* ComposeViewController.h */,
+				27E4FCFE1B67EB63005CE9EB /* ComposeViewController.m */,
+				27E4FD001B67F258005CE9EB /* PreviewViewController.h */,
+				27E4FD011B67F258005CE9EB /* PreviewViewController.m */,
+				27E4FD0E1B68F63C005CE9EB /* AllViewController.h */,
+				27E4FD0F1B68F63C005CE9EB /* AllViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,6 +123,10 @@
 		27E4FCE51B67A8E5005CE9EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				27E4FD081B68D584005CE9EB /* Note.h */,
+				27E4FD091B68D584005CE9EB /* Note.m */,
+				27E4FD0B1B68D785005CE9EB /* NoteManager.h */,
+				27E4FD0C1B68D785005CE9EB /* NoteManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -116,6 +136,9 @@
 			children = (
 				27E4FCF71B67B669005CE9EB /* BOConst.h */,
 				27E4FCF81B67B669005CE9EB /* BOConst.m */,
+				27E4FCFA1B67E859005CE9EB /* BOUtility.h */,
+				27E4FCFB1B67E859005CE9EB /* BOUtility.m */,
+				27E4FD031B67F665005CE9EB /* github-markdown.css */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -283,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27ED35021B67934100C86498 /* Main.storyboard in Resources */,
+				27E4FD041B67F665005CE9EB /* github-markdown.css in Resources */,
 				27ED35071B67934100C86498 /* LaunchScreen.xib in Resources */,
 				27ED35041B67934100C86498 /* Images.xcassets in Resources */,
 			);
@@ -365,12 +389,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E4FCEB1B67AA2E005CE9EB /* SigninViewController.m in Sources */,
+				27E4FD0D1B68D785005CE9EB /* NoteManager.m in Sources */,
 				27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
-				27E4FCF01B67AA9E005CE9EB /* SignupViewController.m in Sources */,
+				27E4FD021B67F258005CE9EB /* PreviewViewController.m in Sources */,
+				27E4FCFC1B67E859005CE9EB /* BOUtility.m in Sources */,
+				27E4FCFF1B67EB63005CE9EB /* ComposeViewController.m in Sources */,
+				27E4FD0A1B68D584005CE9EB /* Note.m in Sources */,
+				27E4FD101B68F63C005CE9EB /* AllViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
