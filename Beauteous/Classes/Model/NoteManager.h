@@ -19,4 +19,6 @@
 - (void)fetchAllNotes;
 - (void)saveNoteWithDictionary:(NSMutableDictionary*)dictionary;
 - (void)deleteObject:(Note*)note;
+- (void)updateNoteWithDictionary:(NSMutableDictionary*)dictionary andNote:(Note*)note;
+
 @end

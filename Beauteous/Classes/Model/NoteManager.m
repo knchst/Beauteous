@@ -55,6 +55,16 @@ static NoteManager *sharedManager = nil;
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 
+- (void)updateNoteWithDictionary:(NSMutableDictionary*)dictionary andNote:(Note *)note
+{
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    note.title = dictionary[@"title"];
+    note.planeString = dictionary[@"planeString"];
+    note.htmlString = dictionary[@"htmlString"];
+    note.updated_at = dictionary[@"updated_at"];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+
 - (void)deleteObject:(Note*)note
 {
     [[RLMRealm defaultRealm] beginWriteTransaction];
