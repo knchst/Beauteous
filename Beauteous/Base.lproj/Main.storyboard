@@ -220,6 +220,90 @@
             </objects>
             <point key="canvasLocation" x="2320" y="-371"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="mha-Tl-cRM">
+            <objects>
+                <viewController storyboardIdentifier="Detail" id="Ti3-6I-HNZ" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="riX-po-AcS"/>
+                        <viewControllerLayoutGuide type="bottom" id="t1u-c0-SG7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dmb-Im-Ls8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaH-HZ-iKM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RaH-HZ-iKM" secondAttribute="trailing" id="4ta-Jk-z1u"/>
+                            <constraint firstItem="RaH-HZ-iKM" firstAttribute="leading" secondItem="Dmb-Im-Ls8" secondAttribute="leading" id="9uZ-gl-9CY"/>
+                            <constraint firstItem="RaH-HZ-iKM" firstAttribute="top" secondItem="Dmb-Im-Ls8" secondAttribute="top" id="XOY-iH-Ybe"/>
+                            <constraint firstItem="t1u-c0-SG7" firstAttribute="top" secondItem="RaH-HZ-iKM" secondAttribute="bottom" id="vZj-WA-TXe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="RaH-HZ-iKM" id="eI7-iw-6DD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXB-f3-QhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2322" y="-1067"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="wfn-x9-Lpq">
+            <objects>
+                <viewController storyboardIdentifier="Edit" id="xmf-89-nAS" customClass="EditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sOo-Wy-QTg"/>
+                        <viewControllerLayoutGuide type="bottom" id="ih8-yJ-oPn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iqj-8k-AKN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BY-8E-4Wf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1BY-8E-4Wf" firstAttribute="top" secondItem="Iqj-8k-AKN" secondAttribute="top" id="6yL-od-xLt"/>
+                            <constraint firstAttribute="trailing" secondItem="1BY-8E-4Wf" secondAttribute="trailing" id="MXR-0y-g03"/>
+                            <constraint firstItem="ih8-yJ-oPn" firstAttribute="top" secondItem="1BY-8E-4Wf" secondAttribute="bottom" id="S11-a8-Y0V"/>
+                            <constraint firstItem="1BY-8E-4Wf" firstAttribute="leading" secondItem="Iqj-8k-AKN" secondAttribute="leading" id="frQ-5l-HtX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vgq-ao-QoK">
+                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="TBX-6F-xTx">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="done:" destination="xmf-89-nAS" id="c3c-Nz-P5h"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Preview" id="cUX-dU-RRh">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="preview:" destination="xmf-89-nAS" id="JA2-K2-drP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="S11-a8-Y0V" id="3gM-Q4-Yih"/>
+                        <outlet property="textView" destination="1BY-8E-4Wf" id="rE5-In-DW8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i2f-of-gaX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3182" y="-1041"/>
+        </scene>
         <!--Preview View Controller-->
         <scene sceneID="4tj-IX-tmB">
             <objects>

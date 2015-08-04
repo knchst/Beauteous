@@ -13,6 +13,7 @@
 #import "Note.h"
 #import "NoteManager.h"
 #import "AllTableViewCell.h"
+#import "DetailViewController.h"
 
 #import "FontAwesomeKit/FontAwesomeKit.h"
 #import "MCSwipeTableViewCell.h"
@@ -78,7 +79,7 @@
     
     __weak AllViewController *weakSelf = self;
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width / 5, cell.bounds.size.height)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
     label.text = @"Delete";
     label.font = [BOUtility fontTypeHeavyWithSize:20];
     label.textAlignment = NSTextAlignmentRight;
@@ -110,10 +111,10 @@
 {
     Note *note = [NoteManager sharedManager].notes[indexPath.row];
         
-    PreviewViewController *previewVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Preview"];
-    previewVC.htmlString = [BOUtility renderHTMLWithString:note.htmlString];
+    DetailViewController *detailVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Detail"];
+    detailVC.note = note;
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController pushViewController:previewVC animated:YES];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 /*

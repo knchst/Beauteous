@@ -11,6 +11,8 @@
 		2718E5C21B70B2280083D487 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C11B70B2280083D487 /* PhotosViewController.m */; };
 		2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C41B70B2360083D487 /* SettingsViewController.m */; };
 		2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C81B70C4050083D487 /* AllTableViewCell.m */; };
+		2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CB1B710DAC0083D487 /* EditViewController.m */; };
+		2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CE1B710E460083D487 /* DetailViewController.m */; };
 		27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */; };
 		27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */; };
 		27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCF81B67B669005CE9EB /* BOConst.m */; };
@@ -50,6 +52,10 @@
 		2718E5C41B70B2360083D487 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2718E5C71B70C4050083D487 /* AllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTableViewCell.h; sourceTree = "<group>"; };
 		2718E5C81B70C4050083D487 /* AllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTableViewCell.m; sourceTree = "<group>"; };
+		2718E5CA1B710DAC0083D487 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		2718E5CB1B710DAC0083D487 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		2718E5CD1B710E460083D487 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2718E5CE1B710E460083D487 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27E4FCE31B67A8E5005CE9EB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -145,6 +151,10 @@
 				2718E5C11B70B2280083D487 /* PhotosViewController.m */,
 				2718E5C31B70B2360083D487 /* SettingsViewController.h */,
 				2718E5C41B70B2360083D487 /* SettingsViewController.m */,
+				2718E5CA1B710DAC0083D487 /* EditViewController.h */,
+				2718E5CB1B710DAC0083D487 /* EditViewController.m */,
+				2718E5CD1B710E460083D487 /* DetailViewController.h */,
+				2718E5CE1B710E460083D487 /* DetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -421,7 +431,9 @@
 				27E4FD0D1B68D785005CE9EB /* NoteManager.m in Sources */,
 				2718E5C21B70B2280083D487 /* PhotosViewController.m in Sources */,
 				27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */,
+				2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
+				2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */,
 				27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
 				27E4FD021B67F258005CE9EB /* PreviewViewController.m in Sources */,

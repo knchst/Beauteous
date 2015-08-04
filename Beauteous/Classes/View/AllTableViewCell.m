@@ -24,8 +24,9 @@
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat  = @"yyyy/MM/dd";
-    NSAttributedString *dateAttrString = [[NSAttributedString alloc] initWithString:[df stringFromDate:note.updated_at] attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor], NSFontAttributeName: [UIFont fontWithName:@"Avenir-LightOblique" size:12]}];
-    NSAttributedString *bodyAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  %@", note.planeString]];
+    NSAttributedString *dateAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  ", [df stringFromDate:note.updated_at]] attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor], NSFontAttributeName: [UIFont fontWithName:@"Avenir-LightOblique" size:12]}];
+    
+    NSMutableAttributedString *bodyAttrString = [[NSMutableAttributedString alloc] initWithString:note.planeString];
     
     NSMutableAttributedString *bodyString = [[NSMutableAttributedString alloc] init];
     [bodyString appendAttributedString:dateAttrString];
