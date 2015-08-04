@@ -83,7 +83,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
     label.text = @"Delete";
     label.font = [BOUtility fontTypeHeavyWithSize:20];
-    label.textAlignment = NSTextAlignmentRight;
+    label.textAlignment = NSTextAlignmentCenter;
     
     [cell setSwipeGestureWithView:label
                             color:[UIColor whiteColor]

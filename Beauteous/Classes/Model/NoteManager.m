@@ -31,7 +31,7 @@ static NoteManager *sharedManager = nil;
 
 - (void)fetchAllNotes
 {
-    self.notes = [Note allObjects];
+    self.notes = [[Note allObjects] sortedResultsUsingProperty:@"updated_at" ascending:NO];
 }
 
 - (RLMResults*)getNoteWithPrimaryKey:(NSString*)key
@@ -44,25 +44,32 @@ static NoteManager *sharedManager = nil;
 
 - (void)saveNoteWithDictionary:(NSMutableDictionary*)dictionary
 {
-    Note *note = [[Note alloc] init];
-    note.title = dictionary[@"title"];
-    note.planeString = dictionary[@"planeString"];
-    note.htmlString = dictionary[@"htmlString"];
-    note.created_at = dictionary[@"created_at"];
-    note.updated_at = dictionary[@"updated_at"];
+    Note *new_note = [[Note alloc] init];
+    new_note.title = dictionary[@"title"];
+    new_note.planeString = dictionary[@"planeString"];
+    new_note.htmlString = dictionary[@"htmlString"];
+    new_note.created_at = dictionary[@"created_at"];
+    new_note.updated_at = dictionary[@"updated_at"];
+    
+    NSInteger time = [[NSDate date] timeIntervalSince1970];
+    new_note.id = time;
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
-    [[RLMRealm defaultRealm] addObject:note];
+    [Note createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:new_note];
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 
 - (void)updateNoteWithDictionary:(NSMutableDictionary*)dictionary andNote:(Note *)note
 {
+    Note *new_note = [[Note alloc] init];
+    new_note.title = dictionary[@"title"];
+    new_note.planeString = dictionary[@"planeString"];
+    new_note.htmlString = dictionary[@"htmlString"];
+    new_note.updated_at = dictionary[@"updated_at"];
+    new_note.id = [dictionary[@"id"] integerValue];
+    
     [[RLMRealm defaultRealm] beginWriteTransaction];
-    note.title = dictionary[@"title"];
-    note.planeString = dictionary[@"planeString"];
-    note.htmlString = dictionary[@"htmlString"];
-    note.updated_at = dictionary[@"updated_at"];
+    [Note createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:new_note];
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 

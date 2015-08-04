@@ -36,8 +36,11 @@
 {
     [super viewWillAppear:animated];
     NSString *note_id = [NSString stringWithFormat:@"%ld", (long)_note.id];
-    RLMResults *note = [[NoteManager sharedManager] getNoteWithPrimaryKey:note_id];
-    [_webView loadHTMLString:[BOUtility renderHTMLWithString:note[0][@"planeString"]] baseURL:[NSURL URLWithString:@""]];
+    RLMResults *notes = [[NoteManager sharedManager] getNoteWithPrimaryKey:note_id];
+    Note *note = notes[0];
+    [_webView loadHTMLString:[BOUtility renderHTMLWithString:note.planeString] baseURL:[NSURL URLWithString:@""]];
+    
+    self.title = note.title;
 }
 
 - (void)didReceiveMemoryWarning {

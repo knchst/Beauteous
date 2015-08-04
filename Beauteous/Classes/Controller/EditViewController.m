@@ -12,6 +12,8 @@
 #import "BOUtility.h"
 #import "NoteManager.h"
 
+#import "RFKeyboardToolbar.h"
+
 @interface EditViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -24,9 +26,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Edit";
+    
     NSLog(@"Edit: %@", self.note);
     
     _textView.text = _note.planeString;
+    
+    [self setUpToolBar];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,6 +85,8 @@
     note[@"planeString"] = _textView.text;
     note[@"htmlString"] = [BOUtility renderHTMLWithString:_textView.text];
     note[@"updated_at"] = [NSDate date];
+    NSString *note_id = [NSString stringWithFormat:@"%ld", (long)_note.id];
+    note[@"id"] = note_id;
     
     [[NoteManager sharedManager] updateNoteWithDictionary:note andNote:_note];
     
@@ -91,6 +99,89 @@
     previewVC.htmlString = [BOUtility renderHTMLWithString:_textView.text];
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:previewVC animated:YES];
+}
+
+- (void)setUpToolBar
+{
+    RFToolbarButton *header = [RFToolbarButton buttonWithTitle:@"Header"];
+    RFToolbarButton *quote  = [RFToolbarButton buttonWithTitle:@"Quote"];
+    RFToolbarButton *table  = [RFToolbarButton buttonWithTitle:@"Table"];
+    RFToolbarButton *image  = [RFToolbarButton buttonWithTitle:@"Image"];
+    RFToolbarButton *link   = [RFToolbarButton buttonWithTitle:@"Link"];
+    RFToolbarButton *list   = [RFToolbarButton buttonWithTitle:@"List"];
+    RFToolbarButton *italic = [RFToolbarButton buttonWithTitle:@"Italic"];
+    RFToolbarButton *bold   = [RFToolbarButton buttonWithTitle:@"Bold"];
+    RFToolbarButton *code   = [RFToolbarButton buttonWithTitle:@"Code"];
+    
+    // Add a button target to the exampleButton
+    [header addEventHandler:^{
+        [_textView insertText:@"# "];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [quote addEventHandler:^{
+        [_textView insertText:@"> "];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [table addEventHandler:^{
+        [_textView insertText:@"| ------------ |"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [image addEventHandler:^{
+        [_textView insertText:@"![]()"];
+        UITextRange *range = _textView.selectedTextRange;
+        UITextPosition *position = [_textView positionFromPosition:range.start
+                                                            offset:-3];
+        _textView.selectedTextRange = [_textView textRangeFromPosition:position
+                                                            toPosition:position];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [link addEventHandler:^{
+        [_textView insertText:@"[]()"];
+        UITextRange *range = _textView.selectedTextRange;
+        UITextPosition *position = [_textView positionFromPosition:range.start
+                                                            offset:-3];
+        _textView.selectedTextRange = [_textView textRangeFromPosition:position
+                                                            toPosition:position];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [list addEventHandler:^{
+        [_textView insertText:@"- "];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [italic addEventHandler:^{
+        // Do anything in this block here
+        [_textView insertText:@"__"];
+        UITextRange *range = _textView.selectedTextRange;
+        UITextPosition *position = [_textView positionFromPosition:range.start
+                                                            offset:-1];
+        _textView.selectedTextRange = [_textView textRangeFromPosition:position
+                                                            toPosition:position];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [bold addEventHandler:^{
+        // Do anything in this block here
+        [_textView insertText:@"****"];
+        UITextRange *range = _textView.selectedTextRange;
+        UITextPosition *position = [_textView positionFromPosition:range.start
+                                                            offset:-3];
+        _textView.selectedTextRange = [_textView textRangeFromPosition:position
+                                                            toPosition:position];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [code addEventHandler:^{
+        // Do anything in this block here
+        [_textView insertText:@"``"];
+        UITextRange *range = _textView.selectedTextRange;
+        UITextPosition *position = [_textView positionFromPosition:range.start
+                                                            offset:-1];
+        _textView.selectedTextRange = [_textView textRangeFromPosition:position
+                                                            toPosition:position];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    // Create an RFKeyboardToolbar, adding all of your buttons, and set it as your inputAcessoryView
+    _textView.inputAccessoryView = [RFKeyboardToolbar toolbarWithButtons:@[
+                                                                           header,
+                                                                           quote,
+                                                                           image,
+                                                                           table,
+                                                                           link,
+                                                                           list,
+                                                                           italic,
+                                                                           bold,
+                                                                           code
+                                                                           ]];
 }
 
 /*
