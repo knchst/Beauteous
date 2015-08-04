@@ -12,8 +12,10 @@
 #import "BOConst.h"
 #import "Note.h"
 #import "NoteManager.h"
-
 #import "AllTableViewCell.h"
+
+#import "FontAwesomeKit/FontAwesomeKit.h"
+#import "MCSwipeTableViewCell.h"
 
 @interface AllViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -73,6 +75,33 @@
 {
     Note *note = [NoteManager sharedManager].notes[indexPath.row];
     [cell setDate:note];
+    
+    __weak AllViewController *weakSelf = self;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width / 5, cell.bounds.size.height)];
+    label.text = @"Delete";
+    label.font = [BOUtility fontTypeHeavyWithSize:20];
+    label.textAlignment = NSTextAlignmentRight;
+    
+    [cell setSwipeGestureWithView:label
+                            color:[UIColor whiteColor]
+                             mode:MCSwipeTableViewCellModeSwitch
+                            state:MCSwipeTableViewCellState3
+                  completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                      
+                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the cell?" preferredStyle:UIAlertControllerStyleAlert];
+                      UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                          [alert dismissViewControllerAnimated:YES completion:nil];
+                      }];
+                      UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+                          [[NoteManager sharedManager] deleteObject:note];
+                          [weakSelf.tableView reloadData];
+                      }];
+                      [alert addAction:noAction];
+                      [alert addAction:yesAction];
+                      
+                      [weakSelf presentViewController:alert animated:YES completion:nil];
+    }];
 }
 
 #pragma mark - UITableViewDelegate

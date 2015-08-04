@@ -8,8 +8,6 @@
 
 #import "NoteManager.h"
 
-#import "Note.h"
-
 static NoteManager *sharedManager = nil;
 
 @implementation NoteManager
@@ -54,6 +52,13 @@ static NoteManager *sharedManager = nil;
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
     [[RLMRealm defaultRealm] addObject:note];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+
+- (void)deleteObject:(Note*)note
+{
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[RLMRealm defaultRealm] deleteObject:note];
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 

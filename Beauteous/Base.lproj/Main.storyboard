@@ -90,8 +90,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbE-W4-CSV">
-                                                    <rect key="frame" x="8" y="37" width="584" height="54.5"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                    <rect key="frame" x="8" y="29" width="584" height="62.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -102,7 +102,7 @@
                                                 <constraint firstItem="8Dd-Ga-Ltf" firstAttribute="top" secondItem="eCE-MS-fyX" secondAttribute="top" constant="8" id="Z7r-qf-6tc"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Dd-Ga-Ltf" secondAttribute="trailing" constant="8" id="b4e-08-QLP"/>
                                                 <constraint firstAttribute="trailing" secondItem="lbE-W4-CSV" secondAttribute="trailing" constant="8" id="cCK-ij-CGo"/>
-                                                <constraint firstItem="lbE-W4-CSV" firstAttribute="top" secondItem="8Dd-Ga-Ltf" secondAttribute="bottom" constant="8" id="uv2-a9-ZTc"/>
+                                                <constraint firstItem="lbE-W4-CSV" firstAttribute="top" secondItem="8Dd-Ga-Ltf" secondAttribute="bottom" id="uv2-a9-ZTc"/>
                                                 <constraint firstAttribute="bottom" secondItem="lbE-W4-CSV" secondAttribute="bottom" constant="8" id="x4I-da-S5T"/>
                                             </constraints>
                                         </tableViewCellContentView>

@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Note.h"
+
 #import "Realm.h"
 
 @interface NoteManager : NSObject
@@ -16,4 +18,5 @@
 + (NoteManager*)sharedManager;
 - (void)fetchAllNotes;
 - (void)saveNoteWithDictionary:(NSMutableDictionary*)dictionary;
+- (void)deleteObject:(Note*)note;
 @end
