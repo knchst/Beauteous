@@ -34,11 +34,12 @@ static NoteManager *sharedManager = nil;
     self.notes = [Note allObjects];
 }
 
-- (RLMResults*)getAllNotesForParse
+- (RLMResults*)getNoteWithPrimaryKey:(NSString*)key
 {
-    RLMResults *notes = [Note allObjects];
-    [notes sortedResultsUsingProperty:@"updated_at" ascending:NO];
-    return notes;
+    NSString *where = [NSString stringWithFormat:@"id = %@", key];
+    RLMResults *note = [Note objectsInRealm:[RLMRealm defaultRealm] where:where];
+    
+    return note;
 }
 
 - (void)saveNoteWithDictionary:(NSMutableDictionary*)dictionary

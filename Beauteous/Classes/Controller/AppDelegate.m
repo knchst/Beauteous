@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BOConst.h"
 #import "BOUtility.h"
+#import "Note.h"
 
 #import "Realm.h"
 #import "Parse.h"
@@ -33,11 +34,13 @@
     [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
     [UITextView appearance].tintColor = [UIColor blackColor];
     
-    RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
-        NSLog(@"Migration complete.");
-    };
-    [RLMRealm setDefaultRealmSchemaVersion:5 withMigrationBlock:migrationBlock];
-    
+//    RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
+//        NSLog(@"Migration complete.");
+//    };
+//    [RLMRealm setDefaultRealmSchemaVersion:6 withMigrationBlock:migrationBlock];
+//    
+//    [[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
+
     return YES;
 }
 

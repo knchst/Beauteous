@@ -10,6 +10,7 @@
 #import "EditViewController.h"
 #import "BOUtility.h"
 #import "BOConst.h"
+#import "NoteManager.h"
 
 @interface DetailViewController ()
 
@@ -23,14 +24,20 @@
     
     NSLog(@"Detail: htmlString = %@", _note.htmlString);
     
-    [_webView loadHTMLString:[BOUtility renderHTMLWithString:_note.planeString] baseURL:[NSURL URLWithString:@""]];
-    
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(edit)];
     self.navigationItem.rightBarButtonItem = editButton;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSString *note_id = [NSString stringWithFormat:@"%ld", (long)_note.id];
+    RLMResults *note = [[NoteManager sharedManager] getNoteWithPrimaryKey:note_id];
+    [_webView loadHTMLString:[BOUtility renderHTMLWithString:note[0][@"planeString"]] baseURL:[NSURL URLWithString:@""]];
 }
 
 - (void)didReceiveMemoryWarning {

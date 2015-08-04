@@ -10,6 +10,7 @@
 
 @interface Note : RLMObject
 
+@property NSInteger id;
 @property NSString *title;
 @property NSString *planeString;
 @property NSString *htmlString;

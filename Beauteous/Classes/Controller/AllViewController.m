@@ -33,13 +33,14 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
- 
-    [[NoteManager sharedManager] fetchAllNotes];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[NoteManager sharedManager] fetchAllNotes];
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

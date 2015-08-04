@@ -20,5 +20,5 @@
 - (void)saveNoteWithDictionary:(NSMutableDictionary*)dictionary;
 - (void)deleteObject:(Note*)note;
 - (void)updateNoteWithDictionary:(NSMutableDictionary*)dictionary andNote:(Note*)note;
-
+- (RLMResults*)getNoteWithPrimaryKey:(NSString *)key;
 @end

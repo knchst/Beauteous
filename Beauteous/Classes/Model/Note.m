@@ -9,6 +9,11 @@
 #import "Note.h"
 
 @implementation Note
+
++ (NSString *)primaryKey {
+    return @"id";
+}
+
 + (NSDictionary *)defaultPropertyValues
 {
     NSDate *created_at = [NSDate date];
