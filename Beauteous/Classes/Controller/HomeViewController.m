@@ -7,10 +7,12 @@
 //
 
 #import "HomeViewController.h"
-#import "SigninViewController.h"
 #import "ComposeViewController.h"
+#import "AllViewController.h"
 #import "BOUtility.h"
+#import "Note.h"
 
+#import "Realm.h"
 #import "Parse.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -34,14 +36,12 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     _menuArray = @[@"All", @"Starred", @"Photos", @"Settings"];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-        
-    [self checkUser];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,18 +81,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-}
-
-- (void)checkUser
-{
-    if ([PFUser currentUser]) {
-        return;
-    } else {
-        SigninViewController* siginVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Signin"];
-        
-        [self.navigationController presentViewController:siginVC animated:YES completion:nil];
-    }
+    UIViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:_menuArray[indexPath.row]];
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)compose:(id)sender

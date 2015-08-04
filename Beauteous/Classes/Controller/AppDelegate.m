@@ -10,6 +10,7 @@
 #import "BOConst.h"
 #import "BOUtility.h"
 
+#import "Realm.h"
 #import "Parse.h"
 
 
@@ -30,6 +31,11 @@
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
     [UINavigationBar appearance].tintColor = [UIColor blackColor];
     [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
+    
+    RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
+        NSLog(@"Migration complete.");
+    };
+    [RLMRealm setDefaultRealmSchemaVersion:4 withMigrationBlock:migrationBlock];
     
     return YES;
 }

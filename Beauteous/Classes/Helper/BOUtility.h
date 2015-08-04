@@ -12,4 +12,6 @@
 + (UIFont*)fontTypeBookWithSize:(CGFloat)size;
 + (UIFont*)fontTypeHeavyWithSize:(CGFloat)size;
 + (UIStoryboard*)storyboard;
++ (UIBarButtonItem*)blankBarButton;
++ (NSString*)renderHTMLWithString:(NSString*)string;
 @end

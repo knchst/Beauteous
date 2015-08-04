@@ -8,9 +8,14 @@
 
 #import "ComposeViewController.h"
 #import "PreviewViewController.h"
+#import "NoteManager.h"
 #import "BOUtility.h"
+#import "BOConst.h"
+#import "Note.h"
 
-#import "GHMarkdownParser.h"
+#import "Realm.h"
+#import "Parse.h"
+#import "SVProgressHUD.h"
 
 @interface ComposeViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -66,37 +71,29 @@
 
 - (IBAction)preview:(id)sender
 {
-    
     PreviewViewController* previewVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Preview"];
-    previewVC.htmlString = [self renderHTML];
-    
+    previewVC.htmlString = [BOUtility renderHTMLWithString:_textView.text];
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:previewVC animated:YES];
-    
     
 }
 
 - (IBAction)done:(id)sender
 {
+    NSMutableDictionary *note = [NSMutableDictionary dictionary];
+    
+    if (_textView.text.length <= 0) {
+        note[@"title"] = @"";
+    } else {
+        note[@"title"] = [_textView.text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]][0];
+    }
+    
+    note[@"planeString"] = _textView.text;
+    note[@"htmlString"] = [BOUtility renderHTMLWithString:_textView.text];
+    
+    [[NoteManager sharedManager] saveNoteWithDictionary:note];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (NSString*)renderHTML
-{
-    GHMarkdownParser* parser = [[GHMarkdownParser alloc] init];
-    parser.options = kGHMarkdownAutoLink;
-    parser.githubFlavored = YES;
-    
-    NSString *rendered = [parser HTMLStringFromMarkdownString:_textView.text];
-    NSString *body = [NSString stringWithFormat:@"<article class=\"markdown-body\">%@</article>", rendered];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"github-markdown" ofType:@"css"];
-    NSURL *url = [NSURL fileURLWithPath:path];
-    
-    NSString *style = [NSString stringWithFormat:@"<link rel=\"stylesheet\" href=\"%@\">", url];
-    
-    NSLog(@"HTML STRING: %@ %@", style, body);
-
-    return [NSString stringWithFormat:@"%@%@", style, body];
 }
 
 /*

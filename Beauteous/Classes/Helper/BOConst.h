@@ -12,6 +12,7 @@
 
 extern NSString* const PARSE_ID;
 extern NSString* const PARSE_CLIENT_KEY;
+extern NSString* const PARSE_CLASS_NAME_NOTES;
 
 extern NSString* const BO_FONT_HEAVY;
 extern NSString* const BO_FONT_BOOK;
