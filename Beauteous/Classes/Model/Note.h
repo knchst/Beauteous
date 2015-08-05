@@ -16,5 +16,6 @@
 @property NSString *htmlString;
 @property NSDate   *created_at;
 @property NSDate   *updated_at;
+@property BOOL     starred;
 
 @end

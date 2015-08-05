@@ -14,4 +14,6 @@
 + (UIStoryboard*)storyboard;
 + (UIBarButtonItem*)blankBarButton;
 + (NSString*)renderHTMLWithString:(NSString*)string;
++ (UIColor*)pinkColor;
++ (UIColor*)yellowColor;
 @end

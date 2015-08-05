@@ -57,4 +57,14 @@
     return [NSString stringWithFormat:@"%@%@", style, body];
 }
 
++ (UIColor*)pinkColor
+{
+    return [UIColor colorWithRed:246 / 255.0 green:36 / 255.0 blue:89 /255.0 alpha:1.0];
+}
+
++ (UIColor*)yellowColor
+{
+    return [UIColor colorWithRed:236/255.0 green:185/255.0 blue:53/255.0 alpha:1.0];
+}
+
 @end

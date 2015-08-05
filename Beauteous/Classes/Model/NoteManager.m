@@ -34,6 +34,12 @@ static NoteManager *sharedManager = nil;
     self.notes = [[Note allObjects] sortedResultsUsingProperty:@"updated_at" ascending:NO];
 }
 
+- (void)fetchAllStarredNotes
+{
+    RLMResults *notes = [Note objectsWhere:@"starred = YES"];
+    self.notes = [notes sortedResultsUsingProperty:@"updated_at" ascending:NO];
+}
+
 - (RLMResults*)getNoteWithPrimaryKey:(NSString*)key
 {
     NSString *where = [NSString stringWithFormat:@"id = %@", key];
@@ -67,6 +73,26 @@ static NoteManager *sharedManager = nil;
     new_note.htmlString = dictionary[@"htmlString"];
     new_note.updated_at = dictionary[@"updated_at"];
     new_note.id = [dictionary[@"id"] integerValue];
+    
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [Note createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:new_note];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+
+- (void)starringNote:(Note *)note
+{
+    Note *new_note = [[Note alloc] init];
+    new_note.title = note.title;
+    new_note.planeString = note.planeString;
+    new_note.htmlString = note.htmlString;
+    new_note.updated_at = note.updated_at;
+    new_note.id = note.id;
+    
+    if (note.starred) {
+        new_note.starred = NO;
+    } else {
+        new_note.starred = YES;
+    }
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
     [Note createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:new_note];

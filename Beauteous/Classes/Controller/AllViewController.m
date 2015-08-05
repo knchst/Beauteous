@@ -80,12 +80,31 @@
     
     __weak AllViewController *weakSelf = self;
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
-    label.text = @"Delete";
-    label.font = [BOUtility fontTypeHeavyWithSize:20];
-    label.textAlignment = NSTextAlignmentCenter;
+    UILabel *starLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
+    starLabel.text = @"Star";
+    starLabel.font = [BOUtility fontTypeHeavyWithSize:20];
+    starLabel.textAlignment = NSTextAlignmentCenter;
+    starLabel.textColor = [BOUtility yellowColor];
     
-    [cell setSwipeGestureWithView:label
+    [cell setSwipeGestureWithView:starLabel
+                            color:[UIColor whiteColor]
+                             mode:MCSwipeTableViewCellModeSwitch
+                            state:MCSwipeTableViewCellState1
+                  completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                      // Update Method
+                      
+                      [[NoteManager sharedManager] starringNote:note];
+                      [weakSelf.tableView reloadData];
+                      
+    }];
+    
+    UILabel *deleteLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
+    deleteLabel.font = [BOUtility fontTypeHeavyWithSize:20];
+    deleteLabel.text = @"Delete";
+    deleteLabel.textAlignment = NSTextAlignmentCenter;
+    deleteLabel.textColor = [BOUtility pinkColor];
+
+    [cell setSwipeGestureWithView:deleteLabel
                             color:[UIColor whiteColor]
                              mode:MCSwipeTableViewCellModeSwitch
                             state:MCSwipeTableViewCellState3
@@ -99,6 +118,7 @@
                           [[NoteManager sharedManager] deleteObject:note];
                           [weakSelf.tableView reloadData];
                       }];
+                      
                       [alert addAction:noAction];
                       [alert addAction:yesAction];
                       

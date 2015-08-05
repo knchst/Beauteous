@@ -7,6 +7,7 @@
 //
 
 #import "AllTableViewCell.h"
+#import "BOUtility.h"
 
 @implementation AllTableViewCell
 
@@ -20,6 +21,7 @@
 
 - (void)setDate:(Note *)note
 {
+
     self.titleLabel.text = note.title;
     self.bodyLabel.attributedText = [self createBodyStringWithNote:note];
     
@@ -30,7 +32,16 @@
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat  = @"yyyy/MM/dd";
-    NSAttributedString *dateAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  ", [df stringFromDate:note.updated_at]] attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor], NSFontAttributeName: [UIFont fontWithName:@"Avenir-LightOblique" size:12]}];
+    
+    UIColor *dateColor;
+    
+    if (note.starred) {
+        dateColor = [BOUtility yellowColor];
+    } else {
+        dateColor = [UIColor blackColor];
+    }
+    
+    NSAttributedString *dateAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  ", [df stringFromDate:note.updated_at]] attributes:@{NSForegroundColorAttributeName: dateColor, NSFontAttributeName: [UIFont fontWithName:@"Avenir-LightOblique" size:12]}];
     
     NSMutableAttributedString *bodyAttrString = [[NSMutableAttributedString alloc] initWithString:note.planeString];
     

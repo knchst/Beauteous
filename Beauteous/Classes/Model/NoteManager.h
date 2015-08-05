@@ -21,4 +21,7 @@
 - (void)deleteObject:(Note*)note;
 - (void)updateNoteWithDictionary:(NSMutableDictionary*)dictionary andNote:(Note*)note;
 - (RLMResults*)getNoteWithPrimaryKey:(NSString *)key;
+- (void)starringNote:(Note *)note;
+- (void)fetchAllStarredNotes;
+
 @end

@@ -23,7 +23,9 @@
              @"planeString" : @"",
              @"htmlString"  : @"",
              @"created_at"  : created_at,
-             @"updated_at"  : updated_at
+             @"updated_at"  : updated_at,
+             @"starred"     : @NO
              };
 }
+
 @end
