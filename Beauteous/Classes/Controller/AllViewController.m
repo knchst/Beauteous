@@ -81,7 +81,13 @@
     __weak AllViewController *weakSelf = self;
     
     UILabel *starLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
-    starLabel.text = @"Star";
+    
+    if (note.starred) {
+        starLabel.text = @"Un Star";
+    } else {
+        starLabel.text = @"Star";
+    }
+    
     starLabel.font = [BOUtility fontTypeHeavyWithSize:20];
     starLabel.textAlignment = NSTextAlignmentCenter;
     starLabel.textColor = [BOUtility yellowColor];

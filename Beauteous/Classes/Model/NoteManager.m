@@ -73,6 +73,7 @@ static NoteManager *sharedManager = nil;
     new_note.htmlString = dictionary[@"htmlString"];
     new_note.updated_at = dictionary[@"updated_at"];
     new_note.id = [dictionary[@"id"] integerValue];
+    new_note.starred = note.starred;
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
     [Note createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:new_note];
