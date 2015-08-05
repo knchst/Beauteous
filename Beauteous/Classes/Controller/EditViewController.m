@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Kenichi Saito. All rights reserved.
 //
 
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "EditViewController.h"
 #import "PreviewViewController.h"
 #import "BOConst.h"
@@ -14,13 +15,15 @@
 
 #import "RFKeyboardToolbar.h"
 
-@interface EditViewController ()
+@interface EditViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
-@implementation EditViewController
+@implementation EditViewController {
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -121,7 +124,7 @@
         [_textView insertText:@"> "];
     } forControlEvents:UIControlEventTouchUpInside];
     [table addEventHandler:^{
-        [_textView insertText:@"| ------------ |"];
+        [_textView insertText:@"| ------ |"];
     } forControlEvents:UIControlEventTouchUpInside];
     [image addEventHandler:^{
         [_textView insertText:@"![]()"];
@@ -130,6 +133,7 @@
                                                             offset:-3];
         _textView.selectedTextRange = [_textView textRangeFromPosition:position
                                                             toPosition:position];
+        //[self showActionSheet];
     } forControlEvents:UIControlEventTouchUpInside];
     [link addEventHandler:^{
         [_textView insertText:@"[]()"];
@@ -183,6 +187,89 @@
                                                                            code
                                                                            ]];
 }
+//
+//- (void)showActionSheet
+//{
+//    UIAlertController * ac = [UIAlertController alertControllerWithTitle:@"Is image where from?"
+//                                                                 message:@""
+//                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+//    
+//    UIAlertAction * urlAction = [UIAlertAction actionWithTitle:@"URL"
+//                                                         style:UIAlertActionStyleDefault
+//                                                       handler:^(UIAlertAction * action) {
+//                                                           NSLog(@"Cancel button tapped.");
+//                                                       }];
+//    
+//    UIAlertAction * pickerAction = [UIAlertAction actionWithTitle:@"Your phone"
+//                                                            style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action) {
+//                                                              NSLog(@"Destructive button tapped.");
+//                                                              [self showImagePicker];
+//                                                          }];
+//    
+//    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+//                                                            style:UIAlertActionStyleCancel
+//                                                          handler:^(UIAlertAction * action) {
+//                                                              NSLog(@"Destructive button tapped.");
+//                                                          }];
+//    
+//    
+//    [ac addAction:urlAction];
+//    [ac addAction:pickerAction];
+//    [ac addAction:cancelAction];
+//    
+//    [self presentViewController:ac animated:YES completion:nil];
+//}
+//
+//- (void)showImagePicker
+//{
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+//        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+//        imagePickerController.delegate = self;
+//        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//        [self presentViewController:imagePickerController  animated:YES completion: nil];
+//    } else {
+//        NSLog(@"Photo not available");
+//    }
+//}
+//
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+//{
+//    NSLog(@"%@", info);
+//    
+//    NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
+//    
+//    NSString *imageUrl = [NSString stringWithFormat:@"![](%@)", referenceURL];
+//    
+//    NSLog(@"%@", imageUrl);
+//    
+//    self.textView.text = [self.textView.text stringByAppendingString:imageUrl];
+//    
+//    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+//    [library assetForURL:referenceURL resultBlock:^(ALAsset *asset) {
+//        ALAssetRepresentation *rep = [asset defaultRepresentation];
+//        Byte *buffer = (Byte*)malloc(rep.size);
+//        NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
+//        NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES]; //これが必要なデータ
+//        
+//        // imagePathをmanagedObjectに入れる
+//        // [self.managedObject.imagePath setValue:referenceURL forKey:@"imagePath"];
+//        NSLog(@"imagePath : %@", referenceURL);
+//        
+//        /*
+//         // サムネイルを使う場合はassetだけで良いのでもっと楽
+//         // UIImageに変換
+//         UIImage* thumbnail = [[UIImage alloc] initWithCGImage:[asset thumbnail]];
+//         // 画像変更
+//         [self.headerImageButton setImage:thumbnail
+//         forState:UIControlStateNormal];
+//         */
+//    } failureBlock:^(NSError *error) {
+//        // error handling
+//    }];
+//    
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 /*
 #pragma mark - Navigation

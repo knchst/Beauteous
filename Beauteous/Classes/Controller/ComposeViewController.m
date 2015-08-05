@@ -118,7 +118,7 @@
         [_textView insertText:@"> "];
     } forControlEvents:UIControlEventTouchUpInside];
     [table addEventHandler:^{
-        [_textView insertText:@"| ------------ |"];
+        [_textView insertText:@"| ------ |"];
     } forControlEvents:UIControlEventTouchUpInside];
     [image addEventHandler:^{
         [_textView insertText:@"![]()"];
