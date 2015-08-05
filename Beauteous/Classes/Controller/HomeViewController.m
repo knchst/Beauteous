@@ -14,8 +14,9 @@
 
 #import "Realm.h"
 #import "Parse.h"
+#import "AMWaveTransition.h"
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -34,14 +35,17 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.separatorInset = UIEdgeInsetsZero;
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
+    self.tableView.separatorColor = [UIColor blackColor];
     
-    _menuArray = @[@"All", @"Starred", @"Photos", @"Settings"];
+    _menuArray = @[@"All", @"Starred", @"Settings"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    [self.navigationController setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,7 +74,10 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.font = [BOUtility fontTypeBookWithSize:15];
+    cell.textLabel.font = [BOUtility fontTypeHeavyWithSize:30];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.layoutMargins = UIEdgeInsetsZero;
     
     [self configureCell:cell andIndexPath:indexPath];
     
@@ -84,6 +91,11 @@
 
 #pragma mark UITableViewDelegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:_menuArray[indexPath.row]];
@@ -95,6 +107,22 @@
 {
     ComposeViewController* composeVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
     [self.navigationController presentViewController:composeVC animated:YES completion:nil];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation != UINavigationControllerOperationNone) {
+        return [AMWaveTransition transitionWithOperation:operation andTransitionType:AMWaveTransitionTypeNervous];
+    }
+    return nil;
+}
+
+- (void)dealloc
+{
+    [self.navigationController setDelegate:nil];
 }
 
 @end

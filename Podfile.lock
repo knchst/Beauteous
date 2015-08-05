@@ -1,4 +1,5 @@
 PODS:
+  - AMWaveTransition (0.5.7)
   - Bolts (1.1.5):
     - Bolts/AppLinks (= 1.1.5)
     - Bolts/Tasks (= 1.1.5)
@@ -33,8 +34,10 @@ PODS:
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
   - SVProgressHUD (1.1.3)
+  - UIImage-ResizeMagick (0.0.1)
 
 DEPENDENCIES:
+  - AMWaveTransition
   - FontAwesomeKit (~> 2.1.0)
   - GHMarkdownParser (~> 0.1)
   - Kiwi (~> 2.3.0)
@@ -44,8 +47,10 @@ DEPENDENCIES:
   - RFKeyboardToolbar (~> 1.3)
   - SDWebImage (~> 3.7.0)
   - SVProgressHUD (~> 1.1.0)
+  - UIImage-ResizeMagick
 
 SPEC CHECKSUMS:
+  AMWaveTransition: 7137a5534a064fd8a955b687865a74d07729b2fe
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   FontAwesomeKit: 64759fb28b5d2e74a1bd81553d7c11ca10e32179
   GHMarkdownParser: 14cbf59d0ab9450017d843dffd4a3ef691e5bd77
@@ -56,5 +61,6 @@ SPEC CHECKSUMS:
   RFKeyboardToolbar: c96a7d9458564d1fedc8ef6844b6c467934aade2
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7
 
 COCOAPODS: 0.38.2

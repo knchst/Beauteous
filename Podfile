@@ -6,6 +6,8 @@ pod 'Realm', '~> 0.94.0'
 pod 'RFKeyboardToolbar', '~> 1.3'
 pod 'MCSwipeTableViewCell', '~> 2.1.4'
 pod 'SDWebImage', '~> 3.7.0'
+pod 'UIImage-ResizeMagick'
+pod 'AMWaveTransition'
 
 target :BeauteousTests do
   pod 'Kiwi', '~> 2.3.0'

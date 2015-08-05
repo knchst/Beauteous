@@ -21,11 +21,8 @@
 
 - (void)setDate:(Note *)note
 {
-
     self.titleLabel.text = note.title;
     self.bodyLabel.attributedText = [self createBodyStringWithNote:note];
-    
-    NSLog(@"%@", [self pickUpURLFromString:note.htmlString]);
 }
 
 - (NSMutableAttributedString*)createBodyStringWithNote:(Note*)note

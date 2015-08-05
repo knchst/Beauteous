@@ -17,9 +17,12 @@
 
 #import "FontAwesomeKit/FontAwesomeKit.h"
 #import "MCSwipeTableViewCell.h"
+#import "AMWaveTransition.h"
 
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet AMWaveTransition *interactive;
 
 @end
 
@@ -43,9 +46,17 @@
     [self.tableView reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.navigationController setDelegate:self];
+    [self.interactive attachInteractiveGestureToNavigationController:self.navigationController];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.interactive detachInteractiveGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,6 +153,22 @@
     detailVC.note = note;
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation != UINavigationControllerOperationNone) {
+        return [AMWaveTransition transitionWithOperation:operation];
+    }
+    return nil;
+}
+
+- (void)dealloc
+{
+    [self.navigationController setDelegate:nil];
 }
 
 /*
