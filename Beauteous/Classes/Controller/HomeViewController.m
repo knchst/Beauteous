@@ -37,7 +37,7 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorInset = UIEdgeInsetsZero;
     self.tableView.layoutMargins = UIEdgeInsetsZero;
-    self.tableView.separatorColor = [UIColor blackColor];
+    self.tableView.separatorColor = [UIColor lightGrayColor];
     
     _menuArray = @[@"All", @"Starred", @"Settings"];
 }

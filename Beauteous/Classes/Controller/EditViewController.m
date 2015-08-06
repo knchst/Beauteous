@@ -12,6 +12,7 @@
 #import "BOConst.h"
 #import "BOUtility.h"
 #import "NoteManager.h"
+#import "CustomRFToolbarButton.h"
 
 #import "SVProgressHUD.h"
 #import "Parse.h"
@@ -109,17 +110,24 @@
 
 - (void)setUpToolBar
 {
-    RFToolbarButton *header = [RFToolbarButton buttonWithTitle:@"Header"];
-    RFToolbarButton *quote  = [RFToolbarButton buttonWithTitle:@"Quote"];
-    RFToolbarButton *table  = [RFToolbarButton buttonWithTitle:@"Table"];
-    RFToolbarButton *image  = [RFToolbarButton buttonWithTitle:@"Image"];
-    RFToolbarButton *link   = [RFToolbarButton buttonWithTitle:@"Link"];
-    RFToolbarButton *list   = [RFToolbarButton buttonWithTitle:@"List"];
-    RFToolbarButton *italic = [RFToolbarButton buttonWithTitle:@"Italic"];
-    RFToolbarButton *bold   = [RFToolbarButton buttonWithTitle:@"Bold"];
-    RFToolbarButton *code   = [RFToolbarButton buttonWithTitle:@"Code"];
+    CustomRFToolbarButton *backCaret = [CustomRFToolbarButton buttonWithTitle:@"◁"];
+    CustomRFToolbarButton *forwardCaret  = [CustomRFToolbarButton buttonWithTitle:@"▷"];
+    CustomRFToolbarButton *header = [CustomRFToolbarButton buttonWithTitle:@"Header"];
+    CustomRFToolbarButton *quote  = [CustomRFToolbarButton buttonWithTitle:@"Quote"];
+    CustomRFToolbarButton *table  = [CustomRFToolbarButton buttonWithTitle:@"Table"];
+    CustomRFToolbarButton *image  = [CustomRFToolbarButton buttonWithTitle:@"Image"];
+    CustomRFToolbarButton *link   = [CustomRFToolbarButton buttonWithTitle:@"Link"];
+    CustomRFToolbarButton *list   = [CustomRFToolbarButton buttonWithTitle:@"List"];
+    CustomRFToolbarButton *italic = [CustomRFToolbarButton buttonWithTitle:@"Italic"];
+    CustomRFToolbarButton *bold   = [CustomRFToolbarButton buttonWithTitle:@"Bold"];
+    CustomRFToolbarButton *code   = [CustomRFToolbarButton buttonWithTitle:@"Code"];
     
-    // Add a button target to the exampleButton
+    [backCaret addEventHandler:^{
+        [self backCaret];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [forwardCaret addEventHandler:^{
+        [self forwardCaret];
+    } forControlEvents:UIControlEventTouchUpInside];
     [header addEventHandler:^{
         [_textView insertText:@"# "];
     } forControlEvents:UIControlEventTouchUpInside];
@@ -163,7 +171,7 @@
         [_textView insertText:@"****"];
         UITextRange *range = _textView.selectedTextRange;
         UITextPosition *position = [_textView positionFromPosition:range.start
-                                                            offset:-3];
+                                                            offset:-2];
         _textView.selectedTextRange = [_textView textRangeFromPosition:position
                                                             toPosition:position];
     } forControlEvents:UIControlEventTouchUpInside];
@@ -179,6 +187,8 @@
     
     // Create an RFKeyboardToolbar, adding all of your buttons, and set it as your inputAcessoryView
     _textView.inputAccessoryView = [RFKeyboardToolbar toolbarWithButtons:@[
+                                                                           backCaret,
+                                                                           forwardCaret,
                                                                            header,
                                                                            quote,
                                                                            image,
@@ -193,27 +203,30 @@
 
 - (void)showActionSheet
 {
-    UIAlertController * ac = [UIAlertController alertControllerWithTitle:@"Is image where from?"
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Image from.."
                                                                  message:@""
                                                           preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction * urlAction = [UIAlertAction actionWithTitle:@"URL"
                                                          style:UIAlertActionStyleDefault
                                                        handler:^(UIAlertAction * action) {
-                                                           NSLog(@"Cancel button tapped.");
+                                                           [_textView insertText:@"![]()"];
+                                                           UITextRange *range = _textView.selectedTextRange;
+                                                           UITextPosition *position = [_textView positionFromPosition:range.start
+                                                                                                               offset:-3];
+                                                           _textView.selectedTextRange = [_textView textRangeFromPosition:position
+                                                                                                               toPosition:position];
                                                        }];
     
-    UIAlertAction * pickerAction = [UIAlertAction actionWithTitle:@"Your phone"
+    UIAlertAction * pickerAction = [UIAlertAction actionWithTitle:@"Library"
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
-                                                              NSLog(@"Destructive button tapped.");
                                                               [self showImagePicker];
                                                           }];
     
     UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                             style:UIAlertActionStyleCancel
                                                           handler:^(UIAlertAction * action) {
-                                                              NSLog(@"Destructive button tapped.");
                                                           }];
     
     
@@ -232,7 +245,23 @@
         imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:imagePickerController  animated:YES completion: nil];
     } else {
-        NSLog(@"Photo not available");
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Please allow Beauteous to use your PhotoLibrary"
+                                                                    message:@""
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                style:UIAlertActionStyleCancel
+                                                              handler:^(UIAlertAction * action) {
+                                                                  
+                                                              }];
+        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Settings"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+                                                                  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                                              }];
+        [ac addAction:cancelAction];
+        [ac addAction:settingsAction];
+        
+        [self presentViewController:ac animated:YES completion:nil];
     }
 }
 
@@ -272,6 +301,20 @@
     [string insertString:[NSString stringWithFormat:@"![](%@)", url] atIndex:_textView.selectedRange.location];
     _textView.text = string;
     [SVProgressHUD dismiss];
+}
+
+- (void)backCaret
+{
+    UITextRange *range = _textView.selectedTextRange;
+    UITextPosition *position = [_textView positionFromPosition:range.start offset:-1];
+    _textView.selectedTextRange = [_textView textRangeFromPosition:position toPosition:position];
+}
+
+- (void)forwardCaret
+{
+    UITextRange *range = _textView.selectedTextRange;
+    UITextPosition *position = [_textView positionFromPosition:range.start offset:1];
+    _textView.selectedTextRange = [_textView textRangeFromPosition:position toPosition:position];
 }
 
 /*

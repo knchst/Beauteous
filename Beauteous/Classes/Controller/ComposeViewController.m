@@ -12,12 +12,15 @@
 #import "BOUtility.h"
 #import "BOConst.h"
 #import "Note.h"
+#import "CustomRFToolbarButton.h"
 
+#import "RFKeyBoardToolbar.h"
+#import "Parse.h"
 #import "Realm.h"
-#import "RFKeyboardToolbar.h"
 #import "SVProgressHUD.h"
+#import "UIImage+ResizeMagick.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
@@ -100,17 +103,24 @@
 
 - (void)setUpToolBar
 {
-    RFToolbarButton *header = [RFToolbarButton buttonWithTitle:@"Header"];
-    RFToolbarButton *quote  = [RFToolbarButton buttonWithTitle:@"Quote"];
-    RFToolbarButton *table  = [RFToolbarButton buttonWithTitle:@"Table"];
-    RFToolbarButton *image  = [RFToolbarButton buttonWithTitle:@"Image"];
-    RFToolbarButton *link   = [RFToolbarButton buttonWithTitle:@"Link"];
-    RFToolbarButton *list   = [RFToolbarButton buttonWithTitle:@"List"];
-    RFToolbarButton *italic = [RFToolbarButton buttonWithTitle:@"Italic"];
-    RFToolbarButton *bold   = [RFToolbarButton buttonWithTitle:@"Bold"];
-    RFToolbarButton *code   = [RFToolbarButton buttonWithTitle:@"Code"];
+    CustomRFToolbarButton *backCaret = [CustomRFToolbarButton buttonWithTitle:@"◁"];
+    CustomRFToolbarButton *forwardCaret  = [CustomRFToolbarButton buttonWithTitle:@"▷"];
+    CustomRFToolbarButton *header = [CustomRFToolbarButton buttonWithTitle:@"Header"];
+    CustomRFToolbarButton *quote  = [CustomRFToolbarButton buttonWithTitle:@"Quote"];
+    CustomRFToolbarButton *table  = [CustomRFToolbarButton buttonWithTitle:@"Table"];
+    CustomRFToolbarButton *image  = [CustomRFToolbarButton buttonWithTitle:@"Image"];
+    CustomRFToolbarButton *link   = [CustomRFToolbarButton buttonWithTitle:@"Link"];
+    CustomRFToolbarButton *list   = [CustomRFToolbarButton buttonWithTitle:@"List"];
+    CustomRFToolbarButton *italic = [CustomRFToolbarButton buttonWithTitle:@"Italic"];
+    CustomRFToolbarButton *bold   = [CustomRFToolbarButton buttonWithTitle:@"Bold"];
+    CustomRFToolbarButton *code   = [CustomRFToolbarButton buttonWithTitle:@"Code"];
     
-    // Add a button target to the exampleButton
+    [backCaret addEventHandler:^{
+        [self backCaret];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [forwardCaret addEventHandler:^{
+        [self forwardCaret];
+    } forControlEvents:UIControlEventTouchUpInside];
     [header addEventHandler:^{
         [_textView insertText:@"# "];
     } forControlEvents:UIControlEventTouchUpInside];
@@ -153,7 +163,7 @@
         [_textView insertText:@"****"];
         UITextRange *range = _textView.selectedTextRange;
         UITextPosition *position = [_textView positionFromPosition:range.start
-                                                            offset:-3];
+                                                            offset:-2];
         _textView.selectedTextRange = [_textView textRangeFromPosition:position
                                                             toPosition:position];
     } forControlEvents:UIControlEventTouchUpInside];
@@ -169,6 +179,8 @@
     
     // Create an RFKeyboardToolbar, adding all of your buttons, and set it as your inputAcessoryView
     _textView.inputAccessoryView = [RFKeyboardToolbar toolbarWithButtons:@[
+                                                                           backCaret,
+                                                                           forwardCaret,
                                                                            header,
                                                                            quote,
                                                                            image,
@@ -180,6 +192,124 @@
                                                                            code
                                                                            ]];
 }
+
+- (void)showActionSheet
+{
+    UIAlertController * ac = [UIAlertController alertControllerWithTitle:@"Is image where from?"
+                                                                 message:@""
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction * urlAction = [UIAlertAction actionWithTitle:@"From URL"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           [_textView insertText:@"![]()"];
+                                                           UITextRange *range = _textView.selectedTextRange;
+                                                           UITextPosition *position = [_textView positionFromPosition:range.start
+                                                                                                               offset:-3];
+                                                           _textView.selectedTextRange = [_textView textRangeFromPosition:position
+                                                                                                               toPosition:position];
+                                                       }];
+    
+    __weak ComposeViewController *weakSelf = self;
+    
+    UIAlertAction * pickerAction = [UIAlertAction actionWithTitle:@"From Phone"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [weakSelf showImagePicker];
+                                                          }];
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {
+                                                          }];
+    
+    
+    [ac addAction:urlAction];
+    [ac addAction:pickerAction];
+    [ac addAction:cancelAction];
+    
+    [self presentViewController:ac animated:YES completion:nil];
+}
+
+- (void)showImagePicker
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.delegate = self;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePickerController  animated:YES completion: nil];
+    } else {
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Please allow Beauteous to use your PhotoLibrary"
+                                                                    message:@""
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * action) {
+                                                                 
+                                                             }];
+        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Settings"
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * action) {
+                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                                               }];
+        [ac addAction:cancelAction];
+        [ac addAction:settingsAction];
+        
+        [self presentViewController:ac animated:YES completion:nil];    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [SVProgressHUD show];
+    
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage* resizedImage = [originalImage resizedImageByMagick:@"500x500#"];
+    NSData *imageData = UIImagePNGRepresentation(resizedImage);
+    PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
+    
+    PFObject *file = [PFObject objectWithClassName:@"Photos"];
+    file[@"image"] = image;
+    
+    __weak ComposeViewController *weakSelf = self;
+    
+    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded) {
+            NSLog(@"%@", image.url);
+            
+            __strong ComposeViewController *strongSelf = weakSelf;
+            
+            [strongSelf addImageURL:image.url];
+        } else {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"Error.."];
+        }
+    }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addImageURL:(NSString*)url
+{
+    NSMutableString *string = [NSMutableString stringWithString:_textView.text];
+    [string insertString:[NSString stringWithFormat:@"![](%@)", url] atIndex:_textView.selectedRange.location];
+    _textView.text = string;
+    [SVProgressHUD dismiss];
+}
+
+- (void)backCaret
+{
+    UITextRange *range = _textView.selectedTextRange;
+    UITextPosition *position = [_textView positionFromPosition:range.start offset:-1];
+    _textView.selectedTextRange = [_textView textRangeFromPosition:position toPosition:position];
+}
+
+- (void)forwardCaret
+{
+    UITextRange *range = _textView.selectedTextRange;
+    UITextPosition *position = [_textView positionFromPosition:range.start offset:1];
+    _textView.selectedTextRange = [_textView textRangeFromPosition:position toPosition:position];
+}
+
 
 /*
 #pragma mark - Navigation
