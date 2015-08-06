@@ -19,6 +19,7 @@
 #import "Realm.h"
 #import "SVProgressHUD.h"
 #import "UIImage+ResizeMagick.h"
+#import "AMWaveTransition.h"
 
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -43,6 +44,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.navigationController setDelegate:self];
+}
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
@@ -95,6 +101,7 @@
     note[@"htmlString"] = [BOUtility renderHTMLWithString:_textView.text];
     note[@"created_at"] = [NSDate date];
     note[@"updated_at"] = [NSDate date];
+    note[@"photoUrl"] = [[NoteManager sharedManager] detectPhotoURLWithString:_textView.text];
     
     [[NoteManager sharedManager] saveNoteWithDictionary:note];
     
@@ -274,7 +281,7 @@
     
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (succeeded) {
-            NSLog(@"%@", image.url);
+            // NSLog(@"%@", image.url);
             
             __strong ComposeViewController *strongSelf = weakSelf;
             
@@ -308,6 +315,22 @@
     UITextRange *range = _textView.selectedTextRange;
     UITextPosition *position = [_textView positionFromPosition:range.start offset:1];
     _textView.selectedTextRange = [_textView textRangeFromPosition:position toPosition:position];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation != UINavigationControllerOperationNone) {
+        return [AMWaveTransition transitionWithOperation:operation andTransitionType:AMWaveTransitionTypeNervous];
+    }
+    return nil;
+}
+
+- (void)dealloc
+{
+    [self.navigationController setDelegate:nil];
 }
 
 

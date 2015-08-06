@@ -22,7 +22,6 @@
 
 @interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet AMWaveTransition *interactive;
 
 @end
 
@@ -50,13 +49,11 @@
 {
     [super viewDidAppear:animated];
     [self.navigationController setDelegate:self];
-    [self.interactive attachInteractiveGestureToNavigationController:self.navigationController];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
-    [self.interactive detachInteractiveGesture];
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,7 +74,6 @@
     if (cell == nil) {
         cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [self configureCell:cell andIndexPath:indexPath];
     
@@ -148,6 +144,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Note *note = [NoteManager sharedManager].notes[indexPath.row];
+    
+    NSLog(@"%@", note);
         
     DetailViewController *detailVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Detail"];
     detailVC.note = note;

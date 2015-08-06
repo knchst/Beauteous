@@ -18,6 +18,7 @@
 #import "Parse.h"
 #import "RFKeyboardToolbar.h"
 #import "UIImage+ResizeMagick.h"
+#import "AMWaveTransition.h"
 
 @interface EditViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -35,7 +36,7 @@
     
     self.title = @"Edit";
     
-    NSLog(@"Edit: %@", self.note);
+    // NSLog(@"Edit: %@", self.note);
     
     _textView.text = _note.planeString;
     
@@ -50,6 +51,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.navigationController setDelegate:self];
+}
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
@@ -94,6 +100,7 @@
     note[@"updated_at"] = [NSDate date];
     NSString *note_id = [NSString stringWithFormat:@"%ld", (long)_note.id];
     note[@"id"] = note_id;
+    note[@"photoUrl"] = [[NoteManager sharedManager] detectPhotoURLWithString:_textView.text];
     
     [[NoteManager sharedManager] updateNoteWithDictionary:note andNote:_note];
     
@@ -281,7 +288,7 @@
     
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (succeeded) {
-            NSLog(@"%@", image.url);
+            // NSLog(@"%@", image.url);
             
             __strong EditViewController *strongSelf = weakSelf;
             
@@ -316,7 +323,21 @@
     UITextPosition *position = [_textView positionFromPosition:range.start offset:1];
     _textView.selectedTextRange = [_textView textRangeFromPosition:position toPosition:position];
 }
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation != UINavigationControllerOperationNone) {
+        return [AMWaveTransition transitionWithOperation:operation andTransitionType:AMWaveTransitionTypeNervous];
+    }
+    return nil;
+}
 
+- (void)dealloc
+{
+    [self.navigationController setDelegate:nil];
+}
 /*
 #pragma mark - Navigation
 

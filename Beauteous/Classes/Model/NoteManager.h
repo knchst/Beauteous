@@ -23,5 +23,6 @@
 - (RLMResults*)getNoteWithPrimaryKey:(NSString *)key;
 - (void)starringNote:(Note *)note;
 - (void)fetchAllStarredNotes;
+- (NSString*)detectPhotoURLWithString:(NSString*)string;
 
 @end

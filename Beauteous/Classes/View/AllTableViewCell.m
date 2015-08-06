@@ -19,6 +19,15 @@
 }
 */
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    return self;
+}
+
 - (void)setDate:(Note *)note
 {
     self.titleLabel.text = note.title;
@@ -46,33 +55,9 @@
     [bodyString appendAttributedString:dateAttrString];
     [bodyString appendAttributedString:bodyAttrString];
     
-    NSLog(@"BODY STRING : %@", bodyString);
+    // NSLog(@"BODY STRING : %@", bodyString);
     
     return bodyString;
-}
-
-- (NSArray *)pickUpURLFromString:(NSString *)string {
-    
-    //--------------------------------------------------------------------------------
-    // 検索
-    //--------------------------------------------------------------------------------
-    
-    // 文字列抽出用の正規表現オブジェクトを生成する
-    NSError *error = nil;
-    NSString *URLPattern = @"(file://|http://|https://){1}[\\w\\.\\-/:]+";
-    NSRegularExpression *regularExpressionForPickOut = [NSRegularExpression regularExpressionWithPattern:URLPattern options:0 error:&error];
-    
-    // 検索対象の文字列の中から正規表現にマッチした件数分の結果を取得
-    NSArray *matchesInString = [regularExpressionForPickOut matchesInString:string options:0 range:NSMakeRange(0, string.length)];
-    
-    // 検索結果を配列に入れる
-    NSMutableArray *strings = [NSMutableArray array];
-    for (int i=0 ; i<matchesInString.count ; i++) {
-        NSTextCheckingResult *checkingResult = matchesInString[i];
-        NSString *expressionPattern = [string substringWithRange:[checkingResult rangeAtIndex:0]];
-        [strings addObject:expressionPattern];
-    }
-    return strings;
 }
 
 @end

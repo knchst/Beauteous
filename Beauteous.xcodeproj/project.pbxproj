@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5BE1B70B2190083D487 /* StarredViewController.m */; };
-		2718E5C21B70B2280083D487 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C11B70B2280083D487 /* PhotosViewController.m */; };
 		2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C41B70B2360083D487 /* SettingsViewController.m */; };
 		2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C81B70C4050083D487 /* AllTableViewCell.m */; };
 		2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CB1B710DAC0083D487 /* EditViewController.m */; };
 		2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CE1B710E460083D487 /* DetailViewController.m */; };
 		27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */; };
+		27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */; };
 		27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */; };
 		27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */; };
 		27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCF81B67B669005CE9EB /* BOConst.m */; };
@@ -47,8 +47,6 @@
 		215CE886FBFF839F6E314373 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2718E5BD1B70B2190083D487 /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
 		2718E5BE1B70B2190083D487 /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
-		2718E5C01B70B2280083D487 /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
-		2718E5C11B70B2280083D487 /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
 		2718E5C31B70B2360083D487 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		2718E5C41B70B2360083D487 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2718E5C71B70C4050083D487 /* AllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTableViewCell.h; sourceTree = "<group>"; };
@@ -59,6 +57,8 @@
 		2718E5CE1B710E460083D487 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		27D110FC1B73359C003D3F8E /* CustomRFToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRFToolbarButton.h; sourceTree = "<group>"; };
 		27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRFToolbarButton.m; sourceTree = "<group>"; };
+		27D111021B734701003D3F8E /* PhotoAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAllTableViewCell.h; sourceTree = "<group>"; };
+		27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAllTableViewCell.m; sourceTree = "<group>"; };
 		27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27E4FCE31B67A8E5005CE9EB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -121,6 +121,8 @@
 				2718E5C81B70C4050083D487 /* AllTableViewCell.m */,
 				27D110FC1B73359C003D3F8E /* CustomRFToolbarButton.h */,
 				27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */,
+				27D111021B734701003D3F8E /* PhotoAllTableViewCell.h */,
+				27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */,
 			);
 			name = View;
 			path = Beauteous/Classes/View;
@@ -152,8 +154,6 @@
 				27E4FD0F1B68F63C005CE9EB /* AllViewController.m */,
 				2718E5BD1B70B2190083D487 /* StarredViewController.h */,
 				2718E5BE1B70B2190083D487 /* StarredViewController.m */,
-				2718E5C01B70B2280083D487 /* PhotosViewController.h */,
-				2718E5C11B70B2280083D487 /* PhotosViewController.m */,
 				2718E5C31B70B2360083D487 /* SettingsViewController.h */,
 				2718E5C41B70B2360083D487 /* SettingsViewController.m */,
 				2718E5CA1B710DAC0083D487 /* EditViewController.h */,
@@ -435,7 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E4FD0D1B68D785005CE9EB /* NoteManager.m in Sources */,
-				2718E5C21B70B2280083D487 /* PhotosViewController.m in Sources */,
+				27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */,
 				27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */,
 				2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,

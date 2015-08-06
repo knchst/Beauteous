@@ -16,4 +16,5 @@
 + (NSString*)renderHTMLWithString:(NSString*)string;
 + (UIColor*)pinkColor;
 + (UIColor*)yellowColor;
++ (NSArray*)pickUpURLFromString:(NSString*)string;
 @end

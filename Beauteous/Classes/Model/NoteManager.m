@@ -7,6 +7,7 @@
 //
 
 #import "NoteManager.h"
+#import "BOUtility.h"
 
 static NoteManager *sharedManager = nil;
 
@@ -56,6 +57,7 @@ static NoteManager *sharedManager = nil;
     new_note.htmlString = dictionary[@"htmlString"];
     new_note.created_at = dictionary[@"created_at"];
     new_note.updated_at = dictionary[@"updated_at"];
+    new_note.photoUrl = dictionary[@"photoUrl"];
     
     NSInteger time = [[NSDate date] timeIntervalSince1970];
     new_note.id = time;
@@ -74,6 +76,7 @@ static NoteManager *sharedManager = nil;
     new_note.updated_at = dictionary[@"updated_at"];
     new_note.id = [dictionary[@"id"] integerValue];
     new_note.starred = note.starred;
+    new_note.photoUrl = [self detectPhotoURLWithString:dictionary[@"photoUrl"]];
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
     [Note createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:new_note];
@@ -88,6 +91,7 @@ static NoteManager *sharedManager = nil;
     new_note.htmlString = note.htmlString;
     new_note.updated_at = note.updated_at;
     new_note.id = note.id;
+    new_note.photoUrl = [self detectPhotoURLWithString:note.planeString];
     
     if (note.starred) {
         new_note.starred = NO;
@@ -105,6 +109,19 @@ static NoteManager *sharedManager = nil;
     [[RLMRealm defaultRealm] beginWriteTransaction];
     [[RLMRealm defaultRealm] deleteObject:note];
     [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+
+- (NSString*)detectPhotoURLWithString:(NSString*)string
+{
+    NSArray *URLs = [BOUtility pickUpURLFromString:string];
+    
+    // NSLog(@"%@", URLs);
+    
+    if (URLs.count > 0) {
+        return URLs[0];
+    }
+    
+    return @"";
 }
 
 @end

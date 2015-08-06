@@ -52,7 +52,7 @@
     
     NSString *style = [NSString stringWithFormat:@"<link rel=\"stylesheet\" href=\"%@\">", url];
     
-    NSLog(@"HTML STRING: %@ %@", style, body);
+    // NSLog(@"HTML STRING: %@ %@", style, body);
     
     return [NSString stringWithFormat:@"%@%@", style, body];
 }
@@ -65,6 +65,23 @@
 + (UIColor*)yellowColor
 {
     return [UIColor colorWithRed:236/255.0 green:185/255.0 blue:53/255.0 alpha:1.0];
+}
+
++ (NSArray*)pickUpURLFromString:(NSString *)string
+{
+    NSError *error = nil;
+    NSString *URLPattern = @"(file://|http://|https://){1}[\\w\\.\\-/:]+(jpg|png)";
+    NSRegularExpression *regularExpressionForPickOut = [NSRegularExpression regularExpressionWithPattern:URLPattern options:0 error:&error];
+    
+    NSArray *matchesInString = [regularExpressionForPickOut matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    
+    NSMutableArray *strings = [NSMutableArray array];
+    for (int i=0 ; i<matchesInString.count ; i++) {
+        NSTextCheckingResult *checkingResult = matchesInString[i];
+        NSString *expressionPattern = [string substringWithRange:[checkingResult rangeAtIndex:0]];
+        [strings addObject:expressionPattern];
+    }
+    return strings;
 }
 
 @end
