@@ -27,10 +27,10 @@
     
     if (highlighted) {
         self.backgroundColor = [UIColor blackColor];
-        self.textLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.textColor = [UIColor whiteColor];
     } else {
         self.backgroundColor = [UIColor whiteColor];
-        self.textLabel.textColor = [UIColor blackColor];
+        self.titleLabel.textColor = [UIColor blackColor];
     }
 }
 

@@ -138,7 +138,7 @@
         [_textView insertText:@"| ------ |"];
     } forControlEvents:UIControlEventTouchUpInside];
     [image addEventHandler:^{
-        [self showImagePicker];
+        [self showActionSheet];
 //        [_textView insertText:@"![]()"];
 //        UITextRange *range = _textView.selectedTextRange;
 //        UITextPosition *position = [_textView positionFromPosition:range.start
@@ -269,6 +269,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [SVProgressHUD show];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage* resizedImage = [originalImage resizedImageByMagick:@"500x500#"];
@@ -290,6 +291,7 @@
         } else {
             [SVProgressHUD dismiss];
             [SVProgressHUD showErrorWithStatus:@"Error.."];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         }
     }];
     
@@ -302,6 +304,7 @@
     [string insertString:[NSString stringWithFormat:@"![](%@)", url] atIndex:_textView.selectedRange.location];
     _textView.text = string;
     [SVProgressHUD dismiss];
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 
 - (void)backCaret

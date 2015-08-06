@@ -39,15 +39,16 @@
 
     self.tableView.separatorColor = [UIColor clearColor];
     
-    [BOUtility getQuoteTodayWithBlock:^(NSDictionary *dictionary, NSError *error){
-        if (error) {
-            NSLog(@"ERROR: %@", error);
-        } else {
-            NSLog(@"DICTIONARY: %@", dictionary);
-        }
-    }];
-    
     _menuArray = @[@"All", @"Starred", @"Settings"];
+    
+//    [BOUtility getQuoteTodayWithBlock:^(NSDictionary *dictionary, NSError *error){
+//        if (error) {
+//            NSLog(@"ERROR: %@", error);
+//        } else {
+//            NSLog(@"DICTIONARY: %@", dictionary);
+//        }
+//    }];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -81,18 +82,15 @@
         cell = [[HomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.font = [BOUtility fontTypeHeavyWithSize:30];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    
     [self configureCell:cell andIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(HomeTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
-    cell.textLabel.text = _menuArray[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.titleLabel.text = _menuArray[indexPath.row];
 }
 
 #pragma mark UITableViewDelegate

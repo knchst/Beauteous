@@ -274,6 +274,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [SVProgressHUD show];
     
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
@@ -296,6 +297,7 @@
         } else {
             [SVProgressHUD dismiss];
             [SVProgressHUD showErrorWithStatus:@"Error.."];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         }
     }];
     
@@ -308,6 +310,7 @@
     [string insertString:[NSString stringWithFormat:@"![](%@)", url] atIndex:_textView.selectedRange.location];
     _textView.text = string;
     [SVProgressHUD dismiss];
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 
 - (void)backCaret
