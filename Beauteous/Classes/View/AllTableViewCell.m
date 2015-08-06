@@ -24,6 +24,8 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.separatorInset = UIEdgeInsetsZero;
+        self.layoutMargins = UIEdgeInsetsZero;
     }
     return self;
 }

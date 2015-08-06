@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MCSwipeTableViewCell.h"
+#import "Note.h"
 
-@interface PhotoAllTableViewCell : UITableViewCell
+@interface PhotoAllTableViewCell : MCSwipeTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+- (void)setDate:(Note*)note;
 
 @end

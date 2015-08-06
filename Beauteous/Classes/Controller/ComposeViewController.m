@@ -138,12 +138,13 @@
         [_textView insertText:@"| ------ |"];
     } forControlEvents:UIControlEventTouchUpInside];
     [image addEventHandler:^{
-        [_textView insertText:@"![]()"];
-        UITextRange *range = _textView.selectedTextRange;
-        UITextPosition *position = [_textView positionFromPosition:range.start
-                                                            offset:-3];
-        _textView.selectedTextRange = [_textView textRangeFromPosition:position
-                                                            toPosition:position];
+        [self showImagePicker];
+//        [_textView insertText:@"![]()"];
+//        UITextRange *range = _textView.selectedTextRange;
+//        UITextPosition *position = [_textView positionFromPosition:range.start
+//                                                            offset:-3];
+//        _textView.selectedTextRange = [_textView textRangeFromPosition:position
+//                                                            toPosition:position];
     } forControlEvents:UIControlEventTouchUpInside];
     [link addEventHandler:^{
         [_textView insertText:@"[]()"];
