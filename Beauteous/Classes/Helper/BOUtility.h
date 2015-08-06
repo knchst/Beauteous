@@ -17,4 +17,7 @@
 + (UIColor*)pinkColor;
 + (UIColor*)yellowColor;
 + (NSArray*)pickUpURLFromString:(NSString*)string;
+
+typedef void (^callback)(NSDictionary* , NSError*);
++ (void)getQuoteTodayWithBlock:(callback)callback;
 @end

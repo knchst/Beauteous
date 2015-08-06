@@ -33,6 +33,7 @@
 - (void)setDate:(Note *)note
 {
     self.titleLabel.text = note.title;
+    self.bodyLabel.textColor = [UIColor darkGrayColor];
     self.bodyLabel.attributedText = [self createBodyStringWithNote:note];
 }
 

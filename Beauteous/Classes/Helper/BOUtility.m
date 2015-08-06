@@ -8,6 +8,7 @@
 
 #import "BOUtility.h"
 #import "BOConst.h"
+#import "Bolts.h"
 
 #import "GHMarkdownParser.h"
 
@@ -82,6 +83,28 @@
         [strings addObject:expressionPattern];
     }
     return strings;
+}
+
++ (void)getQuoteTodayWithBlock:(callback)callback
+{
+    NSURL *URL = [NSURL URLWithString:@"http://api.theysaidso.com/qod.json"];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        if (error) {
+            NSLog(@"%@", error);
+            if (callback) {
+                callback(nil, error);
+            }
+        } else {
+            NSLog(@"RESPONSE: %@, DATA: %@", response, data);
+            if (callback) {
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                callback(json, error);
+            }
+        }
+    }];
+    
+    [task resume];
 }
 
 @end

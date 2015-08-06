@@ -29,9 +29,10 @@
     self.photoView.layer.cornerRadius = 3;
     
     self.titleLabel.text = note.title;
-
+    
+    self.dateLabel.textColor = [UIColor darkGrayColor];
     self.dateLabel.attributedText = [self createBodyStringWithNote:note];
-
+    
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:note.photoUrl]
                       placeholderImage:[UIImage new]
                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {

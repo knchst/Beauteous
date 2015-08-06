@@ -11,6 +11,7 @@
 #import "AllViewController.h"
 #import "BOUtility.h"
 #import "Note.h"
+#import "HomeTableViewCell.h"
 
 #import "Realm.h"
 #import "Parse.h"
@@ -35,9 +36,16 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.separatorInset = UIEdgeInsetsZero;
-    self.tableView.layoutMargins = UIEdgeInsetsZero;
-    self.tableView.separatorColor = [UIColor lightGrayColor];
+
+    self.tableView.separatorColor = [UIColor clearColor];
+    
+    [BOUtility getQuoteTodayWithBlock:^(NSDictionary *dictionary, NSError *error){
+        if (error) {
+            NSLog(@"ERROR: %@", error);
+        } else {
+            NSLog(@"DICTIONARY: %@", dictionary);
+        }
+    }];
     
     _menuArray = @[@"All", @"Starred", @"Settings"];
 }
@@ -67,17 +75,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    HomeTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[HomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.font = [BOUtility fontTypeHeavyWithSize:30];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.separatorInset = UIEdgeInsetsZero;
-    cell.layoutMargins = UIEdgeInsetsZero;
     
     [self configureCell:cell andIndexPath:indexPath];
     
