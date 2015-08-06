@@ -11,12 +11,15 @@
 @interface BOUtility : NSObject
 + (UIFont*)fontTypeBookWithSize:(CGFloat)size;
 + (UIFont*)fontTypeHeavyWithSize:(CGFloat)size;
++ (UIFont*)fontTypeMediumWithSize:(CGFloat)size;
 + (UIStoryboard*)storyboard;
 + (UIBarButtonItem*)blankBarButton;
 + (NSString*)renderHTMLWithString:(NSString*)string;
 + (UIColor*)pinkColor;
 + (UIColor*)yellowColor;
 + (NSArray*)pickUpURLFromString:(NSString*)string;
++ (UIImage*)screenShotScrollView:(UIScrollView*)scrollView;
++ (NSData*)convertImageToPDF:(UIImage*)image;
 
 typedef void (^callback)(NSDictionary* , NSError*);
 + (void)getQuoteTodayWithBlock:(callback)callback;

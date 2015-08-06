@@ -25,6 +25,11 @@
     return [UIFont fontWithName:BO_FONT_HEAVY size:size];
 }
 
++ (UIFont*)fontTypeMediumWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:BO_FONT_MEDIUM size:size];
+}
+
 + (UIStoryboard*)storyboard
 {
     return [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -106,5 +111,73 @@
     
     [task resume];
 }
+
++ (UIImage *)screenShotScrollView:(UIScrollView *)scrollView
+{
+    [scrollView setContentOffset:CGPointZero animated:NO];
+    [scrollView setShowsHorizontalScrollIndicator:NO];
+    [scrollView setShowsVerticalScrollIndicator:NO];
+    
+    UIImage *image = nil;
+    
+    UIGraphicsBeginImageContextWithOptions(scrollView.contentSize, YES, 2.0);
+    {
+        CGPoint savedContentOffset = scrollView.contentOffset;
+        CGRect savedFrame = scrollView.frame;
+        
+        scrollView.contentOffset = CGPointZero;
+        scrollView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height);
+        
+        [scrollView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        
+        scrollView.contentOffset = savedContentOffset;
+        scrollView.frame = savedFrame;
+    }
+    UIGraphicsEndImageContext();
+    
+    if (image != nil){
+        return image;
+    }
+    
+    return nil;
+}
+
++ (NSData *)convertImageToPDF:(UIImage *)image
+{
+    return [BOUtility convertImageToPDF: image withResolution: 96];
+}
+
++ (NSData *)convertImageToPDF:(UIImage *)image withResolution:(double)resolution
+{
+    return [BOUtility convertImageToPDF: image withHorizontalResolution: resolution verticalResolution: resolution];
+}
+
++ (NSData *)convertImageToPDF:(UIImage *)image
+     withHorizontalResolution:(double)horzRes
+           verticalResolution:(double)vertRes
+{
+    if ((horzRes <= 0) || (vertRes <= 0)) {
+        return nil;
+    }
+    
+    double pageWidth = image.size.width * image.scale * 72 / horzRes;
+    double pageHeight = image.size.height * image.scale * 72 / vertRes;
+    
+    NSMutableData *pdfFile = [[NSMutableData alloc] init];
+    CGDataConsumerRef pdfConsumer = CGDataConsumerCreateWithCFData((__bridge CFMutableDataRef)pdfFile);
+    // The page size matches the image, no white borders.
+    CGRect mediaBox = CGRectMake(0, 0, pageWidth, pageHeight);
+    CGContextRef pdfContext = CGPDFContextCreate(pdfConsumer, &mediaBox, NULL);
+    
+    CGContextBeginPage(pdfContext, &mediaBox);
+    CGContextDrawImage(pdfContext, mediaBox, [image CGImage]);
+    CGContextEndPage(pdfContext);
+    CGContextRelease(pdfContext);
+    CGDataConsumerRelease(pdfConsumer);
+    
+    return pdfFile;
+}
+
 
 @end

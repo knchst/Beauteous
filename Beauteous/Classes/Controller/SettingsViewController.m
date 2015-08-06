@@ -15,8 +15,7 @@
 @end
 
 @implementation SettingsViewController {
-    NSArray *_secList;
-    NSDictionary *_dataSource;
+    NSArray *_menuArray;
 }
 
 /*
@@ -41,14 +40,7 @@
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    _secList = @[@"0", @"1"];
-    
-    NSArray *sec1 = @[@"Export PDF", @"Style"];
-    NSArray *sec2 = @[@"Support", @"About"];
-    
-    NSArray *data = @[sec1, sec2];
-    
-    _dataSource = [NSDictionary dictionaryWithObjects:data forKeys:_secList];
+    _menuArray = @[@"Export as PDF", @"Style", @"Support", @"About"];
     
     // Do any additional setup after loading the view.
 }
@@ -60,14 +52,9 @@
 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return _secList.count;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[_dataSource objectForKey:_secList[section]] count];
+    return _menuArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,21 +72,21 @@
 
 - (void)configureCell:(UITableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *sectionName = _secList[indexPath.section];
-    NSArray *items = [_dataSource objectForKey:sectionName];
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.font = [BOUtility fontTypeBookWithSize:15];
-    cell.textLabel.text = items[indexPath.row];
+    cell.textLabel.text = _menuArray[indexPath.row];
 }
 
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UIViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:_menuArray[indexPath.row]];
-//    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-//    [self.navigationController pushViewController:vc animated:YES];
+    UIViewController *vc;
+    if (indexPath.row == 0) {
+        vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"PDF"];
+    }
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

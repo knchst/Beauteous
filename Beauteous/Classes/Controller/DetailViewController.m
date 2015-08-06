@@ -24,10 +24,7 @@
     
     // NSLog(@"Detail: htmlString = %@", _note.htmlString);
     
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(edit)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActionSheet)];
     self.navigationItem.rightBarButtonItem = editButton;
     
 }
@@ -55,6 +52,50 @@
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:editVC];
     [self.navigationController presentViewController:navigationVC animated:YES completion:nil];
 }
+
+- (void)share
+{
+    NSString *title = _note.title;
+    NSString *html = _note.planeString;
+    
+    UIActivityViewController *ac = [[UIActivityViewController alloc] initWithActivityItems:@[title, html] applicationActivities:nil];
+    
+    [self.navigationController presentViewController:ac animated:YES completion:nil];
+}
+
+- (void)showActionSheet
+{
+    UIAlertController * ac = [UIAlertController alertControllerWithTitle:@"What do you want to do?"
+                                                                 message:@""
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+    __weak DetailViewController *weakSelf = self;
+    
+    UIAlertAction * editAction = [UIAlertAction actionWithTitle:@"Edit"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           [weakSelf edit];
+                                                       }];
+    
+    
+    UIAlertAction * shareAction = [UIAlertAction actionWithTitle:@"Share"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [weakSelf share];
+                                                          }];
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {
+                                                          }];
+    
+    
+    [ac addAction:editAction];
+    [ac addAction:shareAction];
+    [ac addAction:cancelAction];
+    
+    [self presentViewController:ac animated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

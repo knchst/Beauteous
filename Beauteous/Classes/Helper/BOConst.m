@@ -15,6 +15,6 @@ NSString* const PARSE_CLIENT_KEY = @"1zPyNRLf3KQ25SbwXsLCFcZ7iuIdkuMLOZXg1pfi";
 
 NSString* const BO_FONT_HEAVY = @"Avenir-Heavy";
 NSString* const BO_FONT_BOOK = @"Avenir-Book";
-
+NSString* const BO_FONT_MEDIUM = @"Avenir-Medium";
 
 @end

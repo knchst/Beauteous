@@ -17,8 +17,8 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.separatorInset = UIEdgeInsetsZero;
-        self.layoutMargins = UIEdgeInsetsZero;
+        self.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
+        self.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     }
     return self;
 }
@@ -53,7 +53,7 @@
         dateColor = [UIColor blackColor];
     }
     
-    NSAttributedString *dateAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  ", [df stringFromDate:note.updated_at]] attributes:@{NSForegroundColorAttributeName: dateColor, NSFontAttributeName: [UIFont fontWithName:@"Avenir-LightOblique" size:12]}];
+    NSAttributedString *dateAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  ", [df stringFromDate:note.updated_at]] attributes:@{NSForegroundColorAttributeName: dateColor, NSFontAttributeName: [UIFont fontWithName:@"Avenir-MediumOblique" size:11]}];
     
     NSMutableAttributedString *bodyAttrString = [[NSMutableAttributedString alloc] initWithString:note.planeString];
     

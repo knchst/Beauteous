@@ -1,31 +1,29 @@
 //
-//  StarredViewController.m
+//  PDFViewController.m
 //  Beauteous
 //
-//  Created by Kenichi Saito on 8/4/15.
+//  Created by Kenichi Saito on 8/7/15.
 //  Copyright (c) 2015 Kenichi Saito. All rights reserved.
 //
 
-#import "StarredViewController.h"
-#import "Note.h"
-#import "NoteManager.h"
+#import "PDFViewController.h"
 #import "AllTableViewCell.h"
-#import "DetailViewController.h"
+#import "NoteManager.h"
 #import "BOUtility.h"
 
-@interface StarredViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface PDFViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation StarredViewController
+@implementation PDFViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"Starred";
-    
+    self.title = @"Select note you want to export as PDF";
+        
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
@@ -36,7 +34,7 @@
 {
     [super viewWillAppear:animated];
     
-    [[NoteManager sharedManager] fetchAllStarredNotes];
+    [[NoteManager sharedManager] fetchAllNotes];
     [self.tableView reloadData];
 }
 
@@ -81,13 +79,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Note *note = [NoteManager sharedManager].notes[indexPath.row];
-    
-    DetailViewController *detailVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Detail"];
-    detailVC.note = note;
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController pushViewController:detailVC animated:YES];
+//    
+//    DetailViewController *detailVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Detail"];
+//    detailVC.note = note;
+//    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+//    [self.navigationController pushViewController:detailVC animated:YES];
 }
-
 /*
 #pragma mark - Navigation
 

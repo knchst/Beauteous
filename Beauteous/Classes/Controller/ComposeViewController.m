@@ -263,7 +263,8 @@
         [ac addAction:cancelAction];
         [ac addAction:settingsAction];
         
-        [self presentViewController:ac animated:YES completion:nil];    }
+        [self presentViewController:ac animated:YES completion:nil];
+    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
