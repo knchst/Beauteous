@@ -7,6 +7,7 @@
 //
 
 #import "PDFViewController.h"
+#import "PreviewViewController.h"
 #import "AllTableViewCell.h"
 #import "NoteManager.h"
 #import "BOUtility.h"
@@ -79,12 +80,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Note *note = [NoteManager sharedManager].notes[indexPath.row];
-//    
-//    DetailViewController *detailVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Detail"];
-//    detailVC.note = note;
-//    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-//    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    PreviewViewController *previewVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Preview"];
+    previewVC.htmlString = note.htmlString;
+    previewVC.PDF = YES;
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController pushViewController:previewVC animated:YES];
 }
+
 /*
 #pragma mark - Navigation
 

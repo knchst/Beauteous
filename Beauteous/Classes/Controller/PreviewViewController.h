@@ -11,4 +11,5 @@
 @interface PreviewViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) NSString *htmlString;
+@property (assign, nonatomic) BOOL PDF;
 @end

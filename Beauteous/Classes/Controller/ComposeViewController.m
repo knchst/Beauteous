@@ -81,7 +81,7 @@
 - (IBAction)preview:(id)sender
 {
     PreviewViewController *previewVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Preview"];
-    previewVC.htmlString = [BOUtility renderHTMLWithString:_textView.text];
+    previewVC.htmlString = _textView.text;
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:previewVC animated:YES];
     
