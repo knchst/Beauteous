@@ -9,6 +9,8 @@ pod 'SDWebImage', '~> 3.7.0'
 pod 'UIImage-ResizeMagick'
 pod 'AMWaveTransition'
 pod 'EDHFontSelector', '~> 0.1'
+pod 'FlickrKit'
+pod 'ParallaxBlur'
 
 target :BeauteousTests do
   pod 'Kiwi', '~> 2.3.0'

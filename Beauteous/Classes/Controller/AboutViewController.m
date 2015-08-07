@@ -7,21 +7,104 @@
 //
 
 #import "AboutViewController.h"
+#import "BOUtility.h"
+#import "MarkViewController.h"
 
-@interface AboutViewController ()
+@interface AboutViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation AboutViewController
+@implementation AboutViewController {
+    UITableView *_tableView;
+    NSArray *_menuArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"About";
+    
+    _menuArray = @[@"Licenses"];
+    
+    CGRect rect = [UIScreen mainScreen].bounds;
+    _tableView = [[UITableView alloc] initWithFrame:rect];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _tableView.separatorColor = [UIColor clearColor];
+    _tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
+    _tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+    
+    [self.view addSubview:_tableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _menuArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    
+    [self configureCell:cell andIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (void)configureCell:(UITableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
+{
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
+    cell.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+    cell.textLabel.font = [BOUtility fontTypeBookWithSize:30];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.text = _menuArray[indexPath.row];
+}
+
+#pragma mark UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MarkViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Mark"];
+    vc.string = [self license];
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (NSString*)license
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"License" ofType:@"txt"];
+    NSError *error;
+    NSString *text = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"%@", text);
+    
+    return text;
+}
+
+- (NSString*)markdown
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"markdown" ofType:@"txt"];
+    NSError *error;
+    NSString *text = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"%@", text);
+    
+    return text;
 }
 
 /*

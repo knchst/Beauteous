@@ -124,4 +124,9 @@ static NoteManager *sharedManager = nil;
     return @"";
 }
 
+- (void)getLatestNotes
+{
+    self.notes = [[Note allObjects] sortedResultsUsingProperty:@"updated_at" ascending:NO];
+}
+
 @end

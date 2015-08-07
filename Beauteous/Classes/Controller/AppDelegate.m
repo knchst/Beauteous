@@ -13,7 +13,7 @@
 
 #import "Realm.h"
 #import "Parse.h"
-
+#import "FlickrKit.h"
 
 @interface AppDelegate ()
 
@@ -28,6 +28,10 @@
     // Parse
     [Parse setApplicationId:PARSE_ID
                   clientKey:PARSE_CLIENT_KEY];
+    // Flickr
+    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:FLICKR_ID
+                                         sharedSecret:FLICKR_SECRET];
+
     
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
     [UINavigationBar appearance].tintColor = [UIColor blackColor];

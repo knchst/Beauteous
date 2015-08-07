@@ -9,6 +9,8 @@
 #import "SettingsViewController.h"
 #import "BOUtility.h"
 #import "EDHFontSelector.h"
+#import "SupportViewController.h"
+#import "AboutViewController.h"
 
 @interface SettingsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -98,7 +100,14 @@
         vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"PDF"];
     } else if (indexPath.row == 1) {
         [self.navigationController presentViewController:[[EDHFontSelector sharedSelector] settingsNavigationController] animated:YES completion:nil];
+    } else if (indexPath.row == 2) {
+        //vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Support"];
+        NSURL *URL = [NSURL URLWithString:@"https://www.facebook.com/stknch"];
+        [[UIApplication sharedApplication] openURL:URL];
+    } else if (indexPath.row == 3) {
+        vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"About"];
     }
+
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:vc animated:YES];
 }

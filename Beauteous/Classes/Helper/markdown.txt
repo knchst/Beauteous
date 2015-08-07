@@ -1,0 +1,13 @@
+### What's Markdown
+
+Markdown allows you to write using an easy-to-read, easy-to-write plain text format, which then converts to valid HTML
+
+### Basic writing
+
+**Paragraphs**
+
+Paragraphs in Markdown are just one or more lines of consecutive text followed by one or more blank lines.
+
+**Headings**
+
+You can create a heading by adding one or more # symbols before your heading text. The number of # you use will determine the size of the heading.

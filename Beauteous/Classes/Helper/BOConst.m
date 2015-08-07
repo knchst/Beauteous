@@ -17,4 +17,7 @@ NSString* const BO_FONT_HEAVY = @"Avenir-Heavy";
 NSString* const BO_FONT_BOOK = @"Avenir-Book";
 NSString* const BO_FONT_MEDIUM = @"Avenir-Medium";
 
+NSString* const FLICKR_ID = @"e36fe8362b243a0d50c141d63536e4f0";
+NSString* const FLICKR_SECRET = @"5f223540c2eca14d";
+
 @end

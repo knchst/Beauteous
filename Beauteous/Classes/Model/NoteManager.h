@@ -24,5 +24,6 @@
 - (void)starringNote:(Note *)note;
 - (void)fetchAllStarredNotes;
 - (NSString*)detectPhotoURLWithString:(NSString*)string;
+- (void)getLatestNotes;
 
 @end

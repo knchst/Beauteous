@@ -11,14 +11,14 @@
 #import "AllViewController.h"
 #import "BOUtility.h"
 #import "Note.h"
-#import "HomeTableViewCell.h"
+#import "NoteManager.h"
 
 #import "Realm.h"
 #import "Parse.h"
 #import "AMWaveTransition.h"
+#import "SDWebImageManager.h"
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIScrollViewDelegate>
 
 @end
 
@@ -36,17 +36,32 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.separatorColor = [UIColor clearColor];
+//    self.tableView.separatorColor = [UIColor clearColor];
     
     _menuArray = @[@"All", @"Starred", @"Settings"];
     
-//    [BOUtility getQuoteTodayWithBlock:^(NSDictionary *dictionary, NSError *error){
-//        if (error) {
-//            NSLog(@"ERROR: %@", error);
-//        } else {
-//            NSLog(@"DICTIONARY: %@", dictionary);
-//        }
-//    }];
+    __weak HomeViewController *weakSelf = self;
+    
+    [self setSubtitleText:@"Today's Photo From Flickr."];
+    
+    [BOUtility interestingImageFromFlickrWithCallback:^(NSMutableArray *photos, NSError *error){
+        if (error) {
+            return;
+        }
+        
+        NSLog(@"%@", photos);
+        
+        NSDictionary *photo = photos[arc4random() % photos.count];
+        [weakSelf setTitleText:photo[@"Title"]];
+        
+        [[SDWebImageManager sharedManager] downloadImageWithURL:photo[@"URL"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            //Track progress if you wish
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (finished) {
+                [weakSelf setHeaderImage:image];
+            }
+        }];
+    }];
     
 }
 
@@ -75,10 +90,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HomeTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (cell == nil) {
-        cell = [[HomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
     [self configureCell:cell andIndexPath:indexPath];
@@ -86,17 +101,23 @@
     return cell;
 }
 
-- (void)configureCell:(HomeTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.titleLabel.text = _menuArray[indexPath.row];
+    cell.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
+    cell.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+    cell.textLabel.font = [BOUtility fontTypeBookWithSize:30];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.text = _menuArray[indexPath.row];
 }
 
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    CGFloat height = [BOUtility screenSize].size.height;
+    CGFloat width = [BOUtility screenSize].size.width;
+    return (height - width) / 3;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
