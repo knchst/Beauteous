@@ -157,6 +157,7 @@
     [table addEventHandler:^{
         [_textView insertText:@"| ------ |"];
     } forControlEvents:UIControlEventTouchUpInside];
+    __weak EditViewController *weakSelf = self;
     [image addEventHandler:^{
 //        [_textView insertText:@"![]()"];
 //        UITextRange *range = _textView.selectedTextRange;
@@ -164,7 +165,7 @@
 //                                                            offset:-3];
 //        _textView.selectedTextRange = [_textView textRangeFromPosition:position
 //                                                            toPosition:position];
-        [self showActionSheet];
+        [weakSelf showActionSheet];
     } forControlEvents:UIControlEventTouchUpInside];
     [link addEventHandler:^{
         [_textView insertText:@"[]()"];
@@ -305,9 +306,7 @@
         if (succeeded) {
             // NSLog(@"%@", image.url);
             
-            __strong EditViewController *strongSelf = weakSelf;
-            
-            [strongSelf addImageURL:image.url];
+            [weakSelf addImageURL:image.url];
         } else {
             [SVProgressHUD dismiss];
             [SVProgressHUD showErrorWithStatus:@"Error.."];

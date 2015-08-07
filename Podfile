@@ -8,7 +8,6 @@ pod 'MCSwipeTableViewCell', '~> 2.1.4'
 pod 'SDWebImage', '~> 3.7.0'
 pod 'UIImage-ResizeMagick'
 pod 'AMWaveTransition'
-pod 'ActionSheetPicker-3.0', '~> 1.5.1'
 pod 'EDHFontSelector', '~> 0.1'
 
 target :BeauteousTests do

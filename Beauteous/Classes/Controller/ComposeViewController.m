@@ -150,8 +150,9 @@
     [table addEventHandler:^{
         [_textView insertText:@"| ------ |"];
     } forControlEvents:UIControlEventTouchUpInside];
+    __weak ComposeViewController *weakSelf = self;
     [image addEventHandler:^{
-        [self showActionSheet];
+        [weakSelf showActionSheet];
 //        [_textView insertText:@"![]()"];
 //        UITextRange *range = _textView.selectedTextRange;
 //        UITextPosition *position = [_textView positionFromPosition:range.start
@@ -299,10 +300,8 @@
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (succeeded) {
             // NSLog(@"%@", image.url);
-            
-            __strong ComposeViewController *strongSelf = weakSelf;
-            
-            [strongSelf addImageURL:image.url];
+                        
+            [weakSelf addImageURL:image.url];
         } else {
             [SVProgressHUD dismiss];
             [SVProgressHUD showErrorWithStatus:@"Error.."];

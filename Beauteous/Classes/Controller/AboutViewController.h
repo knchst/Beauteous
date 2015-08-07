@@ -1,5 +1,5 @@
 //
-//  FontViewController.h
+//  AboutViewController.h
 //  Beauteous
 //
 //  Created by Kenichi Saito on 8/7/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FontViewController : UIViewController
+@interface AboutViewController : UIViewController
 
 @end

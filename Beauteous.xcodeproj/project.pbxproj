@@ -16,7 +16,8 @@
 		27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */; };
 		27D111071B736F1E003D3F8E /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111061B736F1E003D3F8E /* HomeTableViewCell.m */; };
 		27D1110A1B73BE1F003D3F8E /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111091B73BE1F003D3F8E /* PDFViewController.m */; };
-		27D111161B748E92003D3F8E /* FontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111151B748E92003D3F8E /* FontViewController.m */; };
+		27D111191B749EF3003D3F8E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111181B749EF3003D3F8E /* AboutViewController.m */; };
+		27D1111C1B749F23003D3F8E /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D1111B1B749F23003D3F8E /* SupportViewController.m */; };
 		27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */; };
 		27E4FCE81B67A8E5005CE9EB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE41B67A8E5005CE9EB /* HomeViewController.m */; };
 		27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCF81B67B669005CE9EB /* BOConst.m */; };
@@ -66,8 +67,10 @@
 		27D111061B736F1E003D3F8E /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		27D111081B73BE1F003D3F8E /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
 		27D111091B73BE1F003D3F8E /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
-		27D111141B748E92003D3F8E /* FontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontViewController.h; sourceTree = "<group>"; };
-		27D111151B748E92003D3F8E /* FontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontViewController.m; sourceTree = "<group>"; };
+		27D111171B749EF3003D3F8E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		27D111181B749EF3003D3F8E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		27D1111A1B749F23003D3F8E /* SupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportViewController.h; sourceTree = "<group>"; };
+		27D1111B1B749F23003D3F8E /* SupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportViewController.m; sourceTree = "<group>"; };
 		27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27E4FCE31B67A8E5005CE9EB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -173,8 +176,10 @@
 				2718E5CE1B710E460083D487 /* DetailViewController.m */,
 				27D111081B73BE1F003D3F8E /* PDFViewController.h */,
 				27D111091B73BE1F003D3F8E /* PDFViewController.m */,
-				27D111141B748E92003D3F8E /* FontViewController.h */,
-				27D111151B748E92003D3F8E /* FontViewController.m */,
+				27D111171B749EF3003D3F8E /* AboutViewController.h */,
+				27D111181B749EF3003D3F8E /* AboutViewController.m */,
+				27D1111A1B749F23003D3F8E /* SupportViewController.h */,
+				27D1111B1B749F23003D3F8E /* SupportViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -455,14 +460,15 @@
 				2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */,
+				27D111191B749EF3003D3F8E /* AboutViewController.m in Sources */,
 				27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
 				27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */,
+				27D1111C1B749F23003D3F8E /* SupportViewController.m in Sources */,
 				27E4FD021B67F258005CE9EB /* PreviewViewController.m in Sources */,
 				2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */,
 				27E4FCFC1B67E859005CE9EB /* BOUtility.m in Sources */,
 				27E4FCFF1B67EB63005CE9EB /* ComposeViewController.m in Sources */,
-				27D111161B748E92003D3F8E /* FontViewController.m in Sources */,
 				27E4FD0A1B68D584005CE9EB /* Note.m in Sources */,
 				27D111071B736F1E003D3F8E /* HomeTableViewCell.m in Sources */,
 				2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */,
