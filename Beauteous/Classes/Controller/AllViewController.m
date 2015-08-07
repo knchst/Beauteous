@@ -23,7 +23,6 @@
 
 @interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -41,8 +40,6 @@
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.separatorColor = [UIColor lightGrayColor];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.searchBar.backgroundImage = [UIImage new];
-    self.searchBar.tintColor = [UIColor blackColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
