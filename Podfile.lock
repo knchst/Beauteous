@@ -1,5 +1,4 @@
 PODS:
-  - ActionSheetPicker-3.0 (1.5.1)
   - AMWaveTransition (0.5.7)
   - Bolts (1.1.5):
     - Bolts/AppLinks (= 1.1.5)
@@ -41,7 +40,6 @@ PODS:
   - UIImage-ResizeMagick (0.0.1)
 
 DEPENDENCIES:
-  - ActionSheetPicker-3.0 (~> 1.5.1)
   - AMWaveTransition
   - EDHFontSelector (~> 0.1)
   - FontAwesomeKit (~> 2.1.0)
@@ -56,7 +54,6 @@ DEPENDENCIES:
   - UIImage-ResizeMagick
 
 SPEC CHECKSUMS:
-  ActionSheetPicker-3.0: de0f71e30495ed0192f7d16d0fddcab6882a0ca3
   AMWaveTransition: 7137a5534a064fd8a955b687865a74d07729b2fe
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   EDHFontSelector: a6f382c263073b0ca9cfc5d3e38de772c08d1640
