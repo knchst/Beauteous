@@ -79,7 +79,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     cell.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
-    cell.textLabel.font = [BOUtility fontTypeBookWithSize:40];
+    cell.textLabel.font = [BOUtility fontTypeBookWithSize:30];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.text = _menuArray[indexPath.row];
 }
@@ -88,7 +88,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    return 100;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
