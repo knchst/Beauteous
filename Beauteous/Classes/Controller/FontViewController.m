@@ -1,41 +1,30 @@
 //
-//  SettingsViewController.m
+//  FontViewController.m
 //  Beauteous
 //
-//  Created by Kenichi Saito on 8/4/15.
+//  Created by Kenichi Saito on 8/7/15.
 //  Copyright (c) 2015 Kenichi Saito. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "FontViewController.h"
 #import "BOUtility.h"
+#import "ActionSheetPicker.h"
 #import "EDHFontSelector.h"
 
-@interface SettingsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FontViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation SettingsViewController {
+@implementation FontViewController {
     NSArray *_menuArray;
 }
 
-/*
- # Setting Lists
- 
- - Export PDF
- - Style
-    - Font Size
-    - Font
- - Use Touch ID
- - Support
- - About
- 
- */
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
-    self.title = @"Settings";
+    self.title = @"Style";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -43,10 +32,9 @@
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
-
-    _menuArray = @[@"Export as PDF", @"Style", @"Support", @"About"];
     
-    // Do any additional setup after loading the view.
+    _menuArray = @[@"Font Size",
+                   @"Font"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,14 +83,31 @@
 {
     UIViewController *vc;
     if (indexPath.row == 0) {
-        vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"PDF"];
+        [self fontSize];
     } else if (indexPath.row == 1) {
-        [self.navigationController presentViewController:[[EDHFontSelector sharedSelector] settingsNavigationController] animated:YES completion:nil];
     }
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)fontSize
+{
+//    NSArray *colors = [NSArray arrayWithObjects:@"Red", @"Green", @"Blue", @"Orange", nil];
+//    
+//    [ActionSheetStringPicker showPickerWithTitle:@"Select a Color"
+//                                            rows:colors
+//                                initialSelection:0
+//                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+//
+//                                       }
+//                                     cancelBlock:^(ActionSheetStringPicker *picker) {
+//                                         NSLog(@"Block Picker Canceled");
+//                                     }
+//                                          origin:self.tableView];
+    
+    
+
+}
 
 /*
 #pragma mark - Navigation

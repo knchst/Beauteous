@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (1.5.1)
   - AMWaveTransition (0.5.7)
   - Bolts (1.1.5):
     - Bolts/AppLinks (= 1.1.5)
@@ -6,6 +7,9 @@ PODS:
   - Bolts/AppLinks (1.1.5):
     - Bolts/Tasks
   - Bolts/Tasks (1.1.5)
+  - EDHFontSelector (0.2.1):
+    - EDHUtility (~> 0.1)
+  - EDHUtility (0.1.2)
   - FontAwesomeKit (2.1.8):
     - FontAwesomeKit/Core (= 2.1.8)
     - FontAwesomeKit/FontAwesome (= 2.1.8)
@@ -37,7 +41,9 @@ PODS:
   - UIImage-ResizeMagick (0.0.1)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0 (~> 1.5.1)
   - AMWaveTransition
+  - EDHFontSelector (~> 0.1)
   - FontAwesomeKit (~> 2.1.0)
   - GHMarkdownParser (~> 0.1)
   - Kiwi (~> 2.3.0)
@@ -50,8 +56,11 @@ DEPENDENCIES:
   - UIImage-ResizeMagick
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: de0f71e30495ed0192f7d16d0fddcab6882a0ca3
   AMWaveTransition: 7137a5534a064fd8a955b687865a74d07729b2fe
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
+  EDHFontSelector: a6f382c263073b0ca9cfc5d3e38de772c08d1640
+  EDHUtility: 9e888c6880f52318e6f018374adb3d15c749f4a5
   FontAwesomeKit: 64759fb28b5d2e74a1bd81553d7c11ca10e32179
   GHMarkdownParser: 14cbf59d0ab9450017d843dffd4a3ef691e5bd77
   Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55

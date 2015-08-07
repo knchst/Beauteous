@@ -19,6 +19,7 @@
 #import "RFKeyboardToolbar.h"
 #import "UIImage+ResizeMagick.h"
 #import "AMWaveTransition.h"
+#import "EDHFontSelector.h"
 
 @interface EditViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -41,6 +42,8 @@
     _textView.text = _note.planeString;
     
     [self setUpToolBar];
+    
+    [[EDHFontSelector sharedSelector] applyToTextView:self.textView];
 }
 
 - (void)viewWillAppear:(BOOL)animated

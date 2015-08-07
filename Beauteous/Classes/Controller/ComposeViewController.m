@@ -20,6 +20,7 @@
 #import "SVProgressHUD.h"
 #import "UIImage+ResizeMagick.h"
 #import "AMWaveTransition.h"
+#import "EDHFontSelector.h"
 
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -34,6 +35,8 @@
     [super viewDidLoad];
     
     [self setUpToolBar];
+    
+    [[EDHFontSelector sharedSelector] applyToTextView:self.textView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
