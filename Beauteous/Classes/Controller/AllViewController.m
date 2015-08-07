@@ -21,8 +21,9 @@
 #import "AMWaveTransition.h"
 
 
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate>
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -39,6 +40,9 @@
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.separatorColor = [UIColor lightGrayColor];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.searchBar.backgroundImage = [UIImage new];
+    self.searchBar.tintColor = [UIColor blackColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -170,7 +174,7 @@
         starLabel.text = @"Star";
     }
     
-    starLabel.font = [BOUtility fontTypeHeavyWithSize:20];
+    starLabel.font = [BOUtility fontTypeMediumWithSize:17];
     starLabel.textAlignment = NSTextAlignmentCenter;
     starLabel.textColor = [BOUtility yellowColor];
     
@@ -187,7 +191,7 @@
                   }];
     
     UILabel *deleteLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
-    deleteLabel.font = [BOUtility fontTypeHeavyWithSize:20];
+    deleteLabel.font = [BOUtility fontTypeMediumWithSize:17];
     deleteLabel.text = @"Delete";
     deleteLabel.textAlignment = NSTextAlignmentCenter;
     deleteLabel.textColor = [BOUtility pinkColor];

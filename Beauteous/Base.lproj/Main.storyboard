@@ -168,6 +168,55 @@
                                             <outlet property="titleLabel" destination="MsB-fc-Yuo" id="M18-mk-FpS"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoCell" rowHeight="100" id="7rz-nj-6El" customClass="PhotoAllTableViewCell">
+                                        <rect key="frame" x="0.0" y="250" width="600" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7rz-nj-6El" id="ayN-VE-ynU">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FFK-pV-0At">
+                                                    <rect key="frame" x="8" y="8" width="84" height="84"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="84" id="LIo-Ca-bzU"/>
+                                                        <constraint firstAttribute="width" constant="84" id="NNL-2M-Eyr"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsn-px-gl4">
+                                                    <rect key="frame" x="100" y="8" width="492" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="ybL-Pa-gNT"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTn-Pg-eSQ">
+                                                    <rect key="frame" x="100" y="29" width="492" height="63"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="63" id="90A-qE-bXi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rsn-px-gl4" firstAttribute="top" secondItem="ayN-VE-ynU" secondAttribute="top" constant="8" id="4hF-JE-2GG"/>
+                                                <constraint firstItem="BTn-Pg-eSQ" firstAttribute="leading" secondItem="FFK-pV-0At" secondAttribute="trailing" constant="8" id="6Rh-cv-BkZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="BTn-Pg-eSQ" secondAttribute="trailing" constant="8" id="F4v-X2-1uE"/>
+                                                <constraint firstAttribute="bottom" secondItem="FFK-pV-0At" secondAttribute="bottom" constant="8" id="R0W-76-TJL"/>
+                                                <constraint firstItem="FFK-pV-0At" firstAttribute="top" secondItem="ayN-VE-ynU" secondAttribute="top" constant="8" id="hUr-zA-apN"/>
+                                                <constraint firstItem="FFK-pV-0At" firstAttribute="leading" secondItem="ayN-VE-ynU" secondAttribute="leading" constant="8" id="he8-Z3-WcK"/>
+                                                <constraint firstItem="rsn-px-gl4" firstAttribute="leading" secondItem="FFK-pV-0At" secondAttribute="trailing" constant="8" id="kpG-1z-Y5V"/>
+                                                <constraint firstAttribute="trailing" secondItem="rsn-px-gl4" secondAttribute="trailing" constant="8" id="poq-nu-GJU"/>
+                                                <constraint firstAttribute="bottom" secondItem="BTn-Pg-eSQ" secondAttribute="bottom" constant="8" id="vjQ-6y-Yrz"/>
+                                                <constraint firstItem="BTn-Pg-eSQ" firstAttribute="top" secondItem="rsn-px-gl4" secondAttribute="bottom" id="ye5-jH-pry"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="BTn-Pg-eSQ" id="7X6-Nv-gd1"/>
+                                            <outlet property="photoView" destination="FFK-pV-0At" id="dKl-Rh-YPY"/>
+                                            <outlet property="titleLabel" destination="rsn-px-gl4" id="9sY-ct-3LW"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -202,6 +251,15 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0CC-68-Z73">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="YpL-8K-Nff">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="QP5-ZT-rYa" id="58W-uP-cQF"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="Drq-UH-DSd" customClass="AllTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -212,7 +270,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dd-Ga-Ltf">
                                                     <rect key="frame" x="8" y="8" width="584" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="36v-5q-Fdb"/>
+                                                        <constraint firstAttribute="height" constant="21" id="9eK-1J-Ey0"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -301,10 +359,29 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="YpL-8K-Nff" id="PbF-Iz-SdR"/>
+                        <outlet property="searchDisplayController" destination="BwC-Tx-mRK" id="AM5-0C-4BB"/>
                         <outlet property="tableView" destination="0CC-68-Z73" id="L1T-94-OL6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2e-6J-LOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="4DT-Tg-DTc">
+                    <connections>
+                        <outlet property="delegate" destination="QP5-ZT-rYa" id="bfA-8x-9pa"/>
+                        <outlet property="searchContentsController" destination="QP5-ZT-rYa" id="WnG-cZ-cqf"/>
+                        <outlet property="searchResultsDataSource" destination="QP5-ZT-rYa" id="CHU-P2-dpg"/>
+                        <outlet property="searchResultsDelegate" destination="QP5-ZT-rYa" id="PIm-C9-byQ"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="BwC-Tx-mRK">
+                    <connections>
+                        <outlet property="delegate" destination="QP5-ZT-rYa" id="omm-Y7-5w0"/>
+                        <outlet property="searchBar" destination="YpL-8K-Nff" id="nx1-LM-vE1"/>
+                        <outlet property="searchContentsController" destination="QP5-ZT-rYa" id="Okr-zg-Pzb"/>
+                        <outlet property="searchResultsDataSource" destination="QP5-ZT-rYa" id="vsL-iC-q1l"/>
+                        <outlet property="searchResultsDelegate" destination="QP5-ZT-rYa" id="ooF-wO-u7K"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="994" y="-1041"/>
         </scene>
@@ -332,7 +409,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6v-x8-Vhc">
                                                     <rect key="frame" x="8" y="8" width="584" height="133.5"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="22"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

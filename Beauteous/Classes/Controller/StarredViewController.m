@@ -10,6 +10,7 @@
 #import "Note.h"
 #import "NoteManager.h"
 #import "AllTableViewCell.h"
+#import "PhotoAllTableViewCell.h"
 #import "DetailViewController.h"
 #import "BOUtility.h"
 
@@ -59,13 +60,24 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (cell == nil) {
-        cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    Note *note = [NoteManager sharedManager].notes[indexPath.row];
     
-    [self configureCell:cell andIndexPath:indexPath];
+    if ([note.photoUrl isEqualToString:@""]) {
+        
+        AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        if (cell == nil) {
+            cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        }
+        [self configureCell:cell andIndexPath:indexPath];
+        
+        return cell;
+    }
+    
+    PhotoAllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
+    if (cell == nil) {
+        cell = [[PhotoAllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PhotoCell"];
+    }
+    [self configurePhotoCell:cell andIndexPath:indexPath];
     
     return cell;
 }
@@ -75,6 +87,13 @@
     Note *note = [NoteManager sharedManager].notes[indexPath.row];
     [cell setDate:note];
 }
+
+- (void)configurePhotoCell:(PhotoAllTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
+{
+    Note *note = [NoteManager sharedManager].notes[indexPath.row];
+    [cell setDate:note];
+}
+
 
 #pragma mark - UITableViewDelegate
 

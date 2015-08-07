@@ -39,7 +39,10 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+    self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
+    self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+
     _menuArray = @[@"Export as PDF", @"Style", @"Support", @"About"];
     
     // Do any additional setup after loading the view.
@@ -73,11 +76,19 @@
 - (void)configureCell:(UITableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.font = [BOUtility fontTypeBookWithSize:15];
+    cell.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
+    cell.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+    cell.textLabel.font = [BOUtility fontTypeBookWithSize:40];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.text = _menuArray[indexPath.row];
 }
 
 #pragma mark UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

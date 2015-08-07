@@ -112,6 +112,7 @@
 {
     CustomRFToolbarButton *backCaret = [CustomRFToolbarButton buttonWithTitle:@"◁"];
     CustomRFToolbarButton *forwardCaret  = [CustomRFToolbarButton buttonWithTitle:@"▷"];
+    CustomRFToolbarButton *paste  = [CustomRFToolbarButton buttonWithTitle:@"Paste"];
     CustomRFToolbarButton *header = [CustomRFToolbarButton buttonWithTitle:@"Header"];
     CustomRFToolbarButton *quote  = [CustomRFToolbarButton buttonWithTitle:@"Quote"];
     CustomRFToolbarButton *table  = [CustomRFToolbarButton buttonWithTitle:@"Table"];
@@ -127,6 +128,15 @@
     } forControlEvents:UIControlEventTouchUpInside];
     [forwardCaret addEventHandler:^{
         [self forwardCaret];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [paste addEventHandler:^{
+        UIPasteboard *paste = [UIPasteboard generalPasteboard];
+        NSString *string = [paste valueForPasteboardType:@"public.text"];
+        if (string.length > 0) {
+            [_textView insertText:string];
+        } else {
+            return;
+        }
     } forControlEvents:UIControlEventTouchUpInside];
     [header addEventHandler:^{
         [_textView insertText:@"# "];
@@ -189,6 +199,7 @@
     _textView.inputAccessoryView = [RFKeyboardToolbar toolbarWithButtons:@[
                                                                            backCaret,
                                                                            forwardCaret,
+                                                                           paste,
                                                                            header,
                                                                            quote,
                                                                            image,
