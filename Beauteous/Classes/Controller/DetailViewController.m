@@ -27,7 +27,6 @@
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen-50"] style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
 
     self.navigationItem.rightBarButtonItem = editButton;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated

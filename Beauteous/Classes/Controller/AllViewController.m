@@ -108,9 +108,9 @@
     UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
     
     if (note.starred) {
-        starImage.tintColor = [BOUtility yellowColor];
-    } else {
         starImage.tintColor = [UIColor blackColor];
+    } else {
+        starImage.tintColor = [BOUtility yellowColor];
     }
     
     [cell setSwipeGestureWithView:starImage
@@ -162,9 +162,9 @@
     UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
     
     if (note.starred) {
-        starImage.tintColor = [BOUtility yellowColor];
-    } else {
         starImage.tintColor = [UIColor blackColor];
+    } else {
+        starImage.tintColor = [BOUtility yellowColor];
     }
     
     [cell setSwipeGestureWithView:starImage

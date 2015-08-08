@@ -469,7 +469,7 @@
                                 <action selector="done:" destination="Lcx-cX-00J" id="PJL-5t-fPx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Preview" id="16b-2o-l6D">
+                        <barButtonItem key="rightBarButtonItem" title="Preview" style="done" id="16b-2o-l6D">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="preview:" destination="Lcx-cX-00J" id="brQ-5n-4TF"/>
