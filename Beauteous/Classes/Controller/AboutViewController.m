@@ -32,9 +32,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    _tableView.separatorColor = [UIColor clearColor];
-    _tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
-    _tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+    _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    _tableView.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
     
     [self.view addSubview:_tableView];
 }
@@ -65,8 +64,8 @@
 - (void)configureCell:(UITableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
-    cell.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    cell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
     cell.textLabel.font = [BOUtility fontTypeBookWithSize:30];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.text = _menuArray[indexPath.row];

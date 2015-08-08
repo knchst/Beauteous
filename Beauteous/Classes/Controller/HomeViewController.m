@@ -36,7 +36,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-//    self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.tableView.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
     
     _menuArray = @[@"All", @"Starred", @"Settings"];
     
@@ -104,8 +105,8 @@
 - (void)configureCell:(UITableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
-    cell.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    cell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
     cell.textLabel.font = [BOUtility fontTypeBookWithSize:30];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.text = _menuArray[indexPath.row];
