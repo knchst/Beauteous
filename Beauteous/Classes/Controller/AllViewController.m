@@ -16,7 +16,6 @@
 #import "PhotoAllTableViewCell.h"
 #import "DetailViewController.h"
 
-#import "FontAwesomeKit/FontAwesomeKit.h"
 #import "MCSwipeTableViewCell.h"
 #import "AMWaveTransition.h"
 
@@ -103,19 +102,18 @@
     
     __weak AllViewController *weakSelf = self;
     
-    UILabel *starLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
+    UIImage *image = [UIImage imageNamed:@"Star-50"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+    UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
     
     if (note.starred) {
-        starLabel.text = @"Un Star";
+        starImage.tintColor = [BOUtility yellowColor];
     } else {
-        starLabel.text = @"Star";
+        starImage.tintColor = [UIColor blackColor];
     }
     
-    starLabel.font = [BOUtility fontTypeMediumWithSize:17];
-    starLabel.textAlignment = NSTextAlignmentCenter;
-    starLabel.textColor = [BOUtility yellowColor];
-    
-    [cell setSwipeGestureWithView:starLabel
+    [cell setSwipeGestureWithView:starImage
                             color:[UIColor whiteColor]
                              mode:MCSwipeTableViewCellModeSwitch
                             state:MCSwipeTableViewCellState1
@@ -127,13 +125,9 @@
                       
     }];
     
-    UILabel *deleteLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
-    deleteLabel.font = [BOUtility fontTypeMediumWithSize:17];
-    deleteLabel.text = @"Delete";
-    deleteLabel.textAlignment = NSTextAlignmentCenter;
-    deleteLabel.textColor = [BOUtility pinkColor];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trash-50"]];
 
-    [cell setSwipeGestureWithView:deleteLabel
+    [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]
                              mode:MCSwipeTableViewCellModeSwitch
                             state:MCSwipeTableViewCellState3
@@ -162,19 +156,18 @@
     
     __weak AllViewController *weakSelf = self;
     
-    UILabel *starLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
+    UIImage *image = [UIImage imageNamed:@"Star-50"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+    UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
     
     if (note.starred) {
-        starLabel.text = @"Un Star";
+        starImage.tintColor = [BOUtility yellowColor];
     } else {
-        starLabel.text = @"Star";
+        starImage.tintColor = [UIColor blackColor];
     }
     
-    starLabel.font = [BOUtility fontTypeMediumWithSize:17];
-    starLabel.textAlignment = NSTextAlignmentCenter;
-    starLabel.textColor = [BOUtility yellowColor];
-    
-    [cell setSwipeGestureWithView:starLabel
+    [cell setSwipeGestureWithView:starImage
                             color:[UIColor whiteColor]
                              mode:MCSwipeTableViewCellModeSwitch
                             state:MCSwipeTableViewCellState1
@@ -186,13 +179,9 @@
                       
                   }];
     
-    UILabel *deleteLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 5, cell.bounds.size.height)];
-    deleteLabel.font = [BOUtility fontTypeMediumWithSize:17];
-    deleteLabel.text = @"Delete";
-    deleteLabel.textAlignment = NSTextAlignmentCenter;
-    deleteLabel.textColor = [BOUtility pinkColor];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trash-50"]];
     
-    [cell setSwipeGestureWithView:deleteLabel
+    [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]
                              mode:MCSwipeTableViewCellModeSwitch
                             state:MCSwipeTableViewCellState3

@@ -80,16 +80,32 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     cell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
-    cell.textLabel.font = [BOUtility fontTypeBookWithSize:30];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.font = [BOUtility fontTypeBookWithSize:20];
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
     cell.textLabel.text = _menuArray[indexPath.row];
+    
+    UIImage *image;
+    
+    if (indexPath.row == 0) {
+        image = [UIImage imageNamed:@"PDF-50"];
+    } else if (indexPath.row == 1) {
+        image = [UIImage imageNamed:@"Lowercase-50"];
+    } else if (indexPath.row == 2) {
+        image = [UIImage imageNamed:@"Message-50"];
+    } else if (indexPath.row == 3) {
+        image = [UIImage imageNamed:@"Info-50"];
+    }
+    
+    cell.imageView.image = image;
 }
 
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    CGFloat height = [BOUtility screenSize].size.height;
+    CGFloat width = [BOUtility screenSize].size.width;
+    return (height - width) / 4;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

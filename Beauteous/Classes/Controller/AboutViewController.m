@@ -75,7 +75,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    CGFloat height = [BOUtility screenSize].size.height;
+    CGFloat width = [BOUtility screenSize].size.width;
+    return (height - width) / 4;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
