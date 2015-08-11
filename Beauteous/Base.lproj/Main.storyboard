@@ -424,7 +424,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ut7-cr-4Jz">
-                        <barButtonItem key="rightBarButtonItem" image="Pen-50" id="j1u-JE-BL5">
+                        <barButtonItem key="rightBarButtonItem" image="Pen" id="j1u-JE-BL5">
                             <connections>
                                 <action selector="compose:" destination="vXZ-lx-hvc" id="lPg-uE-8XU"/>
                             </connections>
@@ -658,6 +658,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pen-50" width="50" height="50"/>
+        <image name="Pen" width="50" height="50"/>
     </resources>
 </document>

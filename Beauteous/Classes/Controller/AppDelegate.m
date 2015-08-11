@@ -36,8 +36,8 @@
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
     [UINavigationBar appearance].tintColor = [UIColor blackColor];
     [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
-    [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"Back-50"];
-    [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"Back-50"];
+    [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"Back"];
+    [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"Back"];
     [UITextView appearance].tintColor = [UIColor blackColor];
     
 //    RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {

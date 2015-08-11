@@ -102,7 +102,7 @@
     
     __weak AllViewController *weakSelf = self;
     
-    UIImage *image = [UIImage imageNamed:@"Star-50"];
+    UIImage *image = [UIImage imageNamed:@"Star"];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
@@ -125,7 +125,7 @@
                       
     }];
     
-    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trash-50"]];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trash"]];
 
     [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]
@@ -156,7 +156,7 @@
     
     __weak AllViewController *weakSelf = self;
     
-    UIImage *image = [UIImage imageNamed:@"Star-50"];
+    UIImage *image = [UIImage imageNamed:@"Star"];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
@@ -179,7 +179,7 @@
                       
                   }];
     
-    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trash-50"]];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trash"]];
     
     [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]

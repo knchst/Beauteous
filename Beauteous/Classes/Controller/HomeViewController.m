@@ -104,11 +104,11 @@
     UIImage *image;
     
     if (indexPath.row == 0) {
-        image = [UIImage imageNamed:@"Menu-50"];
+        image = [UIImage imageNamed:@"Menu"];
     } else if (indexPath.row == 1) {
-        image = [UIImage imageNamed:@"Star-50"];
+        image = [UIImage imageNamed:@"Star"];
     } else if (indexPath.row == 2) {
-        image = [UIImage imageNamed:@"Settings-50"];
+        image = [UIImage imageNamed:@"Settings"];
     }
     
     cell.imageView.image = image;

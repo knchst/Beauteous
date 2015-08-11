@@ -66,8 +66,8 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     cell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
-    cell.textLabel.font = [BOUtility fontTypeBookWithSize:30];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.font = [BOUtility fontTypeBookWithSize:20];
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
     cell.textLabel.text = _menuArray[indexPath.row];
 }
 

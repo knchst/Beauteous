@@ -87,13 +87,13 @@
     UIImage *image;
     
     if (indexPath.row == 0) {
-        image = [UIImage imageNamed:@"PDF-50"];
+        image = [UIImage imageNamed:@"PDF"];
     } else if (indexPath.row == 1) {
-        image = [UIImage imageNamed:@"Lowercase-50"];
+        image = [UIImage imageNamed:@"Lowercase"];
     } else if (indexPath.row == 2) {
-        image = [UIImage imageNamed:@"Message-50"];
+        image = [UIImage imageNamed:@"Message"];
     } else if (indexPath.row == 3) {
-        image = [UIImage imageNamed:@"Info-50"];
+        image = [UIImage imageNamed:@"Info"];
     }
     
     cell.imageView.image = image;

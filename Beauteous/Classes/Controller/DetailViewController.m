@@ -24,7 +24,7 @@
     
     // NSLog(@"Detail: htmlString = %@", _note.htmlString);
     
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen-50"] style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(showActionSheet)];
 
     self.navigationItem.rightBarButtonItem = editButton;
 }

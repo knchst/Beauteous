@@ -75,7 +75,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSURL *URL = [NSURL URLWithString:@"https://twitter.com/stknch"];
+    NSURL *URL = [NSURL URLWithString:@"https://www.facebook.com/stknch"];
     [[UIApplication sharedApplication] openURL:URL];
 }
 
