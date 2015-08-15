@@ -20,4 +20,17 @@ NSString* const BO_FONT_MEDIUM = @"Avenir-Medium";
 NSString* const FLICKR_ID = @"e36fe8362b243a0d50c141d63536e4f0";
 NSString* const FLICKR_SECRET = @"5f223540c2eca14d";
 
+NSString* const BO_ICON_STAR = @"Star";
+NSString* const BO_ICON_TRASH = @"Trash";
+NSString* const BO_ICON_MENU = @"Menu";
+NSString* const BO_ICON_PEN = @"Pen";
+NSString* const BO_ICON_PDF = @"PDF";
+NSString* const BO_ICON_SETTINGS = @"Settings";
+NSString* const BO_ICON_FONT = @"Lowercase";
+NSString* const BO_ICON_SUPPORT = @"Message";
+NSString* const BO_ICON_ABOUT = @"Info";
+
+NSString* const BO_CELL = @"Cell";
+NSString* const BO_CELL_PHOTO = @"PhotoCell";
+
 @end

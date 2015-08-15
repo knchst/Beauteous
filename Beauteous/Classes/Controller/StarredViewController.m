@@ -13,6 +13,7 @@
 #import "PhotoAllTableViewCell.h"
 #import "DetailViewController.h"
 #import "BOUtility.h"
+#import "BOConst.h"
 
 @interface StarredViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -65,18 +66,18 @@
     
     if ([note.photoUrl isEqualToString:@""]) {
         
-        AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL];
         if (cell == nil) {
-            cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+            cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL];
         }
         [self configureCell:cell andIndexPath:indexPath];
         
         return cell;
     }
     
-    PhotoAllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
+    PhotoAllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL_PHOTO];
     if (cell == nil) {
-        cell = [[PhotoAllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PhotoCell"];
+        cell = [[PhotoAllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL_PHOTO];
     }
     [self configurePhotoCell:cell andIndexPath:indexPath];
     

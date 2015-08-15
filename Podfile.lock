@@ -6,6 +6,7 @@ PODS:
   - Bolts/AppLinks (1.1.5):
     - Bolts/Tasks
   - Bolts/Tasks (1.1.5)
+  - DZNEmptyDataSet (1.7.1)
   - EDHFontSelector (0.2.1):
     - EDHUtility (~> 0.1)
   - EDHUtility (0.1.2)
@@ -30,6 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - AMWaveTransition
+  - DZNEmptyDataSet
   - EDHFontSelector (~> 0.1)
   - FlickrKit
   - GHMarkdownParser (~> 0.1)
@@ -46,6 +48,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AMWaveTransition: 7137a5534a064fd8a955b687865a74d07729b2fe
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
+  DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   EDHFontSelector: a6f382c263073b0ca9cfc5d3e38de772c08d1640
   EDHUtility: 9e888c6880f52318e6f018374adb3d15c749f4a5
   FlickrKit: fc0ed009c5cb69db4d82e68f7acb02002ebe1a42

@@ -11,6 +11,7 @@
 #import "EDHFontSelector.h"
 #import "SupportViewController.h"
 #import "AboutViewController.h"
+#import "BOConst.h"
 
 @interface SettingsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -64,10 +65,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL];
     }
     
     [self configureCell:cell andIndexPath:indexPath];
@@ -87,13 +88,13 @@
     UIImage *image;
     
     if (indexPath.row == 0) {
-        image = [UIImage imageNamed:@"PDF"];
+        image = [UIImage imageNamed:BO_ICON_PDF];
     } else if (indexPath.row == 1) {
-        image = [UIImage imageNamed:@"Lowercase"];
+        image = [UIImage imageNamed:BO_ICON_FONT];
     } else if (indexPath.row == 2) {
-        image = [UIImage imageNamed:@"Message"];
+        image = [UIImage imageNamed:BO_ICON_SUPPORT];
     } else if (indexPath.row == 3) {
-        image = [UIImage imageNamed:@"Info"];
+        image = [UIImage imageNamed:BO_ICON_ABOUT];
     }
     
     cell.imageView.image = image;

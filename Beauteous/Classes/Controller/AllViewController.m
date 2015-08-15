@@ -77,18 +77,18 @@
     
     if ([note.photoUrl isEqualToString:@""]) {
         
-        AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL];
         if (cell == nil) {
-            cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+            cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL];
         }
         [self configureCell:cell andIndexPath:indexPath];
         
         return cell;
     }
 
-    PhotoAllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
+    PhotoAllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL_PHOTO];
     if (cell == nil) {
-        cell = [[PhotoAllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PhotoCell"];
+        cell = [[PhotoAllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL_PHOTO];
     }
     [self configurePhotoCell:cell andIndexPath:indexPath];
     
@@ -102,7 +102,7 @@
     
     __weak AllViewController *weakSelf = self;
     
-    UIImage *image = [UIImage imageNamed:@"Star"];
+    UIImage *image = [UIImage imageNamed:BO_ICON_STAR];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
@@ -125,7 +125,7 @@
                       
     }];
     
-    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trash"]];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BO_ICON_TRASH]];
 
     [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]
@@ -133,7 +133,7 @@
                             state:MCSwipeTableViewCellState3
                   completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                       
-                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the cell?" preferredStyle:UIAlertControllerStyleAlert];
+                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the note?" preferredStyle:UIAlertControllerStyleAlert];
                       UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                           [alert dismissViewControllerAnimated:YES completion:nil];
                       }];
@@ -156,7 +156,7 @@
     
     __weak AllViewController *weakSelf = self;
     
-    UIImage *image = [UIImage imageNamed:@"Star"];
+    UIImage *image = [UIImage imageNamed:BO_ICON_STAR];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
@@ -179,7 +179,7 @@
                       
                   }];
     
-    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Trash"]];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BO_ICON_TRASH]];
     
     [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]

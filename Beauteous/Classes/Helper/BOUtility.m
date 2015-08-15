@@ -194,7 +194,7 @@
             NSLog(@"%@", response);
             for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"]) {
                 
-                NSDictionary *dic = @{@"URL": [fk photoURLForSize:FKPhotoSizeMedium500 fromPhotoDictionary:photoData],
+                NSDictionary *dic = @{@"URL": [fk photoURLForSize:FKPhotoSizeLarge1024 fromPhotoDictionary:photoData],
                                       @"Title": photoData[@"title"]
                                       };
                 

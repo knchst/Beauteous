@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "ComposeViewController.h"
 #import "AllViewController.h"
+#import "BOConst.h"
 #import "BOUtility.h"
 #import "Note.h"
 #import "NoteManager.h"
@@ -81,10 +82,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL];
     }
     
     [self configureCell:cell andIndexPath:indexPath];
@@ -104,11 +105,11 @@
     UIImage *image;
     
     if (indexPath.row == 0) {
-        image = [UIImage imageNamed:@"Menu"];
+        image = [UIImage imageNamed:BO_ICON_MENU];
     } else if (indexPath.row == 1) {
-        image = [UIImage imageNamed:@"Star"];
+        image = [UIImage imageNamed:BO_ICON_STAR];
     } else if (indexPath.row == 2) {
-        image = [UIImage imageNamed:@"Settings"];
+        image = [UIImage imageNamed:BO_ICON_SETTINGS];
     }
     
     cell.imageView.image = image;
