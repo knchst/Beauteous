@@ -15,7 +15,9 @@
 #import "BOUtility.h"
 #import "BOConst.h"
 
-@interface StarredViewController () <UITableViewDataSource, UITableViewDelegate>
+#import "UIScrollView+EmptyDataSet.h"
+
+@interface StarredViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -30,6 +32,8 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
@@ -96,7 +100,6 @@
     [cell setDate:note];
 }
 
-
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,6 +110,41 @@
     detailVC.note = note;
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"Star-100"];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Let's star your note.";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [BOUtility fontTypeHeavyWithSize:20],
+                                 NSForegroundColorAttributeName: [UIColor blackColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Your Starred notes will display here.You can star your notes for swipe right.";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:16],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return self.tableView.tableHeaderView.frame.size.height/3.0f;
 }
 
 /*

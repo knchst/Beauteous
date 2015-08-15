@@ -58,7 +58,7 @@
 		276281201B76053400A0D831 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2762810F1B76053400A0D831 /* iPad.png */; };
 		27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */; };
 		27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */; };
-		27D1110A1B73BE1F003D3F8E /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111091B73BE1F003D3F8E /* PDFViewController.m */; };
+		27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111091B73BE1F003D3F8E /* PdfViewController.m */; };
 		27D111191B749EF3003D3F8E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111181B749EF3003D3F8E /* AboutViewController.m */; };
 		27D1111C1B749F23003D3F8E /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D1111B1B749F23003D3F8E /* SupportViewController.m */; };
 		27D111221B74B107003D3F8E /* MarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111211B74B107003D3F8E /* MarkViewController.m */; };
@@ -153,8 +153,8 @@
 		27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRFToolbarButton.m; sourceTree = "<group>"; };
 		27D111021B734701003D3F8E /* PhotoAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAllTableViewCell.h; sourceTree = "<group>"; };
 		27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAllTableViewCell.m; sourceTree = "<group>"; };
-		27D111081B73BE1F003D3F8E /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
-		27D111091B73BE1F003D3F8E /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
+		27D111081B73BE1F003D3F8E /* PdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdfViewController.h; sourceTree = "<group>"; };
+		27D111091B73BE1F003D3F8E /* PdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PdfViewController.m; sourceTree = "<group>"; };
 		27D111171B749EF3003D3F8E /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		27D111181B749EF3003D3F8E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		27D1111A1B749F23003D3F8E /* SupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportViewController.h; sourceTree = "<group>"; };
@@ -363,8 +363,8 @@
 				2718E5CB1B710DAC0083D487 /* EditViewController.m */,
 				2718E5CD1B710E460083D487 /* DetailViewController.h */,
 				2718E5CE1B710E460083D487 /* DetailViewController.m */,
-				27D111081B73BE1F003D3F8E /* PDFViewController.h */,
-				27D111091B73BE1F003D3F8E /* PDFViewController.m */,
+				27D111081B73BE1F003D3F8E /* PdfViewController.h */,
+				27D111091B73BE1F003D3F8E /* PdfViewController.m */,
 				27D111171B749EF3003D3F8E /* AboutViewController.h */,
 				27D111181B749EF3003D3F8E /* AboutViewController.m */,
 				27D1111A1B749F23003D3F8E /* SupportViewController.h */,
@@ -712,7 +712,7 @@
 				27E4FCFF1B67EB63005CE9EB /* ComposeViewController.m in Sources */,
 				27E4FD0A1B68D584005CE9EB /* Note.m in Sources */,
 				2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */,
-				27D1110A1B73BE1F003D3F8E /* PDFViewController.m in Sources */,
+				27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */,
 				27E4FD101B68F63C005CE9EB /* AllViewController.m in Sources */,
 				2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */,
 			);

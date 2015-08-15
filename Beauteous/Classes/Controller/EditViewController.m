@@ -44,6 +44,8 @@
     [self setUpToolBar];
     
     [[EDHFontSelector sharedSelector] applyToTextView:self.textView];
+    
+    [self.textView becomeFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -290,7 +292,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"Uploading.."];
     
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage* resizedImage = [originalImage resizedImageByMagick:@"500x500#"];

@@ -18,9 +18,9 @@
 
 #import "MCSwipeTableViewCell.h"
 #import "AMWaveTransition.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -35,6 +35,8 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -231,6 +233,41 @@
 - (void)dealloc
 {
     [self.navigationController setDelegate:nil];
+}
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"Pen-100"];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Let's write your first note.";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [BOUtility fontTypeHeavyWithSize:20],
+                                 NSForegroundColorAttributeName: [UIColor blackColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"All notes you write will display here.To swipe right can star note and to swipe left can delete note.";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:16],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return self.tableView.tableHeaderView.frame.size.height/3.0f;
 }
 
 /*

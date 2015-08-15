@@ -12,12 +12,12 @@
 #import "NoteManager.h"
 #import "BOUtility.h"
 
-@interface PDFViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface PdfViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation PDFViewController
+@implementation PdfViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

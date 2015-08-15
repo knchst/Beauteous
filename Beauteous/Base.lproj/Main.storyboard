@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="994" y="-2395"/>
         </scene>
-        <!--View Controller-->
+        <!--Pdf View Controller-->
         <scene sceneID="9gV-Xk-rve">
             <objects>
-                <viewController storyboardIdentifier="PDF" id="Xtd-xD-ZZC" customClass="PDFViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PDF" id="Xtd-xD-ZZC" customClass="PdfViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oiZ-kU-R29"/>
                         <viewControllerLayoutGuide type="bottom" id="hXp-gT-huL"/>
@@ -484,24 +484,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qc-Wl-2xo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2320" y="-371"/>
-        </scene>
-        <!--Support View Controller-->
-        <scene sceneID="uZr-r6-gGd">
-            <objects>
-                <viewController storyboardIdentifier="Support" id="YQO-Q9-x0m" customClass="SupportViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TI6-sI-hBO"/>
-                        <viewControllerLayoutGuide type="bottom" id="E6k-Xa-fFI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uW1-Zf-TRk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VRm-cK-IXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2330" y="-1697"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="mha-Tl-cRM">
