@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
     
+    self.title = @"New";
+    
     [self setUpToolBar];
     
     [[EDHFontSelector sharedSelector] applyToTextView:self.textView];
@@ -155,12 +157,6 @@
     __weak ComposeViewController *weakSelf = self;
     [image addEventHandler:^{
         [weakSelf showActionSheet];
-//        [_textView insertText:@"![]()"];
-//        UITextRange *range = _textView.selectedTextRange;
-//        UITextPosition *position = [_textView positionFromPosition:range.start
-//                                                            offset:-3];
-//        _textView.selectedTextRange = [_textView textRangeFromPosition:position
-//                                                            toPosition:position];
     } forControlEvents:UIControlEventTouchUpInside];
     [link addEventHandler:^{
         [_textView insertText:@"[]()"];
@@ -220,11 +216,15 @@
 
 - (void)showActionSheet
 {
-    UIAlertController * ac = [UIAlertController alertControllerWithTitle:@"Is image where from?"
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Is image where from?"
                                                                  message:@""
                                                           preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction * urlAction = [UIAlertAction actionWithTitle:@"From URL"
+    if ([BOUtility checkDevice]) {
+        ac.popoverPresentationController.sourceView = self.textView;
+    }
+    
+    UIAlertAction *urlAction = [UIAlertAction actionWithTitle:@"from URL"
                                                          style:UIAlertActionStyleDefault
                                                        handler:^(UIAlertAction * action) {
                                                            [_textView insertText:@"![]()"];
@@ -237,7 +237,7 @@
     
     __weak ComposeViewController *weakSelf = self;
     
-    UIAlertAction * pickerAction = [UIAlertAction actionWithTitle:@"From Phone"
+    UIAlertAction * pickerAction = [UIAlertAction actionWithTitle:@"from Phone"
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [weakSelf showImagePicker];
@@ -262,7 +262,11 @@
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.delegate = self;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [self presentViewController:imagePickerController  animated:YES completion: nil];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:imagePickerController animated:YES completion:nil];
+        }];
+        
     } else {
         UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Please allow Beauteous to use your PhotoLibrary"
                                                                     message:@""
@@ -352,7 +356,6 @@
 {
     [self.navigationController setDelegate:nil];
 }
-
 
 /*
 #pragma mark - Navigation

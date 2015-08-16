@@ -75,7 +75,7 @@
 + (NSArray*)pickUpURLFromString:(NSString *)string
 {
     NSError *error = nil;
-    NSString *URLPattern = @"(file://|http://|https://){1}[\\w\\.\\-/:]+(jpg|png)";
+    NSString *URLPattern = @"(file://|http://|https://){1}[\\w\\.\\-/:]+(jpg|png|gif)";
     NSRegularExpression *regularExpressionForPickOut = [NSRegularExpression regularExpressionWithPattern:URLPattern options:0 error:&error];
     
     NSArray *matchesInString = [regularExpressionForPickOut matchesInString:string options:0 range:NSMakeRange(0, string.length)];
@@ -87,28 +87,6 @@
         [strings addObject:expressionPattern];
     }
     return strings;
-}
-
-+ (void)getQuoteTodayWithBlock:(callback)callback
-{
-    NSURL *URL = [NSURL URLWithString:@"http://api.theysaidso.com/qod.json"];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
-        if (error) {
-            NSLog(@"%@", error);
-            if (callback) {
-                callback(nil, error);
-            }
-        } else {
-            NSLog(@"RESPONSE: %@, DATA: %@", response, data);
-            if (callback) {
-                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                callback(json, error);
-            }
-        }
-    }];
-    
-    [task resume];
 }
 
 + (UIImage *)screenShotScrollView:(UIScrollView *)scrollView
@@ -181,6 +159,15 @@
 + (CGRect)screenSize
 {
     return [UIScreen mainScreen].bounds;
+}
+
++ (BOOL)checkDevice
+{
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 + (void)interestingImageFromFlickrWithCallback:(Callback)callback

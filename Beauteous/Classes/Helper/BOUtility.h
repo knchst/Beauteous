@@ -21,9 +21,7 @@
 + (UIImage*)screenShotScrollView:(UIScrollView*)scrollView;
 + (NSData*)convertImageToPDF:(UIImage*)image;
 + (CGRect)screenSize;
-
-typedef void (^callback)(NSDictionary* , NSError*);
-+ (void)getQuoteTodayWithBlock:(callback)callback;
++ (BOOL)checkDevice;
 
 typedef void (^Callback)(NSMutableArray*, NSError*);
 + (void)interestingImageFromFlickrWithCallback:(Callback)callback;

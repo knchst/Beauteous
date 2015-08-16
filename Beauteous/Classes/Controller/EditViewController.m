@@ -230,6 +230,9 @@
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Image from.."
                                                                  message:@""
                                                           preferredStyle:UIAlertControllerStyleActionSheet];
+    if ([BOUtility checkDevice]) {
+        ac.popoverPresentationController.sourceView = self.textView;
+    }
     
     UIAlertAction * urlAction = [UIAlertAction actionWithTitle:@"URL"
                                                          style:UIAlertActionStyleDefault
@@ -267,7 +270,11 @@
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.delegate = self;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [self presentViewController:imagePickerController  animated:YES completion: nil];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:imagePickerController animated:YES completion:nil];
+        }];
+
     } else {
         UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Please allow Beauteous to use your PhotoLibrary"
                                                                     message:@""

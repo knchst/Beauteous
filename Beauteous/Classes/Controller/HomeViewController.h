@@ -11,6 +11,5 @@
 
 @interface HomeViewController : JPBFloatingTextViewController
 
-
 @end
 

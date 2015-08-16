@@ -413,7 +413,7 @@
         <!--Home View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="vXZ-lx-hvc" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -435,7 +435,7 @@
             </objects>
             <point key="canvasLocation" x="994" y="-371"/>
         </scene>
-        <!--New-->
+        <!--Compose View Controller-->
         <scene sceneID="1M4-w7-xM4">
             <objects>
                 <viewController id="Lcx-cX-00J" customClass="ComposeViewController" sceneMemberID="viewController">
@@ -462,7 +462,7 @@
                             <constraint firstAttribute="trailing" secondItem="kAD-K4-0ZU" secondAttribute="trailing" id="rG8-da-Sht"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New" id="zWt-g0-gU0">
+                    <navigationItem key="navigationItem" id="zWt-g0-gU0">
                         <barButtonItem key="leftBarButtonItem" title="Done" style="done" systemItem="done" id="PZT-Mt-VoN">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
