@@ -39,6 +39,7 @@
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"Back"];
     [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"Back"];
     [UITextView appearance].tintColor = [UIColor blackColor];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]}];
     
 //    RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
 //        NSLog(@"Migration complete.");

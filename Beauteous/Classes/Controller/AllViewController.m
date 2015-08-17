@@ -20,13 +20,17 @@
 #import "AMWaveTransition.h"
 #import "UIScrollView+EmptyDataSet.h"
 
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) UISearchController *searchVC;
+@property (strong, nonatomic) UISearchController *searchViewController;
+@property (strong, nonatomic) RLMResults *searchResults;
+
 @end
 
 @implementation AllViewController
+
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,6 +45,7 @@
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self setUpSearchViewController];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,9 +62,13 @@
     [self.navigationController setDelegate:self];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
+    [super viewWillDisappear:animated];
+    if (self.searchViewController.active) {
+        self.searchViewController.active = NO;
+        [self.searchViewController.searchBar removeFromSuperview];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,16 +76,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    [self.navigationController setDelegate:nil];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.searchViewController.active) {
+        return self.searchResults.count;
+    }
+    
     return [NoteManager sharedManager].notes.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Note *note = [NoteManager sharedManager].notes[indexPath.row];
+    Note *note;
+    
+    if (self.searchViewController.active) {
+        note = self.searchResults[indexPath.row];
+    }
+    
+    note = [NoteManager sharedManager].notes[indexPath.row];
     
     if ([note.photoUrl isEqualToString:@""]) {
         
@@ -100,7 +124,14 @@
 
 - (void)configureCell:(AllTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
-    Note *note = [NoteManager sharedManager].notes[indexPath.row];
+    Note *note;
+    
+    if (self.searchViewController.active) {
+        note = self.searchResults[indexPath.row];
+    }
+    
+    note = [NoteManager sharedManager].notes[indexPath.row];
+
     [cell setDate:note];
     
     __weak AllViewController *weakSelf = self;
@@ -220,6 +251,8 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+#pragma mark - AMWaveTransition
+
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController*)fromVC
@@ -231,10 +264,7 @@
     return nil;
 }
 
-- (void)dealloc
-{
-    [self.navigationController setDelegate:nil];
-}
+#pragma mark - UIScrollView+EmptyDataSet
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
@@ -269,6 +299,49 @@
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
 {
     return self.tableView.tableHeaderView.frame.size.height/3.0f;
+}
+
+#pragma mark - SearchViewController
+
+- (void)setUpSearchViewController
+{
+    self.searchViewController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchViewController.searchResultsUpdater = self;
+    self.searchViewController.dimsBackgroundDuringPresentation = NO;
+    self.searchViewController.searchBar.backgroundColor = [UIColor whiteColor];
+    self.searchViewController.searchBar.tintColor = [UIColor blackColor];
+    self.searchViewController.searchBar.barTintColor = [UIColor whiteColor];
+    self.searchViewController.searchBar.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.searchViewController.searchBar.layer.borderWidth = 1.0;
+    self.searchViewController.searchBar.placeholder = @"Tap to Search";
+    self.searchViewController.searchBar.delegate = self;
+    [self.searchViewController.searchBar sizeToFit];
+    
+    self.tableView.tableHeaderView = self.searchViewController.searchBar;
+}
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    self.searchResults = nil;
+    NSString *searchString = [NSString stringWithFormat:@"planeString CONTAINS[c] '%@'", self.searchViewController.searchBar.text];
+    NSLog(@"%@", searchString);
+    self.searchResults = [[NoteManager sharedManager].notes objectsWhere:searchString];
+    [self.tableView reloadData];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    searchBar.placeholder = @"Search";
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    searchBar.placeholder = @"Tap to Search";
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.placeholder = @"Tap to Search";
 }
 
 /*
