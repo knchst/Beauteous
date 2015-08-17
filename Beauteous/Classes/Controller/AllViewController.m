@@ -25,6 +25,7 @@
 
 @property (strong, nonatomic) UISearchController *searchViewController;
 @property (strong, nonatomic) RLMResults *searchResults;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -45,6 +46,7 @@
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     [self setUpSearchViewController];
 }
 
@@ -54,6 +56,9 @@
     
     [[NoteManager sharedManager] fetchAllNotes];
     [self.tableView reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -81,6 +86,29 @@
     [self.navigationController setDelegate:nil];
 }
 
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    CGRect keyboardFrame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    self.bottomConstraint.constant = keyboardFrame.size.height;
+    
+    [UIView animateWithDuration:duration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    self.bottomConstraint.constant = 0;
+    
+    [UIView animateWithDuration:duration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -94,13 +122,13 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Note *note;
+    Note *note = nil;
     
     if (self.searchViewController.active) {
         note = self.searchResults[indexPath.row];
+    } else {
+        note = [NoteManager sharedManager].notes[indexPath.row];
     }
-    
-    note = [NoteManager sharedManager].notes[indexPath.row];
     
     if ([note.photoUrl isEqualToString:@""]) {
         
@@ -124,14 +152,14 @@
 
 - (void)configureCell:(AllTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
-    Note *note;
+    Note *note = nil;
     
     if (self.searchViewController.active) {
         note = self.searchResults[indexPath.row];
+    } else {
+        note = [NoteManager sharedManager].notes[indexPath.row];
     }
     
-    note = [NoteManager sharedManager].notes[indexPath.row];
-
     [cell setDate:note];
     
     __weak AllViewController *weakSelf = self;
@@ -185,7 +213,14 @@
 
 - (void)configurePhotoCell:(PhotoAllTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
-    Note *note = [NoteManager sharedManager].notes[indexPath.row];
+    Note *note = nil;
+    
+    if (self.searchViewController.active) {
+        note = self.searchResults[indexPath.row];
+    } else {
+        note = [NoteManager sharedManager].notes[indexPath.row];
+    }
+    
     [cell setDate:note];
     
     __weak AllViewController *weakSelf = self;
@@ -241,7 +276,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Note *note = [NoteManager sharedManager].notes[indexPath.row];
+    Note *note;
+    
+    if (self.searchViewController.active) {
+        note = self.searchResults[indexPath.row];
+    } else {
+        note = [NoteManager sharedManager].notes[indexPath.row];
+    }
     
     NSLog(@"%@", note);
         
@@ -268,12 +309,20 @@
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
+    if (self.searchViewController.active) {
+        return [UIImage imageNamed:@"sad53"];
+    }
     return [UIImage imageNamed:@"Pen-100"];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"Let's write your first note.";
+    NSString *text;
+    if (self.searchViewController.active) {
+        text = @"No results.";
+    } else {
+        text = @"Let's write your first note.";
+    }
     
     NSDictionary *attributes = @{NSFontAttributeName: [BOUtility fontTypeHeavyWithSize:20],
                                  NSForegroundColorAttributeName: [UIColor blackColor]};
@@ -283,7 +332,12 @@
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"All notes you write will display here.To swipe right can star note and to swipe left can delete note.";
+    NSString *text;
+    if (self.searchViewController.active) {
+        text = [NSString stringWithFormat:@"We couldn’t find any notes matching '%@'", self.searchViewController.searchBar.text];
+    } else {
+        text = @"All notes you write will display here.To swipe right can star note and to swipe left can delete note.";
+    }
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -308,7 +362,7 @@
     self.searchViewController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchViewController.searchResultsUpdater = self;
     self.searchViewController.dimsBackgroundDuringPresentation = NO;
-    self.searchViewController.searchBar.backgroundColor = [UIColor whiteColor];
+    self.searchViewController.searchBar.backgroundColor = [UIColor clearColor];
     self.searchViewController.searchBar.tintColor = [UIColor blackColor];
     self.searchViewController.searchBar.barTintColor = [UIColor whiteColor];
     self.searchViewController.searchBar.layer.borderColor = [UIColor whiteColor].CGColor;

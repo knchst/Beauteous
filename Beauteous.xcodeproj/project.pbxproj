@@ -77,7 +77,6 @@
 		27ED35021B67934100C86498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35001B67934100C86498 /* Main.storyboard */; };
 		27ED35041B67934100C86498 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35031B67934100C86498 /* Images.xcassets */; };
 		27ED35071B67934100C86498 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35051B67934100C86498 /* LaunchScreen.xib */; };
-		27F1E0B61B7F60D700945850 /* NoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F1E0B51B7F60D700945850 /* NoteModelTest.m */; };
 		2AC9DFDA13AE7D7636805364 /* libPods-BeauteousTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 982A9DF6E1B2555E393E88B7 /* libPods-BeauteousTests.a */; };
 		86409ED818DE99F84F25EF5B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FC7ABED3DAE85467E57A32 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -188,7 +187,6 @@
 		27ED35061B67934100C86498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		27ED350C1B67934100C86498 /* BeauteousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeauteousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED35111B67934100C86498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27F1E0B51B7F60D700945850 /* NoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteModelTest.m; sourceTree = "<group>"; };
 		982A9DF6E1B2555E393E88B7 /* libPods-BeauteousTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BeauteousTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC85F12403C4FC4ED2F62B8 /* Pods-BeauteousTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeauteousTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeauteousTests/Pods-BeauteousTests.release.xcconfig"; sourceTree = "<group>"; };
 		E2BB7904F5722B3E5D64FA19 /* Pods-BeauteousTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeauteousTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeauteousTests/Pods-BeauteousTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -443,7 +441,6 @@
 			isa = PBXGroup;
 			children = (
 				27ED35101B67934100C86498 /* Supporting Files */,
-				27F1E0B51B7F60D700945850 /* NoteModelTest.m */,
 			);
 			path = BeauteousTests;
 			sourceTree = "<group>";
@@ -718,7 +715,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27F1E0B61B7F60D700945850 /* NoteModelTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

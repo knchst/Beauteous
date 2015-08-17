@@ -386,6 +386,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="xQT-E3-M3W" id="HQj-lJ-waq"/>
                         <outlet property="tableView" destination="0CC-68-Z73" id="L1T-94-OL6"/>
                     </connections>
                 </viewController>
