@@ -386,27 +386,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchDisplayController" destination="BwC-Tx-mRK" id="AM5-0C-4BB"/>
                         <outlet property="tableView" destination="0CC-68-Z73" id="L1T-94-OL6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2e-6J-LOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="4DT-Tg-DTc">
-                    <connections>
-                        <outlet property="delegate" destination="QP5-ZT-rYa" id="bfA-8x-9pa"/>
-                        <outlet property="searchContentsController" destination="QP5-ZT-rYa" id="WnG-cZ-cqf"/>
-                        <outlet property="searchResultsDataSource" destination="QP5-ZT-rYa" id="CHU-P2-dpg"/>
-                        <outlet property="searchResultsDelegate" destination="QP5-ZT-rYa" id="PIm-C9-byQ"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="BwC-Tx-mRK">
-                    <connections>
-                        <outlet property="delegate" destination="QP5-ZT-rYa" id="omm-Y7-5w0"/>
-                        <outlet property="searchContentsController" destination="QP5-ZT-rYa" id="Okr-zg-Pzb"/>
-                        <outlet property="searchResultsDataSource" destination="QP5-ZT-rYa" id="vsL-iC-q1l"/>
-                        <outlet property="searchResultsDelegate" destination="QP5-ZT-rYa" id="ooF-wO-u7K"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="994" y="-1041"/>
         </scene>
@@ -463,7 +446,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zWt-g0-gU0">
-                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" systemItem="done" id="PZT-Mt-VoN">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="PZT-Mt-VoN">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="done:" destination="Lcx-cX-00J" id="PJL-5t-fPx"/>
