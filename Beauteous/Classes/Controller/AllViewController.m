@@ -20,7 +20,7 @@
 #import "AMWaveTransition.h"
 #import "UIScrollView+EmptyDataSet.h"
 
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) UISearchController *searchViewController;
@@ -48,6 +48,11 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self setUpSearchViewController];
+    
+//    self.edgesForExtendedLayout = UIRectEdgeAll;
+//    self.extendedLayoutIncludesOpaqueBars = YES;
+    self.definesPresentationContext = YES;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,6 +75,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].statusBarHidden = NO;
     if (self.searchViewController.active) {
         self.searchViewController.active = NO;
         [self.searchViewController.searchBar removeFromSuperview];
@@ -361,9 +367,10 @@
 {
     self.searchViewController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchViewController.searchResultsUpdater = self;
+    self.searchViewController.delegate = self;
     self.searchViewController.dimsBackgroundDuringPresentation = NO;
     self.searchViewController.searchBar.backgroundColor = [UIColor clearColor];
-    self.searchViewController.searchBar.tintColor = [UIColor blackColor];
+    self.searchViewController.searchBar.tintColor = [UIColor lightGrayColor];
     self.searchViewController.searchBar.barTintColor = [UIColor whiteColor];
     self.searchViewController.searchBar.layer.borderColor = [UIColor whiteColor].CGColor;
     self.searchViewController.searchBar.layer.borderWidth = 1.0;
@@ -383,19 +390,14 @@
     [self.tableView reloadData];
 }
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+- (void)willPresentSearchController:(UISearchController *)searchController
 {
-    searchBar.placeholder = @"Search";
+    searchController.searchBar.placeholder = @"Search";
 }
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+- (void)willDismissSearchController:(UISearchController *)searchController
 {
-    searchBar.placeholder = @"Tap to Search";
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    searchBar.placeholder = @"Tap to Search";
+    searchController.searchBar.placeholder = @"Tap to Search";
 }
 
 /*

@@ -25,7 +25,7 @@
     
     self.title = @"About";
     
-    _menuArray = @[@"Licenses"];
+    _menuArray = @[@"License"];
     
     CGRect rect = [UIScreen mainScreen].bounds;
     _tableView = [[UITableView alloc] initWithFrame:rect];
