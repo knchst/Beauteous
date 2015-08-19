@@ -117,6 +117,8 @@
 
 - (void)setUpToolBar
 {
+    // - / \ : ; ( ) ¥ & @ . , [ ] { } # % ^ * + = _ | ~ < > $ ? ! `
+    
     CustomRFToolbarButton *backCaret = [CustomRFToolbarButton buttonWithTitle:@"◁"];
     CustomRFToolbarButton *forwardCaret  = [CustomRFToolbarButton buttonWithTitle:@"▷"];
     CustomRFToolbarButton *paste  = [CustomRFToolbarButton buttonWithTitle:@"Paste"];
@@ -129,6 +131,40 @@
     CustomRFToolbarButton *italic = [CustomRFToolbarButton buttonWithTitle:@"Italic"];
     CustomRFToolbarButton *bold   = [CustomRFToolbarButton buttonWithTitle:@"Bold"];
     CustomRFToolbarButton *code   = [CustomRFToolbarButton buttonWithTitle:@"Code"];
+    
+    CustomRFToolbarButton *hyphen = [CustomRFToolbarButton buttonWithTitle:@"-"];
+    CustomRFToolbarButton *slash = [CustomRFToolbarButton buttonWithTitle:@"/"];
+    CustomRFToolbarButton *back_slash = [CustomRFToolbarButton buttonWithTitle:@"\\"];
+    CustomRFToolbarButton *colon = [CustomRFToolbarButton buttonWithTitle:@":"];
+    CustomRFToolbarButton *semi_colon = [CustomRFToolbarButton buttonWithTitle:@";"];
+    CustomRFToolbarButton *open_parenthesis = [CustomRFToolbarButton buttonWithTitle:@"("];
+    CustomRFToolbarButton *close_parenthesis = [CustomRFToolbarButton buttonWithTitle:@")"];
+    CustomRFToolbarButton *yen = [CustomRFToolbarButton buttonWithTitle:@"¥"];
+    CustomRFToolbarButton *and = [CustomRFToolbarButton buttonWithTitle:@"&"];
+    CustomRFToolbarButton *at = [CustomRFToolbarButton buttonWithTitle:@"@"];
+    CustomRFToolbarButton *dot = [CustomRFToolbarButton buttonWithTitle:@"."];
+    CustomRFToolbarButton *comma = [CustomRFToolbarButton buttonWithTitle:@","];
+    CustomRFToolbarButton *open_bracket = [CustomRFToolbarButton buttonWithTitle:@"["];
+    CustomRFToolbarButton *close_bracket = [CustomRFToolbarButton buttonWithTitle:@"]"];
+    CustomRFToolbarButton *open_curly_bracket = [CustomRFToolbarButton buttonWithTitle:@"{"];
+    CustomRFToolbarButton *close_curly_bracket = [CustomRFToolbarButton buttonWithTitle:@"}"];
+    CustomRFToolbarButton *hash = [CustomRFToolbarButton buttonWithTitle:@"#"];
+    CustomRFToolbarButton *percent = [CustomRFToolbarButton buttonWithTitle:@"%"];
+    CustomRFToolbarButton *caret = [CustomRFToolbarButton buttonWithTitle:@"^"];
+    CustomRFToolbarButton *asterisk = [CustomRFToolbarButton buttonWithTitle:@"*"];
+    CustomRFToolbarButton *plus = [CustomRFToolbarButton buttonWithTitle:@"+"];
+    CustomRFToolbarButton *equal = [CustomRFToolbarButton buttonWithTitle:@"="];
+    CustomRFToolbarButton *under_bar = [CustomRFToolbarButton buttonWithTitle:@"_"];
+    CustomRFToolbarButton *pipe = [CustomRFToolbarButton buttonWithTitle:@"|"];
+    CustomRFToolbarButton *tilde = [CustomRFToolbarButton buttonWithTitle:@"~"];
+    CustomRFToolbarButton *less_than = [CustomRFToolbarButton buttonWithTitle:@"<"];
+    CustomRFToolbarButton *more_than = [CustomRFToolbarButton buttonWithTitle:@">"];
+    CustomRFToolbarButton *dollar = [CustomRFToolbarButton buttonWithTitle:@"$"];
+    CustomRFToolbarButton *question = [CustomRFToolbarButton buttonWithTitle:@"?"];
+    CustomRFToolbarButton *exclamation = [CustomRFToolbarButton buttonWithTitle:@"!"];
+    CustomRFToolbarButton *grave = [CustomRFToolbarButton buttonWithTitle:@"`"];
+    CustomRFToolbarButton *double_quote = [CustomRFToolbarButton buttonWithTitle:@"\""];
+    CustomRFToolbarButton *single_quote = [CustomRFToolbarButton buttonWithTitle:@"'"];
     
     [backCaret addEventHandler:^{
         [self backCaret];
@@ -202,6 +238,107 @@
                                                             toPosition:position];
     } forControlEvents:UIControlEventTouchUpInside];
     
+    [hyphen addEventHandler:^{
+        [_textView insertText:@"-"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [slash addEventHandler:^{
+        [_textView insertText:@"/"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [back_slash addEventHandler:^{
+        [_textView insertText:@"\\"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [colon addEventHandler:^{
+        [_textView insertText:@":"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [semi_colon addEventHandler:^{
+        [_textView insertText:@";"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [open_parenthesis addEventHandler:^{
+        [_textView insertText:@"("];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [close_parenthesis addEventHandler:^{
+        [_textView insertText:@")"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [yen addEventHandler:^{
+        [_textView insertText:@"¥"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [and addEventHandler:^{
+        [_textView insertText:@"&"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [at addEventHandler:^{
+        [_textView insertText:@"@"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [dot addEventHandler:^{
+        [_textView insertText:@"."];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [comma addEventHandler:^{
+        [_textView insertText:@","];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [open_bracket addEventHandler:^{
+        [_textView insertText:@"["];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [close_bracket addEventHandler:^{
+        [_textView insertText:@"]"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [open_curly_bracket addEventHandler:^{
+        [_textView insertText:@"{"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [close_curly_bracket addEventHandler:^{
+        [_textView insertText:@"}"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [hash addEventHandler:^{
+        [_textView insertText:@"#"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [caret addEventHandler:^{
+        [_textView insertText:@"^"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [asterisk addEventHandler:^{
+        [_textView insertText:@"*"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [plus addEventHandler:^{
+        [_textView insertText:@"+"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [equal addEventHandler:^{
+        [_textView insertText:@"="];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [under_bar addEventHandler:^{
+        [_textView insertText:@"_"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [pipe addEventHandler:^{
+        [_textView insertText:@"|"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [tilde addEventHandler:^{
+        [_textView insertText:@"~"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [less_than addEventHandler:^{
+        [_textView insertText:@"<"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [more_than addEventHandler:^{
+        [_textView insertText:@">"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [percent addEventHandler:^{
+        [_textView insertText:@"%"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [dollar addEventHandler:^{
+        [_textView insertText:@"$"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [question addEventHandler:^{
+        [_textView insertText:@"?"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [exclamation addEventHandler:^{
+        [_textView insertText:@"!"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [grave addEventHandler:^{
+        [_textView insertText:@"`"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [double_quote addEventHandler:^{
+        [_textView insertText:@"\""];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [single_quote addEventHandler:^{
+        [_textView insertText:@"'"];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    
     // Create an RFKeyboardToolbar, adding all of your buttons, and set it as your inputAcessoryView
     self.textView.inputAccessoryView = [RFKeyboardToolbar toolbarWithButtons:@[
                                                                            backCaret,
@@ -215,7 +352,40 @@
                                                                            list,
                                                                            italic,
                                                                            bold,
-                                                                           code
+                                                                           code,
+                                                                           hyphen,
+                                                                           slash,
+                                                                           back_slash,
+                                                                           colon,
+                                                                           semi_colon,
+                                                                           open_parenthesis,
+                                                                           close_parenthesis,
+                                                                           yen,
+                                                                           and,
+                                                                           at,
+                                                                           dot,
+                                                                           comma,
+                                                                           open_bracket,
+                                                                           close_bracket,
+                                                                           open_curly_bracket,
+                                                                           close_curly_bracket,
+                                                                           hash,
+                                                                           percent,
+                                                                           caret,
+                                                                           asterisk,
+                                                                           plus,
+                                                                           equal,
+                                                                           under_bar,
+                                                                           pipe,
+                                                                           tilde,
+                                                                           less_than,
+                                                                           more_than,
+                                                                           dollar,
+                                                                           question,
+                                                                           exclamation,
+                                                                           grave,
+                                                                           double_quote,
+                                                                           single_quote
                                                                            ]];
 }
 
