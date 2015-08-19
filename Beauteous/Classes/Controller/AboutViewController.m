@@ -25,7 +25,9 @@
     
     self.title = @"About";
     
-    _menuArray = @[@"License"];
+    _menuArray = @[
+                   @"What's Markdown?",
+                   @"License"];
     
     CGRect rect = [UIScreen mainScreen].bounds;
     _tableView = [[UITableView alloc] initWithFrame:rect];
@@ -83,7 +85,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MarkViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Mark"];
-    vc.string = [self license];
+    if (indexPath.row == 0) {
+        vc.string = [self markdown];
+        vc.title = _menuArray[indexPath.row];
+    } else if (indexPath.row == 1) {
+        vc.string = [self license];
+    }
+    vc.title = _menuArray[indexPath.row];
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:vc animated:YES];
 }
