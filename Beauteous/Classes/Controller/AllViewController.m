@@ -52,7 +52,6 @@
 //    self.edgesForExtendedLayout = UIRectEdgeAll;
 //    self.extendedLayoutIncludesOpaqueBars = YES;
     self.definesPresentationContext = YES;
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -298,6 +297,15 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([BOUtility checkDevice]) {
+        return 150;
+    }
+        
+    return 100;
+}
+
 #pragma mark - AMWaveTransition
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
@@ -370,7 +378,7 @@
     self.searchViewController.delegate = self;
     self.searchViewController.dimsBackgroundDuringPresentation = NO;
     self.searchViewController.searchBar.backgroundColor = [UIColor clearColor];
-    self.searchViewController.searchBar.tintColor = [UIColor lightGrayColor];
+    self.searchViewController.searchBar.tintColor = [UIColor blackColor];
     self.searchViewController.searchBar.barTintColor = [UIColor whiteColor];
     self.searchViewController.searchBar.layer.borderColor = [UIColor whiteColor].CGColor;
     self.searchViewController.searchBar.layer.borderWidth = 1.0;

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vpv-G5-ghD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Settings View Controller-->
@@ -197,7 +198,14 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="84" id="LIo-Ca-bzU"/>
                                                         <constraint firstAttribute="width" constant="84" id="NNL-2M-Eyr"/>
+                                                        <constraint firstAttribute="width" secondItem="FFK-pV-0At" secondAttribute="height" multiplier="1:1" id="fIj-Oz-D2F"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="LIo-Ca-bzU"/>
+                                                            <exclude reference="NNL-2M-Eyr"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsn-px-gl4">
                                                     <rect key="frame" x="100" y="8" width="492" height="21"/>
@@ -334,9 +342,16 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uha-6R-bjA">
                                                     <rect key="frame" x="8" y="8" width="84" height="84"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" secondItem="uha-6R-bjA" secondAttribute="height" multiplier="1:1" id="J3K-mM-OTe"/>
                                                         <constraint firstAttribute="width" constant="84" id="aim-Sv-UFn"/>
                                                         <constraint firstAttribute="height" constant="84" id="nfC-dK-HAy"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="aim-Sv-UFn"/>
+                                                            <exclude reference="nfC-dK-HAy"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s96-Y9-FQ1">
                                                     <rect key="frame" x="100" y="8" width="492" height="21"/>

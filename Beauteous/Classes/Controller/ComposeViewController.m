@@ -25,7 +25,7 @@
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-
+@property (strong, nonatomic) CustomRFToolbarButton *image;
 @end
 
 @implementation ComposeViewController
@@ -123,7 +123,7 @@
     CustomRFToolbarButton *header = [CustomRFToolbarButton buttonWithTitle:@"Header"];
     CustomRFToolbarButton *quote  = [CustomRFToolbarButton buttonWithTitle:@"Quote"];
     CustomRFToolbarButton *table  = [CustomRFToolbarButton buttonWithTitle:@"Table"];
-    CustomRFToolbarButton *image  = [CustomRFToolbarButton buttonWithTitle:@"Image"];
+    self.image                    = [CustomRFToolbarButton buttonWithTitle:@"Image"];
     CustomRFToolbarButton *link   = [CustomRFToolbarButton buttonWithTitle:@"Link"];
     CustomRFToolbarButton *list   = [CustomRFToolbarButton buttonWithTitle:@"List"];
     CustomRFToolbarButton *italic = [CustomRFToolbarButton buttonWithTitle:@"Italic"];
@@ -152,10 +152,15 @@
         [_textView insertText:@"> "];
     } forControlEvents:UIControlEventTouchUpInside];
     [table addEventHandler:^{
-        [_textView insertText:@"| ------ |"];
+        [_textView insertText:@"|  |"];
+        UITextRange *range = _textView.selectedTextRange;
+        UITextPosition *position = [_textView positionFromPosition:range.start
+                                                            offset:-2];
+        _textView.selectedTextRange = [_textView textRangeFromPosition:position
+                                                            toPosition:position];
     } forControlEvents:UIControlEventTouchUpInside];
     __weak ComposeViewController *weakSelf = self;
-    [image addEventHandler:^{
+    [_image addEventHandler:^{
         [weakSelf showActionSheet];
     } forControlEvents:UIControlEventTouchUpInside];
     [link addEventHandler:^{
@@ -198,13 +203,13 @@
     } forControlEvents:UIControlEventTouchUpInside];
     
     // Create an RFKeyboardToolbar, adding all of your buttons, and set it as your inputAcessoryView
-    _textView.inputAccessoryView = [RFKeyboardToolbar toolbarWithButtons:@[
+    self.textView.inputAccessoryView = [RFKeyboardToolbar toolbarWithButtons:@[
                                                                            backCaret,
                                                                            forwardCaret,
                                                                            paste,
                                                                            header,
                                                                            quote,
-                                                                           image,
+                                                                           _image,
                                                                            table,
                                                                            link,
                                                                            list,
@@ -216,15 +221,20 @@
 
 - (void)showActionSheet
 {
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Is image where from?"
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Image from.."
                                                                  message:@""
                                                           preferredStyle:UIAlertControllerStyleActionSheet];
     
     if ([BOUtility checkDevice]) {
+        
         ac.popoverPresentationController.sourceView = self.textView;
+        
+        CGRect rect = CGRectMake(_image.frame.origin.x + _image.frame.size.width / 2, _textView.frame.size.height, 0, 0);
+        
+        ac.popoverPresentationController.sourceRect = rect;
     }
     
-    UIAlertAction *urlAction = [UIAlertAction actionWithTitle:@"from URL"
+    UIAlertAction *urlAction = [UIAlertAction actionWithTitle:@"URL"
                                                          style:UIAlertActionStyleDefault
                                                        handler:^(UIAlertAction * action) {
                                                            [_textView insertText:@"![]()"];
@@ -237,7 +247,7 @@
     
     __weak ComposeViewController *weakSelf = self;
     
-    UIAlertAction * pickerAction = [UIAlertAction actionWithTitle:@"from Phone"
+    UIAlertAction * pickerAction = [UIAlertAction actionWithTitle:@"Library"
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [weakSelf showImagePicker];

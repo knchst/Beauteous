@@ -119,6 +119,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([BOUtility checkDevice]) {
+        return 150;
+    }
+    
     CGFloat height = [BOUtility screenSize].size.height;
     CGFloat width = [BOUtility screenSize].size.width;
     return (height - width) / 4;

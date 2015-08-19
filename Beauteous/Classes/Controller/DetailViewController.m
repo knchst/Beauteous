@@ -60,6 +60,12 @@
     
     UIActivityViewController *ac = [[UIActivityViewController alloc] initWithActivityItems:@[title, html] applicationActivities:nil];
     
+    if ([BOUtility checkDevice]) {
+        CGRect rect = CGRectMake(self.view.frame.size.width - 50, 64, 0, 0);
+        ac.popoverPresentationController.sourceView = self.webView;
+        ac.popoverPresentationController.sourceRect = rect;
+    }
+    
     [self.navigationController presentViewController:ac animated:YES completion:nil];
 }
 
@@ -68,6 +74,13 @@
     UIAlertController * ac = [UIAlertController alertControllerWithTitle:@"What do you want to do?"
                                                                  message:@""
                                                           preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    if ([BOUtility checkDevice]) {
+        CGRect rect = CGRectMake(self.view.frame.size.width - 50, 64, 0, 0);
+        ac.popoverPresentationController.sourceView = self.webView;
+        ac.popoverPresentationController.sourceRect = rect;
+    }
+    
     __weak DetailViewController *weakSelf = self;
     
     UIAlertAction * editAction = [UIAlertAction actionWithTitle:@"Edit"

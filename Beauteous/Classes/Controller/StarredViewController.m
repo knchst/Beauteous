@@ -112,6 +112,15 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([BOUtility checkDevice]) {
+        return 150;
+    }
+    
+    return 100;
+}
+
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
     return [UIImage imageNamed:@"Star-100"];
