@@ -58,6 +58,7 @@
 		27635E501B85AE9A003FD8AA /* iPad_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4D1B85AE9A003FD8AA /* iPad_01.png */; };
 		27635E511B85AE9A003FD8AA /* iPad_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4E1B85AE9A003FD8AA /* iPad_02.png */; };
 		27635E521B85AE9A003FD8AA /* iPad_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4F1B85AE9A003FD8AA /* iPad_03.png */; };
+		27635E551B85B259003FD8AA /* BOParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27635E541B85B259003FD8AA /* BOParseManager.m */; };
 		27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */; };
 		27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */; };
 		27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111091B73BE1F003D3F8E /* PdfViewController.m */; };
@@ -152,6 +153,8 @@
 		27635E4D1B85AE9A003FD8AA /* iPad_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_01.png; sourceTree = "<group>"; };
 		27635E4E1B85AE9A003FD8AA /* iPad_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_02.png; sourceTree = "<group>"; };
 		27635E4F1B85AE9A003FD8AA /* iPad_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_03.png; sourceTree = "<group>"; };
+		27635E531B85B259003FD8AA /* BOParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOParseManager.h; sourceTree = "<group>"; };
+		27635E541B85B259003FD8AA /* BOParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOParseManager.m; sourceTree = "<group>"; };
 		27D110FC1B73359C003D3F8E /* CustomRFToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRFToolbarButton.h; sourceTree = "<group>"; };
 		27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRFToolbarButton.m; sourceTree = "<group>"; };
 		27D111021B734701003D3F8E /* PhotoAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAllTableViewCell.h; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				27E4FD091B68D584005CE9EB /* Note.m */,
 				27E4FD0B1B68D785005CE9EB /* NoteManager.h */,
 				27E4FD0C1B68D785005CE9EB /* NoteManager.m */,
+				27635E531B85B259003FD8AA /* BOParseManager.h */,
+				27635E541B85B259003FD8AA /* BOParseManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 				2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */,
+				27635E551B85B259003FD8AA /* BOParseManager.m in Sources */,
 				27D111191B749EF3003D3F8E /* AboutViewController.m in Sources */,
 				27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,

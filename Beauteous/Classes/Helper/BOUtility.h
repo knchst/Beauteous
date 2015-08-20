@@ -22,6 +22,7 @@
 + (NSData*)convertImageToPDF:(UIImage*)image;
 + (CGRect)screenSize;
 + (BOOL)checkDevice;
++ (NSData*)resizeImageWithImage:(UIImage*)image;
 
 typedef void (^Callback)(NSMutableArray*, NSError*);
 + (void)interestingImageFromFlickrWithCallback:(Callback)callback;

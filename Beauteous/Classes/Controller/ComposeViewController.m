@@ -18,7 +18,6 @@
 #import "Parse.h"
 #import "Realm.h"
 #import "SVProgressHUD.h"
-#import "UIImage+ResizeMagick.h"
 #import "AMWaveTransition.h"
 #import "EDHFontSelector.h"
 
@@ -473,9 +472,8 @@
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [SVProgressHUD showWithStatus:@"Uploading.."];
     
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage* resizedImage = [originalImage resizedImageByMagick:@"500x500#"];
-    NSData *imageData = UIImagePNGRepresentation(resizedImage);
+    NSData *imageData = [BOUtility resizeImageWithImage:info[UIImagePickerControllerOriginalImage]];
+
     PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
     
     PFObject *file = [PFObject objectWithClassName:@"Photos"];
@@ -485,8 +483,6 @@
     
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (succeeded) {
-            // NSLog(@"%@", image.url);
-                        
             [weakSelf addImageURL:image.url];
         } else {
             [SVProgressHUD dismiss];

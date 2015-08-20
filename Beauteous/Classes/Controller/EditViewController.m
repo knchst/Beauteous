@@ -478,9 +478,8 @@
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [SVProgressHUD showWithStatus:@"Uploading.."];
     
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage* resizedImage = [originalImage resizedImageByMagick:@"500x500#"];
-    NSData *imageData = UIImagePNGRepresentation(resizedImage);
+    NSData *imageData = [BOUtility resizeImageWithImage:info[UIImagePickerControllerOriginalImage]];
+
     PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
     
     PFObject *file = [PFObject objectWithClassName:@"Photos"];

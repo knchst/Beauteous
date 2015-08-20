@@ -11,6 +11,7 @@
 
 #import "GHMarkdownParser.h"
 #import "FlickrKit.h"
+#import "UIImage+ResizeMagick.h"
 
 @implementation BOUtility
 
@@ -168,6 +169,14 @@
     }
     
     return NO;
+}
+
++ (NSData*)resizeImageWithImage:(UIImage*)image
+{
+    UIImage* resizedImage = [image resizedImageByMagick:@"500x500#"];
+    NSData *imageData = UIImagePNGRepresentation(resizedImage);
+    
+    return imageData;
 }
 
 + (void)interestingImageFromFlickrWithCallback:(Callback)callback

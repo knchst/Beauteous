@@ -12,6 +12,9 @@
 
 extern NSString* const PARSE_ID;
 extern NSString* const PARSE_CLIENT_KEY;
+extern NSString* const PARSE_NOTE_CLASS_NAME;
+extern NSString* const PARSE_USER_CLASS_NAME;
+extern NSString* const PARSE_PHOTO_CLASS_NAME;
 
 extern NSString* const FLICKR_ID;
 extern NSString* const FLICKR_SECRET;
@@ -31,6 +34,6 @@ extern NSString* const BO_ICON_SUPPORT;
 extern NSString* const BO_ICON_ABOUT;
 
 extern NSString* const BO_CELL;
-extern NSString* const BO_CELL_PHOTO
-;
+extern NSString* const BO_CELL_PHOTO;
+
 @end

@@ -13,6 +13,10 @@
 NSString* const PARSE_ID = @"q8XvaN8U0OPXhy1aVfEBLNN9nsGCgHPur3kP60Fx";
 NSString* const PARSE_CLIENT_KEY = @"1zPyNRLf3KQ25SbwXsLCFcZ7iuIdkuMLOZXg1pfi";
 
+NSString* const PARSE_NOTE_CLASS_NAME = @"Notes";
+NSString* const PARSE_USER_CLASS_NAME = @"Users";
+NSString* const PARSE_PHOTO_CLASS_NAME = @"Photos";
+
 NSString* const BO_FONT_HEAVY = @"Avenir-Heavy";
 NSString* const BO_FONT_BOOK = @"Avenir-Book";
 NSString* const BO_FONT_MEDIUM = @"Avenir-Medium";
