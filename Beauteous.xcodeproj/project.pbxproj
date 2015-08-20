@@ -55,6 +55,9 @@
 		2762811E1B76053400A0D831 /* 6_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 2762810D1B76053400A0D831 /* 6_03.png */; };
 		2762811F1B76053400A0D831 /* 6_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 2762810E1B76053400A0D831 /* 6_04.png */; };
 		276281201B76053400A0D831 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2762810F1B76053400A0D831 /* iPad.png */; };
+		27635E501B85AE9A003FD8AA /* iPad_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4D1B85AE9A003FD8AA /* iPad_01.png */; };
+		27635E511B85AE9A003FD8AA /* iPad_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4E1B85AE9A003FD8AA /* iPad_02.png */; };
+		27635E521B85AE9A003FD8AA /* iPad_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4F1B85AE9A003FD8AA /* iPad_03.png */; };
 		27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */; };
 		27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */; };
 		27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111091B73BE1F003D3F8E /* PdfViewController.m */; };
@@ -146,6 +149,9 @@
 		2762810D1B76053400A0D831 /* 6_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6_03.png; sourceTree = "<group>"; };
 		2762810E1B76053400A0D831 /* 6_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6_04.png; sourceTree = "<group>"; };
 		2762810F1B76053400A0D831 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad.png; sourceTree = "<group>"; };
+		27635E4D1B85AE9A003FD8AA /* iPad_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_01.png; sourceTree = "<group>"; };
+		27635E4E1B85AE9A003FD8AA /* iPad_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_02.png; sourceTree = "<group>"; };
+		27635E4F1B85AE9A003FD8AA /* iPad_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_03.png; sourceTree = "<group>"; };
 		27D110FC1B73359C003D3F8E /* CustomRFToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRFToolbarButton.h; sourceTree = "<group>"; };
 		27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRFToolbarButton.m; sourceTree = "<group>"; };
 		27D111021B734701003D3F8E /* PhotoAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAllTableViewCell.h; sourceTree = "<group>"; };
@@ -322,6 +328,9 @@
 				2762810D1B76053400A0D831 /* 6_03.png */,
 				2762810E1B76053400A0D831 /* 6_04.png */,
 				2762810F1B76053400A0D831 /* iPad.png */,
+				27635E4D1B85AE9A003FD8AA /* iPad_01.png */,
+				27635E4E1B85AE9A003FD8AA /* iPad_02.png */,
+				27635E4F1B85AE9A003FD8AA /* iPad_03.png */,
 			);
 			path = ScreenShot;
 			sourceTree = "<group>";
@@ -570,6 +579,7 @@
 				276280ED1B75FA2B00A0D831 /* Icon-72@2x.png in Resources */,
 				276280F81B75FA2B00A0D831 /* Icon-29@2x.png in Resources */,
 				27E4FD041B67F665005CE9EB /* github-markdown.css in Resources */,
+				27635E511B85AE9A003FD8AA /* iPad_02.png in Resources */,
 				276280F21B75FA2B00A0D831 /* iTunesArtwork.png in Resources */,
 				276281141B76053400A0D831 /* 5_01.png in Resources */,
 				276280F11B75FA2B00A0D831 /* Icon@2x.png in Resources */,
@@ -587,7 +597,9 @@
 				276280F01B75FA2B00A0D831 /* Icon.png in Resources */,
 				276280EC1B75FA2B00A0D831 /* Icon-72.png in Resources */,
 				2762811B1B76053400A0D831 /* 6+_3.png in Resources */,
+				27635E521B85AE9A003FD8AA /* iPad_03.png in Resources */,
 				276281191B76053400A0D831 /* 6+_02.png in Resources */,
+				27635E501B85AE9A003FD8AA /* iPad_01.png in Resources */,
 				276281201B76053400A0D831 /* iPad.png in Resources */,
 				276280E21B75FA2B00A0D831 /* Icon-40@2x.png in Resources */,
 				276280EB1B75FA2B00A0D831 /* Icon-60.png in Resources */,
