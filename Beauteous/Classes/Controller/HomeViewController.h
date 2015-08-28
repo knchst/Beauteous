@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JPBFloatingTextViewController.h"
 
-@interface HomeViewController : JPBFloatingTextViewController
+@interface HomeViewController : UIViewController
 
 @end
 

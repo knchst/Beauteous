@@ -5,13 +5,9 @@ PODS:
   - EDHFontSelector (0.2.1):
     - EDHUtility (~> 0.1)
   - EDHUtility (0.1.2)
-  - FlickrKit (1.0.5)
-  - FXBlurView (1.6.3)
   - GHMarkdownParser (0.1.2)
   - Kiwi (2.4.0)
   - MCSwipeTableViewCell (2.1.4)
-  - ParallaxBlur (0.1.4):
-    - FXBlurView (~> 1.6.2)
   - Parse (1.8.0):
     - Bolts/Tasks (>= 1.2.0)
   - Realm (0.94.1):
@@ -28,11 +24,9 @@ DEPENDENCIES:
   - AMWaveTransition
   - DZNEmptyDataSet
   - EDHFontSelector
-  - FlickrKit
   - GHMarkdownParser
   - Kiwi
   - MCSwipeTableViewCell
-  - ParallaxBlur
   - Parse
   - Realm
   - RFKeyboardToolbar
@@ -46,12 +40,9 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   EDHFontSelector: a6f382c263073b0ca9cfc5d3e38de772c08d1640
   EDHUtility: 9e888c6880f52318e6f018374adb3d15c749f4a5
-  FlickrKit: fc0ed009c5cb69db4d82e68f7acb02002ebe1a42
-  FXBlurView: c6d23f3d35af2c6282296a2930f61c6e2c788d01
   GHMarkdownParser: 14cbf59d0ab9450017d843dffd4a3ef691e5bd77
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
-  ParallaxBlur: 352a49c2319b41f3b334456815089afb1220b799
   Parse: 6ea05adb378fbfd6f8726ab67ef74330d96fc903
   Realm: d999a6cf0b41577a077349c9cc9d496cc62a7d17
   RFKeyboardToolbar: c96a7d9458564d1fedc8ef6844b6c467934aade2

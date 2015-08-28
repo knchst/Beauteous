@@ -21,6 +21,7 @@
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation HomeViewController {
@@ -42,17 +43,14 @@
     
     _menuArray = @[@"All", @"Starred", @"Settings"];
     
-    [self setSubtitleText:@"Today's Photo From Flickr."];
-    [self refresh];
-    
     UILabel *title = [[UILabel alloc] init];
     title.text = @"Home";
     title.font = [BOUtility fontTypeBookWithSize:17];
     [title sizeToFit];
-    
-    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refresh)];
-    [title addGestureRecognizer:gesture];
-    title.userInteractionEnabled = YES;
+//    
+//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refresh)];
+//    [title addGestureRecognizer:gesture];
+//    title.userInteractionEnabled = YES;
     self.navigationItem.titleView = title;
     
 }
@@ -155,30 +153,6 @@
 - (void)dealloc
 {
     [self.navigationController setDelegate:nil];
-}
-
-- (void)refresh
-{
-    __weak HomeViewController *weakSelf = self;
-    
-    [BOUtility interestingImageFromFlickrWithCallback:^(NSMutableArray *photos, NSError *error){
-        if (error) {
-            return;
-        }
-        
-        NSLog(@"%@", photos);
-        
-        NSDictionary *photo = photos[arc4random() % photos.count];
-        [weakSelf setTitleText:photo[@"Title"]];
-        
-        [[SDWebImageManager sharedManager] downloadImageWithURL:photo[@"URL"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if (finished) {
-                [weakSelf setHeaderImage:image];
-            }
-        }];
-    }];
-
 }
 
 @end

@@ -10,7 +10,6 @@
 #import "BOConst.h"
 
 #import "GHMarkdownParser.h"
-#import "FlickrKit.h"
 #import "UIImage+ResizeMagick.h"
 
 @implementation BOUtility
@@ -177,32 +176,6 @@
     NSData *imageData = UIImagePNGRepresentation(resizedImage);
     
     return imageData;
-}
-
-+ (void)interestingImageFromFlickrWithCallback:(Callback)callback
-{
-    FlickrKit *fk = [FlickrKit sharedFlickrKit];
-    FKFlickrInterestingnessGetList *interesting = [[FKFlickrInterestingnessGetList alloc] init];
-    [fk call:interesting completion:^(NSDictionary *response, NSError *error) {
-        // Note this is not the main thread!
-        if (response) {
-            NSMutableArray *photoURLs = [NSMutableArray array];
-            NSLog(@"%@", response);
-            for (NSDictionary *photoData in [response valueForKeyPath:@"photos.photo"]) {
-                
-                NSDictionary *dic = @{@"URL": [fk photoURLForSize:FKPhotoSizeLarge1024 fromPhotoDictionary:photoData],
-                                      @"Title": photoData[@"title"]
-                                      };
-                
-                [photoURLs addObject:dic];
-            }
-            
-            callback(photoURLs, error);
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                // Any GUI related operations here
-//            });
-        }
-    }];
 }
 
 @end

@@ -25,5 +25,4 @@
 + (NSData*)resizeImageWithImage:(UIImage*)image;
 
 typedef void (^Callback)(NSMutableArray*, NSError*);
-+ (void)interestingImageFromFlickrWithCallback:(Callback)callback;
 @end

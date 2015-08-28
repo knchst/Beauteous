@@ -7,6 +7,7 @@
 //
 
 #import "BOParseManager.h"
+#import "Parse.h"
 
 @implementation BOParseManager
 
