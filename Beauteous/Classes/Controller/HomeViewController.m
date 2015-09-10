@@ -42,17 +42,6 @@
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
     
     _menuArray = @[@"All", @"Starred", @"Settings"];
-    
-    UILabel *title = [[UILabel alloc] init];
-    title.text = @"Home";
-    title.font = [BOUtility fontTypeBookWithSize:17];
-    [title sizeToFit];
-//    
-//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refresh)];
-//    [title addGestureRecognizer:gesture];
-//    title.userInteractionEnabled = YES;
-    self.navigationItem.titleView = title;
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -20,14 +20,14 @@
 
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    // Parse
+- (void)setUpParse
+{
     [Parse setApplicationId:PARSE_ID
                   clientKey:PARSE_CLIENT_KEY];
-    
+}
+
+- (void)setUpAppearance
+{
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
     [UINavigationBar appearance].tintColor = [UIColor blackColor];
     [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
@@ -35,14 +35,25 @@
     [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"Back"];
     [UITextView appearance].tintColor = [UIColor blackColor];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]}];
-    
-//    RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
-//        NSLog(@"Migration complete.");
-//    };
-//    [RLMRealm setDefaultRealmSchemaVersion:6 withMigrationBlock:migrationBlock];
-//    
-//    [[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
+}
 
+- (void)realmMigration
+{
+    RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
+        NSLog(@"Migration complete.");
+    };
+    [RLMRealm setDefaultRealmSchemaVersion:6 withMigrationBlock:migrationBlock];
+
+    [[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    
+    [self setUpParse];
+    [self setUpAppearance];
+    // [self realmMigration];
+    
     return YES;
 }
 
