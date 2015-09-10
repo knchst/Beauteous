@@ -55,10 +55,10 @@
 
 - (void)share
 {
-    NSString *title = _note.title;
+    // NSString *title = _note.title;
     NSString *html = _note.planeString;
     
-    UIActivityViewController *ac = [[UIActivityViewController alloc] initWithActivityItems:@[title, html] applicationActivities:nil];
+    UIActivityViewController *ac = [[UIActivityViewController alloc] initWithActivityItems:@[html] applicationActivities:nil];
     
     if ([BOUtility checkDevice]) {
         CGRect rect = CGRectMake(self.view.frame.size.width - 50, 64, 0, 0);

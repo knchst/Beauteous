@@ -17,7 +17,6 @@
 #import "Realm.h"
 #import "Parse.h"
 #import "AMWaveTransition.h"
-#import "SDWebImageManager.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIScrollViewDelegate>
 
@@ -112,7 +111,16 @@
     
     CGFloat height = [BOUtility screenSize].size.height;
     CGFloat width = [BOUtility screenSize].size.width;
-    return (height - width) / 4;
+    
+    CGFloat cellHeight;
+    
+    if (height > width) {
+        cellHeight = (height - width) / 4;
+    } else if (height < width) {
+        cellHeight = (width - height) / 4;
+    }
+    
+    return cellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
