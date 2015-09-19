@@ -30,7 +30,7 @@
                    @"License"];
     
     CGRect rect = [UIScreen mainScreen].bounds;
-    _tableView = [[UITableView alloc] initWithFrame:rect];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, rect.size.width, rect.size.height)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
