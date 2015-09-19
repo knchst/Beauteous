@@ -178,4 +178,38 @@
     return imageData;
 }
 
++ (UIImage *)tintedImageFromImage:(UIImage *)image withColor:(UIColor *)color
+{
+    UIImage *output = nil;
+    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    if (UIGraphicsBeginImageContextWithOptions != NULL) {
+        UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+    } else {
+        UIGraphicsBeginImageContext(image.size);
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // -- flipping geometry
+    CGContextTranslateCTM(context, 0, image.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    // -- setting up blend mode
+    CGContextSetBlendMode(context, kCGBlendModeNormal);
+    
+    // -- first drawing the image
+    CGContextDrawImage(context, rect, image.CGImage);
+    
+    // -- then setting up mask and fill the color
+    CGContextClipToMask(context, rect, image.CGImage);
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    CGContextFillRect(context, rect);
+    
+    output = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return output;
+}
+
 @end

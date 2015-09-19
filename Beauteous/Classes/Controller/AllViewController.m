@@ -15,14 +15,17 @@
 #import "AllTableViewCell.h"
 #import "PhotoAllTableViewCell.h"
 #import "DetailViewController.h"
+#import "SettingsViewController.h"
+#import "ComposeViewController.h"
 
 #import "MCSwipeTableViewCell.h"
 #import "AMWaveTransition.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "YALTabBarInteracting.h"
 
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (strong, nonatomic) UISearchController *searchViewController;
 @property (strong, nonatomic) RLMResults *searchResults;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -411,6 +414,54 @@
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
+}
+
+#define debug 1
+
+#pragma mark - YALTabBarInteracting
+
+- (void)tabBarViewWillCollapse {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)tabBarViewWillExpand {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)tabBarViewDidCollapse {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)tabBarViewDidExpand {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)extraLeftItemDidPress {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    
+    SettingsViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Settings"];
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)extraRightItemDidPress {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    
+    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 /*

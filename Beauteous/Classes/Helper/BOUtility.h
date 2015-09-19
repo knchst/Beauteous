@@ -23,6 +23,7 @@
 + (CGRect)screenSize;
 + (BOOL)checkDevice;
 + (NSData*)resizeImageWithImage:(UIImage*)image;
++ (UIImage *)tintedImageFromImage:(UIImage *)image withColor:(UIColor *)color;
 
 typedef void (^Callback)(NSMutableArray*, NSError*);
 @end

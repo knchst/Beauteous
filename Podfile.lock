@@ -5,6 +5,7 @@ PODS:
   - EDHFontSelector (0.2.1):
     - EDHUtility (~> 0.1)
   - EDHUtility (0.1.2)
+  - FoldingTabBar (1.0.1)
   - GHMarkdownParser (0.1.2)
   - Kiwi (2.4.0)
   - MCSwipeTableViewCell (2.1.4)
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - AMWaveTransition
   - DZNEmptyDataSet
   - EDHFontSelector
+  - FoldingTabBar
   - GHMarkdownParser
   - Kiwi
   - MCSwipeTableViewCell
@@ -40,6 +42,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   EDHFontSelector: a6f382c263073b0ca9cfc5d3e38de772c08d1640
   EDHUtility: 9e888c6880f52318e6f018374adb3d15c749f4a5
+  FoldingTabBar: 3e04c49dbe2b02c529561a4182bf017b928d04d2
   GHMarkdownParser: 14cbf59d0ab9450017d843dffd4a3ef691e5bd77
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3

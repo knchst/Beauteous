@@ -14,6 +14,10 @@
 #import "Realm.h"
 #import "Parse.h"
 
+#import "YALFoldingTabBarController.h"
+#import "YALAnimatingTabBarConstants.h"
+#import "YALTabBarItem.h"
+
 @interface AppDelegate ()
 
 @end
@@ -37,6 +41,41 @@
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]}];
 }
 
+- (void)setUpTabController
+{
+    YALFoldingTabBarController *tabBarController = (YALFoldingTabBarController *) self.window.rootViewController;
+    
+    UIImage *menu = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_MENU] withColor:[UIColor whiteColor]];
+    UIImage *settings = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_SETTINGS] withColor:[UIColor whiteColor]];
+    UIImage *pen = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_PEN] withColor:[UIColor whiteColor]];
+    UIImage *star = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_STAR] withColor:[UIColor whiteColor]];
+    
+    YALTabBarItem *item1 = [[YALTabBarItem alloc] initWithItemImage:menu
+                                                      leftItemImage:settings
+                                                     rightItemImage:pen];
+    
+    
+    YALTabBarItem *item2 = [[YALTabBarItem alloc] initWithItemImage:star
+                                                      leftItemImage:settings
+                                                     rightItemImage:pen];
+    
+    tabBarController.leftBarItems = @[item1];
+    tabBarController.rightBarItems = @[item2];
+    
+    tabBarController.centerButtonImage = [UIImage imageNamed:@"plus_icon"];
+    
+    tabBarController.selectedIndex = 1;
+    
+    //customize tabBarView
+    tabBarController.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight;
+    tabBarController.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset;
+    tabBarController.tabBarView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:94.0/255.0 green:91.0/255.0 blue:149.0/255.0 alpha:1];
+    tabBarController.tabBarView.tabBarColor = [UIColor blackColor];//[UIColor colorWithRed:72.0/255.0 green:211.0/255.0 blue:178.0/255.0 alpha:1];
+    tabBarController.tabBarViewHeight = YALTabBarViewDefaultHeight;
+    tabBarController.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets;
+    tabBarController.tabBarView.tabBarItemsEdgeInsets = YALTabBarViewItemsDefaultEdgeInsets;
+}
+
 - (void)realmMigration
 {
     RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
@@ -52,6 +91,7 @@
     
     [self setUpParse];
     [self setUpAppearance];
+    [self setUpTabController];
     // [self realmMigration];
     
     return YES;
