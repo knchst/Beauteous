@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     CGRect rect = [UIScreen mainScreen].bounds;
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, rect.size.width, rect.size.height)];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, rect.size.width, rect.size.height - 64)];
     [webView loadHTMLString:[BOUtility renderHTMLWithString:_string] baseURL:nil];
     [self.view addSubview:webView];
 }

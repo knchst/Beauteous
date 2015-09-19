@@ -1,4 +1,4 @@
-# What's Markdown
+## What's Markdown
 
 Markdown allows you to write using an easy-to-read, easy-to-write plain text format, which then converts to valid HTML
 
