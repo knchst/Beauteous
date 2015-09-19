@@ -43,7 +43,7 @@
 
 - (void)setUpTabController
 {
-    YALFoldingTabBarController *tabBarController = (YALFoldingTabBarController *) self.window.rootViewController;
+    YALFoldingTabBarController *tabBarController = (YALFoldingTabBarController*)self.window.rootViewController;
     
     UIImage *menu = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_MENU] withColor:[UIColor whiteColor]];
     UIImage *settings = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_SETTINGS] withColor:[UIColor whiteColor]];
@@ -61,16 +61,12 @@
     
     tabBarController.leftBarItems = @[item1];
     tabBarController.rightBarItems = @[item2];
-    
     tabBarController.centerButtonImage = [UIImage imageNamed:@"plus_icon"];
-    
     tabBarController.selectedIndex = 0;
-    
-    //customize tabBarView
     tabBarController.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight;
     tabBarController.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset;
-    tabBarController.tabBarView.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:94.0/255.0 green:91.0/255.0 blue:149.0/255.0 alpha:1];
-    tabBarController.tabBarView.tabBarColor = [UIColor blackColor];//[UIColor colorWithRed:72.0/255.0 green:211.0/255.0 blue:178.0/255.0 alpha:1];
+    tabBarController.tabBarView.backgroundColor = [UIColor clearColor];
+    tabBarController.tabBarView.tabBarColor = [UIColor blackColor];
     tabBarController.tabBarViewHeight = YALTabBarViewDefaultHeight;
     tabBarController.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets;
     tabBarController.tabBarView.tabBarItemsEdgeInsets = YALTabBarViewItemsDefaultEdgeInsets;

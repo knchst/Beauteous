@@ -1,5 +1,4 @@
 PODS:
-  - AMWaveTransition (0.6.0)
   - Bolts/Tasks (1.2.0)
   - DZNEmptyDataSet (1.7.1)
   - EDHFontSelector (0.2.1):
@@ -22,7 +21,6 @@ PODS:
   - UIImage-ResizeMagick (0.0.1)
 
 DEPENDENCIES:
-  - AMWaveTransition
   - DZNEmptyDataSet
   - EDHFontSelector
   - FoldingTabBar
@@ -37,7 +35,6 @@ DEPENDENCIES:
   - UIImage-ResizeMagick
 
 SPEC CHECKSUMS:
-  AMWaveTransition: a00588006f144d289a390aabcfa1fa1e16bb9296
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   EDHFontSelector: a6f382c263073b0ca9cfc5d3e38de772c08d1640

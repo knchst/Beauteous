@@ -478,7 +478,11 @@
     
     NSData *imageData = [BOUtility resizeImageWithImage:info[UIImagePickerControllerOriginalImage]];
 
-    PFFile *image = [PFFile fileWithName:@"image.png" data:imageData];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyyMMddHHmmss"];
+    NSString *filename = [NSString stringWithFormat:@"image-%@.png", [format stringFromDate:[NSDate date]]];
+    
+    PFFile *image = [PFFile fileWithName:filename data:imageData];
     
     PFObject *file = [PFObject objectWithClassName:@"Photos"];
     file[@"image"] = image;
