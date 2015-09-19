@@ -18,7 +18,6 @@
 #import "Parse.h"
 #import "Realm.h"
 #import "SVProgressHUD.h"
-#import "AMWaveTransition.h"
 #import "EDHFontSelector.h"
 
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -53,7 +52,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.navigationController setDelegate:self];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -517,20 +515,8 @@
     _textView.selectedTextRange = [_textView textRangeFromPosition:position toPosition:position];
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
-                                  animationControllerForOperation:(UINavigationControllerOperation)operation
-                                               fromViewController:(UIViewController*)fromVC
-                                                 toViewController:(UIViewController*)toVC
-{
-    if (operation != UINavigationControllerOperationNone) {
-        return [AMWaveTransition transitionWithOperation:operation andTransitionType:AMWaveTransitionTypeNervous];
-    }
-    return nil;
-}
-
 - (void)dealloc
 {
-    [self.navigationController setDelegate:nil];
 }
 
 - (BOOL)prefersStatusBarHidden

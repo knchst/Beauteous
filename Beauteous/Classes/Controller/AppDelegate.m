@@ -64,7 +64,7 @@
     
     tabBarController.centerButtonImage = [UIImage imageNamed:@"plus_icon"];
     
-    tabBarController.selectedIndex = 1;
+    tabBarController.selectedIndex = 0;
     
     //customize tabBarView
     tabBarController.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight;

@@ -18,7 +18,6 @@
 #import "Parse.h"
 #import "RFKeyboardToolbar.h"
 #import "UIImage+ResizeMagick.h"
-#import "AMWaveTransition.h"
 #import "EDHFontSelector.h"
 
 @interface EditViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -60,7 +59,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.navigationController setDelegate:self];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -524,20 +522,9 @@
     UITextPosition *position = [_textView positionFromPosition:range.start offset:1];
     _textView.selectedTextRange = [_textView textRangeFromPosition:position toPosition:position];
 }
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
-                                  animationControllerForOperation:(UINavigationControllerOperation)operation
-                                               fromViewController:(UIViewController*)fromVC
-                                                 toViewController:(UIViewController*)toVC
-{
-    if (operation != UINavigationControllerOperationNone) {
-        return [AMWaveTransition transitionWithOperation:operation andTransitionType:AMWaveTransitionTypeNervous];
-    }
-    return nil;
-}
 
 - (void)dealloc
 {
-    [self.navigationController setDelegate:nil];
 }
 
 - (BOOL)prefersStatusBarHidden

@@ -19,11 +19,10 @@
 #import "ComposeViewController.h"
 
 #import "MCSwipeTableViewCell.h"
-#import "AMWaveTransition.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "YALTabBarInteracting.h"
 
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UISearchController *searchViewController;
@@ -71,7 +70,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.navigationController setDelegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -91,7 +89,6 @@
 
 - (void)dealloc
 {
-    [self.navigationController setDelegate:nil];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -307,19 +304,6 @@
     }
         
     return 100;
-}
-
-#pragma mark - AMWaveTransition
-
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
-                                  animationControllerForOperation:(UINavigationControllerOperation)operation
-                                               fromViewController:(UIViewController*)fromVC
-                                                 toViewController:(UIViewController*)toVC
-{
-    if (operation != UINavigationControllerOperationNone) {
-        return [AMWaveTransition transitionWithOperation:operation];
-    }
-    return nil;
 }
 
 #pragma mark - UIScrollView+EmptyDataSet

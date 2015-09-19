@@ -9,8 +9,12 @@
 #import "AboutViewController.h"
 #import "BOUtility.h"
 #import "MarkViewController.h"
+#import "SettingsViewController.h"
+#import "ComposeViewController.h"
 
-@interface AboutViewController () <UITableViewDataSource, UITableViewDelegate>
+#import "YALTabBarInteracting.h"
+
+@interface AboutViewController () <UITableViewDataSource, UITableViewDelegate, YALTabBarInteracting>
 
 @end
 
@@ -128,6 +132,51 @@
 {
     return NO;
 }
+
+#define debug 1
+
+#pragma mark - YALTabBarInteracting
+
+- (void)tabBarViewWillCollapse {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)tabBarViewWillExpand {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)tabBarViewDidCollapse {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)tabBarViewDidExpand {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)extraLeftItemDidPress {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+}
+
+- (void)extraRightItemDidPress {
+    if (debug == 1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    
+    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

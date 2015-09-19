@@ -435,54 +435,6 @@
             </objects>
             <point key="canvasLocation" x="1806" y="-1041"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController storyboardIdentifier="Home" id="vXZ-lx-hvc" customClass="HomeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HIA-ym-vnJ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="HIA-ym-vnJ" secondAttribute="height" multiplier="3:2" id="iZw-mK-eNA"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="iZw-mK-eNA"/>
-                                    </mask>
-                                </variation>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="HIA-ym-vnJ" secondAttribute="bottom" id="DCb-OJ-mye"/>
-                            <constraint firstItem="HIA-ym-vnJ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="byF-5k-yw4"/>
-                            <constraint firstAttribute="trailing" secondItem="HIA-ym-vnJ" secondAttribute="trailing" id="gHY-Yr-Ov5"/>
-                            <constraint firstItem="HIA-ym-vnJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zWY-1H-HJB"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="ut7-cr-4Jz">
-                        <barButtonItem key="rightBarButtonItem" image="Pen" id="j1u-JE-BL5">
-                            <connections>
-                                <action selector="compose:" destination="vXZ-lx-hvc" id="lPg-uE-8XU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="HIA-ym-vnJ" id="11l-QE-3cB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="994" y="-371"/>
-        </scene>
         <!--Compose View Controller-->
         <scene sceneID="1M4-w7-xM4">
             <objects>
@@ -651,24 +603,6 @@
             <point key="canvasLocation" x="2975" y="-371"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="bBL-ey-8Az">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vpv-G5-ghD" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jln-Vs-0iG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="ura-7e-OiE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jus-v8-gBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="318" y="-371"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="WTp-HV-lSI">
             <objects>
                 <navigationController storyboardIdentifier="Compose" automaticallyAdjustsScrollViewInsets="NO" id="GVT-7w-FXx" sceneMemberID="viewController">
@@ -727,7 +661,4 @@
             <point key="canvasLocation" x="994" y="-1041"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Pen" width="50" height="50"/>
-    </resources>
 </document>
