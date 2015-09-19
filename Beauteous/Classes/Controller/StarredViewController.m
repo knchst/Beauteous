@@ -156,6 +156,11 @@
     return self.tableView.tableHeaderView.frame.size.height/3.0f;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 /*
 #pragma mark - Navigation
 

@@ -147,6 +147,11 @@
     return nil;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 - (void)dealloc
 {
     [self.navigationController setDelegate:nil];

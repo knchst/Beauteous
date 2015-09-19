@@ -124,6 +124,11 @@
     return text;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 /*
 #pragma mark - Navigation
 

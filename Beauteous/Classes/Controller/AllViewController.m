@@ -408,6 +408,11 @@
     searchController.searchBar.placeholder = @"Tap to Search";
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 /*
 #pragma mark - Navigation
 

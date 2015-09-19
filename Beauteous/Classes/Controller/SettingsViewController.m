@@ -136,6 +136,10 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
 
 /*
 #pragma mark - Navigation

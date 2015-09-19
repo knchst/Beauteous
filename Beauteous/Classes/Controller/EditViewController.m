@@ -539,6 +539,12 @@
 {
     [self.navigationController setDelegate:nil];
 }
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 /*
 #pragma mark - Navigation
 
