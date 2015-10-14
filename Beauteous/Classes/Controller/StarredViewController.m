@@ -18,9 +18,11 @@
 #import "BOConst.h"
 
 #import "UIScrollView+EmptyDataSet.h"
+#import "AMWaveTransition.h"
+
 #import "YALTabBarInteracting.h"
 
-@interface StarredViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
+@interface StarredViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -58,6 +60,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.navigationController setDelegate:self];
+}
+
+- (void)dealloc
+{
+    [self.navigationController setDelegate:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -162,6 +175,18 @@
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation != UINavigationControllerOperationNone) {
+        // Return your preferred transition operation
+        return [AMWaveTransition transitionWithOperation:operation];
+    }
+    return nil;
 }
 
 #define debug 1

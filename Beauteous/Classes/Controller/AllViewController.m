@@ -20,9 +20,11 @@
 
 #import "MCSwipeTableViewCell.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "AMWaveTransition.h"
+
 #import "YALTabBarInteracting.h"
 
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UISearchController *searchViewController;
@@ -70,6 +72,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.navigationController setDelegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -89,6 +92,7 @@
 
 - (void)dealloc
 {
+    [self.navigationController setDelegate:nil];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -398,6 +402,18 @@
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation != UINavigationControllerOperationNone) {
+        // Return your preferred transition operation
+        return [AMWaveTransition transitionWithOperation:operation];
+    }
+    return nil;
 }
 
 #define debug 1
