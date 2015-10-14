@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Kenichi Saito. All rights reserved.
 //
 
-#import "RLMObject.h"
+#import <Realm/Realm.h>
 
 @interface Note : RLMObject
 

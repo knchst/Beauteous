@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Note.h"
 
-#import "Realm.h"
+#import <Realm/Realm.h>
 
 @interface NoteManager : NSObject
 
