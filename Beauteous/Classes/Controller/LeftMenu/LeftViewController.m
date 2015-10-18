@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "LeftViewCell.h"
 #import "MainViewController.h"
+#import "BOUtility.h"
 
 @interface LeftViewController ()
 
@@ -24,15 +25,14 @@
 {
     [super awakeFromNib];
     
-    _titlesArray = @[@"Set View Controllers",
-                     @"Open Right View",
+    _titlesArray = @[@"Beauteous",
                      @"",
-                     @"Profile",
-                     @"News",
-                     @"Articles",
-                     @"Video",
-                     @"Music"];
-    
+                     @"All",
+                     @"Starred",
+                     @"Trash",
+                     @"",
+                     @"Settings"];
+
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.contentInset = UIEdgeInsetsMake(20.f, 0.f, 20.f, 0.f);
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -64,8 +64,15 @@
     LeftViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LeftCell"];
     
     cell.textLabel.text = _titlesArray[indexPath.row];
-    cell.separatorView.hidden = !(indexPath.row != _titlesArray.count-1 && indexPath.row != 1 && indexPath.row != 2);
-    cell.userInteractionEnabled = (indexPath.row != 2);
+    cell.separatorView.hidden = YES;
+    
+    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 5) {
+        cell.userInteractionEnabled = NO;
+        cell.textLabel.font = [BOUtility fontTypeBookWithSize:25];
+    } else {
+        cell.userInteractionEnabled = YES;
+        cell.textLabel.font = [BOUtility fontTypeBookWithSize:20];
+    }
     
     cell.tintColor = _tintColor;
     
@@ -74,13 +81,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 2) return 22.f;
+    if (indexPath.row == 1 || indexPath.row == 5) return 22.f;
     else return 44.f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    NSLog(@"index is %ld", (long)indexPath.row);
 }
 
 @end

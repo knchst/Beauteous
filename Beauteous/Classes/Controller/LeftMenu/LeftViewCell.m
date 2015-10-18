@@ -7,6 +7,7 @@
 //
 
 #import "LeftViewCell.h"
+#import "BOUtility.h"
 
 @interface LeftViewCell ()
 
@@ -21,8 +22,6 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.backgroundColor = [UIColor clearColor];
-    
-    self.textLabel.font = [UIFont boldSystemFontOfSize:16.f];
     
     // -----
     
