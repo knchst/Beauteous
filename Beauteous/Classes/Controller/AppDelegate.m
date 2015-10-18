@@ -46,11 +46,21 @@
 - (void)realmMigration
 {
     RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
+        
+        
+        if (oldSchemaVersion < 7) {
+            [migration enumerateObjects:Note.className
+                                 block:^(RLMObject *oldObject, RLMObject *newObject) {
+                                                     newObject[@"deleted"] = @NO;
+            }];
+        }
+        
+        
         NSLog(@"Migration complete.");
     };
     [RLMRealm setDefaultRealmSchemaVersion:7 withMigrationBlock:migrationBlock];
 
-    [[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
+    //[[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

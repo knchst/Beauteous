@@ -184,10 +184,10 @@
         }
     } forControlEvents:UIControlEventTouchUpInside];
     [header addEventHandler:^{
-        [_textView insertText:@"# "];
+        [_textView insertText:@"#"];
     } forControlEvents:UIControlEventTouchUpInside];
     [quote addEventHandler:^{
-        [_textView insertText:@"> "];
+        [_textView insertText:@">"];
     } forControlEvents:UIControlEventTouchUpInside];
     [table addEventHandler:^{
         [_textView insertText:@"|  |"];
