@@ -37,6 +37,8 @@
     [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:19]};
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"Back"];
     [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"Back"];
+    
+    
     [UITextView appearance].tintColor = [UIColor blackColor];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]}];
 }

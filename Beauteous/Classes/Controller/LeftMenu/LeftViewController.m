@@ -114,7 +114,6 @@
             viewController = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Settings"];
         }
         
-            
         [kNavigationController pushViewController:viewController animated:YES];
         [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
     }
