@@ -24,9 +24,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "AMWaveTransition.h"
 
-#import "YALTabBarInteracting.h"
-
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
+@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UISearchController *searchViewController;
@@ -57,7 +55,7 @@
     
 //    self.edgesForExtendedLayout = UIRectEdgeAll;
 //    self.extendedLayoutIncludesOpaqueBars = YES;
-    //self.definesPresentationContext = YES;
+//    self.definesPresentationContext = YES;
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
 }

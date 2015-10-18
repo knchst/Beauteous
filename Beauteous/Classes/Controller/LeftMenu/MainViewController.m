@@ -49,4 +49,9 @@
     _leftViewController.tableView.frame = CGRectMake(0.f , 0.f, size.width, size.height);
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 @end
