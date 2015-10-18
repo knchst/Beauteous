@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kenichi Saito. All rights reserved.
 //
 
+#import "AppDelegate.h"
+#import "MainViewController.h"
 #import "AllViewController.h"
 #import "PreviewViewController.h"
 #import "BOUtility.h"
@@ -56,6 +58,9 @@
 //    self.edgesForExtendedLayout = UIRectEdgeAll;
 //    self.extendedLayoutIncludesOpaqueBars = YES;
     self.definesPresentationContext = YES;
+    
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Left" style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -416,53 +421,13 @@
     return nil;
 }
 
-#define debug 1
+#pragma mark -
 
-#pragma mark - YALTabBarInteracting
-
-- (void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
+- (void)openLeftView
+{
+    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
-- (void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraLeftItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    SettingsViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Settings"];
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)extraRightItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
-}
 
 /*
 #pragma mark - Navigation

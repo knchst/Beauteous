@@ -10,7 +10,7 @@ pod 'RFKeyboardToolbar'
 pod 'MCSwipeTableViewCell'
 pod 'UIImage-ResizeMagick'
 pod 'AMWaveTransition'
-pod 'REFrostedViewController'
+pod 'LGSideMenuController'
 
 target :BeauteousTests do
   pod 'Kiwi'
