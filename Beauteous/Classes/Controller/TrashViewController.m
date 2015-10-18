@@ -28,7 +28,6 @@
 @interface TrashViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -59,11 +58,8 @@
 {
     [super viewWillAppear:animated];
     
-    [[NoteManager sharedManager] fetchAllNotes];
+    [[NoteManager sharedManager] fetchAllDeletedNotes];
     [self.tableView reloadData];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -88,29 +84,6 @@
     [self.navigationController setDelegate:nil];
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    CGRect keyboardFrame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    self.bottomConstraint.constant = keyboardFrame.size.height;
-    
-    [UIView animateWithDuration:duration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    self.bottomConstraint.constant = 0;
-    
-    [UIView animateWithDuration:duration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -120,16 +93,24 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Note *note = nil;
-
-    note = [NoteManager sharedManager].notes[indexPath.row];
+    Note *note = [NoteManager sharedManager].notes[indexPath.row];
     
-    
-    AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL];
-    if (cell == nil) {
-        cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL];
+    if ([note.photoUrl isEqualToString:@""]) {
+        
+        AllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL];
+        if (cell == nil) {
+            cell = [[AllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL];
+        }
+        [self configureCell:cell andIndexPath:indexPath];
+        
+        return cell;
     }
-    [self configureCell:cell andIndexPath:indexPath];
+    
+    PhotoAllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL_PHOTO];
+    if (cell == nil) {
+        cell = [[PhotoAllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL_PHOTO];
+    }
+    [self configurePhotoCell:cell andIndexPath:indexPath];
     
     return cell;
 }
@@ -171,7 +152,60 @@
                             state:MCSwipeTableViewCellState3
                   completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                       
-                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the note?" preferredStyle:UIAlertControllerStyleAlert];
+                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the note forever?" preferredStyle:UIAlertControllerStyleAlert];
+                      UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                          [alert dismissViewControllerAnimated:YES completion:nil];
+                      }];
+                      UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+                          [[NoteManager sharedManager] deleteForever:note];
+                          [weakSelf.tableView reloadData];
+                      }];
+                      
+                      [alert addAction:noAction];
+                      [alert addAction:yesAction];
+                      
+                      [weakSelf presentViewController:alert animated:YES completion:nil];
+                  }];
+}
+
+- (void)configurePhotoCell:(PhotoAllTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
+{
+    Note *note = nil;
+    
+    note = [NoteManager sharedManager].notes[indexPath.row];
+    
+    [cell setDate:note];
+    
+    __weak TrashViewController *weakSelf = self;
+    
+    
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BO_ICON_TRASH]];
+    
+    [cell setSwipeGestureWithView:deleteImage
+                            color:[UIColor whiteColor]
+                             mode:MCSwipeTableViewCellModeSwitch
+                            state:MCSwipeTableViewCellState1
+                  completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                      // Update Method
+                      
+                      [[NoteManager sharedManager] deleteObject:note];
+                      [weakSelf.tableView reloadData];
+                      
+                  }];
+    
+    UIImage *image = [UIImage imageNamed:BO_ICON_TRASH];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+    UIImageView *deleteForever = [[UIImageView alloc] initWithImage:image];
+    deleteForever.tintColor = [UIColor redColor];
+    
+    [cell setSwipeGestureWithView:deleteForever
+                            color:[UIColor whiteColor]
+                             mode:MCSwipeTableViewCellModeSwitch
+                            state:MCSwipeTableViewCellState3
+                  completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                      
+                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the note forever?" preferredStyle:UIAlertControllerStyleAlert];
                       UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                           [alert dismissViewControllerAnimated:YES completion:nil];
                       }];
@@ -233,7 +267,7 @@
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
     NSString *text;
-    text = @"There are no deleted notes.You can meke your notes undeleted to swipe right and swipe left to delete   note forever.";
+    text = @"There are no deleted notes.You can meke your notes undeleted to swipe right and swipe left to delete note forever.";
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;

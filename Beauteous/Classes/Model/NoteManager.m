@@ -40,7 +40,7 @@ static NoteManager *sharedManager = nil;
 
 - (void)fetchAllStarredNotes
 {
-    RLMResults *notes = [Note objectsWhere:@"starred = YES"];
+    RLMResults *notes = [Note objectsWhere:@"starred = YES AND deleted = NO"];
     self.notes = [notes sortedResultsUsingProperty:@"updated_at" ascending:NO];
 }
 

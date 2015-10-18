@@ -17,6 +17,7 @@
 
 + (NoteManager*)sharedManager;
 - (void)fetchAllNotes;
+- (void)fetchAllDeletedNotes;
 - (void)saveNoteWithDictionary:(NSMutableDictionary*)dictionary;
 - (void)deleteObject:(Note*)note;
 - (void)deleteForever:(Note*)note;
