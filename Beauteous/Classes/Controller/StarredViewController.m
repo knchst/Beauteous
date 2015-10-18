@@ -18,9 +18,12 @@
 #import "BOConst.h"
 
 #import "UIScrollView+EmptyDataSet.h"
-#import "YALTabBarInteracting.h"
+#import "AMWaveTransition.h"
 
-@interface StarredViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, YALTabBarInteracting>
+#import "MainViewController.h"
+#import "AppDelegate.h"
+
+@interface StarredViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -40,6 +43,9 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
+    
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,6 +64,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.navigationController setDelegate:self];
+}
+
+- (void)dealloc
+{
+    [self.navigationController setDelegate:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -164,53 +181,25 @@
     return NO;
 }
 
-#define debug 1
-
-#pragma mark - YALTabBarInteracting
-
-- (void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation != UINavigationControllerOperationNone) {
+        // Return your preferred transition operation
+        return [AMWaveTransition transitionWithOperation:operation];
     }
+    return nil;
 }
 
-- (void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
+#pragma mark -
+
+- (void)openLeftView
+{
+    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
-- (void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraLeftItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    SettingsViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Settings"];
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)extraRightItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
-}
 
 /*
 #pragma mark - Navigation

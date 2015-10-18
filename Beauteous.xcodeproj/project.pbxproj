@@ -12,6 +12,11 @@
 		2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C81B70C4050083D487 /* AllTableViewCell.m */; };
 		2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CB1B710DAC0083D487 /* EditViewController.m */; };
 		2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CE1B710E460083D487 /* DetailViewController.m */; };
+		2725742B1BD3C839001CB44F /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574281BD3C839001CB44F /* LeftViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		2725742C1BD3C839001CB44F /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742A1BD3C839001CB44F /* LeftViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2725742F1BD3E670001CB44F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742E1BD3E670001CB44F /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		272574321BD4066B001CB44F /* TrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574311BD4066B001CB44F /* TrashViewController.m */; settings = {ASSET_TAGS = (); }; };
+		272574351BD41CD3001CB44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 272574331BD41CD3001CB44F /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		276280E11B75FA2B00A0D831 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BA1B75FA2B00A0D831 /* Icon-40.png */; };
 		276280E21B75FA2B00A0D831 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BB1B75FA2B00A0D831 /* Icon-40@2x.png */; };
 		276280E31B75FA2B00A0D831 /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BC1B75FA2B00A0D831 /* Icon-40@3x.png */; };
@@ -76,7 +81,6 @@
 		27E4FD0D1B68D785005CE9EB /* NoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FD0C1B68D785005CE9EB /* NoteManager.m */; };
 		27E4FD101B68F63C005CE9EB /* AllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FD0F1B68F63C005CE9EB /* AllViewController.m */; };
 		27ED34F91B67934100C86498 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED34F81B67934100C86498 /* main.m */; };
-		27ED35021B67934100C86498 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35001B67934100C86498 /* Main.storyboard */; };
 		27ED35041B67934100C86498 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35031B67934100C86498 /* Images.xcassets */; };
 		27ED35071B67934100C86498 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ED35051B67934100C86498 /* LaunchScreen.xib */; };
 		2AC9DFDA13AE7D7636805364 /* libPods-BeauteousTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 982A9DF6E1B2555E393E88B7 /* libPods-BeauteousTests.a */; };
@@ -105,6 +109,15 @@
 		2718E5CB1B710DAC0083D487 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		2718E5CD1B710E460083D487 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		2718E5CE1B710E460083D487 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		272574271BD3C839001CB44F /* LeftViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCell.h; sourceTree = "<group>"; };
+		272574281BD3C839001CB44F /* LeftViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCell.m; sourceTree = "<group>"; };
+		272574291BD3C839001CB44F /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		2725742A1BD3C839001CB44F /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		2725742D1BD3E670001CB44F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		2725742E1BD3E670001CB44F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		272574301BD4066B001CB44F /* TrashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrashViewController.h; sourceTree = "<group>"; };
+		272574311BD4066B001CB44F /* TrashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrashViewController.m; sourceTree = "<group>"; };
+		272574341BD41CD3001CB44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		276280BA1B75FA2B00A0D831 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		276280BB1B75FA2B00A0D831 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		276280BC1B75FA2B00A0D831 /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
@@ -185,7 +198,6 @@
 		27ED34F31B67934100C86498 /* Beauteous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beauteous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED34F71B67934100C86498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27ED34F81B67934100C86498 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		27ED35011B67934100C86498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27ED35031B67934100C86498 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		27ED35061B67934100C86498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		27ED350C1B67934100C86498 /* BeauteousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeauteousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +242,19 @@
 			name = View;
 			path = Beauteous/Classes/View;
 			sourceTree = SOURCE_ROOT;
+		};
+		272574261BD3C839001CB44F /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				2725742D1BD3E670001CB44F /* MainViewController.h */,
+				2725742E1BD3E670001CB44F /* MainViewController.m */,
+				272574271BD3C839001CB44F /* LeftViewCell.h */,
+				272574281BD3C839001CB44F /* LeftViewCell.m */,
+				272574291BD3C839001CB44F /* LeftViewController.h */,
+				2725742A1BD3C839001CB44F /* LeftViewController.m */,
+			);
+			path = LeftMenu;
+			sourceTree = "<group>";
 		};
 		276280A71B75FA2B00A0D831 /* Resources */ = {
 			isa = PBXGroup;
@@ -346,6 +371,7 @@
 		27E4FCE01B67A8E5005CE9EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				272574261BD3C839001CB44F /* LeftMenu */,
 				27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */,
 				27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */,
 				27E4FCFD1B67EB63005CE9EB /* ComposeViewController.h */,
@@ -368,6 +394,8 @@
 				27D111181B749EF3003D3F8E /* AboutViewController.m */,
 				27D111201B74B107003D3F8E /* MarkViewController.h */,
 				27D111211B74B107003D3F8E /* MarkViewController.m */,
+				272574301BD4066B001CB44F /* TrashViewController.h */,
+				272574311BD4066B001CB44F /* TrashViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -424,7 +452,7 @@
 			children = (
 				276280A71B75FA2B00A0D831 /* Resources */,
 				27E4FCDF1B67A8E5005CE9EB /* Classes */,
-				27ED35001B67934100C86498 /* Main.storyboard */,
+				272574331BD41CD3001CB44F /* Main.storyboard */,
 				27ED35031B67934100C86498 /* Images.xcassets */,
 				27ED35051B67934100C86498 /* LaunchScreen.xib */,
 				27ED34F61B67934100C86498 /* Supporting Files */,
@@ -489,6 +517,7 @@
 				27ED34F01B67934100C86498 /* Frameworks */,
 				27ED34F11B67934100C86498 /* Resources */,
 				95908B48A49DFFDBC66EE4B5 /* Copy Pods Resources */,
+				174564F30B117A52A4AF4E11 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -508,6 +537,7 @@
 				27ED35091B67934100C86498 /* Frameworks */,
 				27ED350A1B67934100C86498 /* Resources */,
 				82BCD843E22E25378DE63ADD /* Copy Pods Resources */,
+				C4BD7C989163963588BEF07C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -569,7 +599,7 @@
 				276281171B76053400A0D831 /* 5_04.png in Resources */,
 				276280EE1B75FA2B00A0D831 /* Icon-Small-50.png in Resources */,
 				276281131B76053400A0D831 /* 4s_04.png in Resources */,
-				27ED35021B67934100C86498 /* Main.storyboard in Resources */,
+				272574351BD41CD3001CB44F /* Main.storyboard in Resources */,
 				276280F71B75FA2B00A0D831 /* Icon-27.5@2x.png in Resources */,
 				276280ED1B75FA2B00A0D831 /* Icon-72@2x.png in Resources */,
 				276280F81B75FA2B00A0D831 /* Icon-29@2x.png in Resources */,
@@ -642,6 +672,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		174564F30B117A52A4AF4E11 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		82BCD843E22E25378DE63ADD /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,6 +715,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4BD7C989163963588BEF07C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeauteousTests/Pods-BeauteousTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE8D284A3CA4653DFA081638 /* Check Pods Manifest.lock */ = {
@@ -701,17 +761,21 @@
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */,
 				27635E551B85B259003FD8AA /* BOParseManager.m in Sources */,
+				2725742B1BD3C839001CB44F /* LeftViewCell.m in Sources */,
 				27D111191B749EF3003D3F8E /* AboutViewController.m in Sources */,
 				27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
+				2725742F1BD3E670001CB44F /* MainViewController.m in Sources */,
 				27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */,
 				27E4FD021B67F258005CE9EB /* PreviewViewController.m in Sources */,
 				2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */,
 				27E4FCFC1B67E859005CE9EB /* BOUtility.m in Sources */,
 				27E4FCFF1B67EB63005CE9EB /* ComposeViewController.m in Sources */,
+				272574321BD4066B001CB44F /* TrashViewController.m in Sources */,
 				27E4FD0A1B68D584005CE9EB /* Note.m in Sources */,
 				2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */,
 				27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */,
+				2725742C1BD3C839001CB44F /* LeftViewController.m in Sources */,
 				27E4FD101B68F63C005CE9EB /* AllViewController.m in Sources */,
 				2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */,
 			);
@@ -735,10 +799,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		27ED35001B67934100C86498 /* Main.storyboard */ = {
+		272574331BD41CD3001CB44F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				27ED35011B67934100C86498 /* Base */,
+				272574341BD41CD3001CB44F /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

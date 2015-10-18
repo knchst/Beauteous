@@ -11,7 +11,7 @@
 #import "BOUtility.h"
 #import "Note.h"
 
-#import "Realm.h"
+#import <Realm/Realm.h>
 #import "Parse.h"
 
 #import "YALFoldingTabBarController.h"
@@ -34,52 +34,33 @@
 {
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
     [UINavigationBar appearance].tintColor = [UIColor blackColor];
-    [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
+    [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:19]};
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"Back"];
     [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"Back"];
+    
+    
     [UITextView appearance].tintColor = [UIColor blackColor];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]}];
-}
-
-- (void)setUpTabController
-{
-    YALFoldingTabBarController *tabBarController = (YALFoldingTabBarController*)self.window.rootViewController;
-    
-    UIImage *menu = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_MENU] withColor:[UIColor whiteColor]];
-    UIImage *settings = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_SETTINGS] withColor:[UIColor whiteColor]];
-    UIImage *pen = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_PEN] withColor:[UIColor whiteColor]];
-    UIImage *star = [BOUtility tintedImageFromImage:[UIImage imageNamed:BO_ICON_STAR] withColor:[UIColor whiteColor]];
-    
-    YALTabBarItem *item1 = [[YALTabBarItem alloc] initWithItemImage:menu
-                                                      leftItemImage:settings
-                                                     rightItemImage:pen];
-    
-    
-    YALTabBarItem *item2 = [[YALTabBarItem alloc] initWithItemImage:star
-                                                      leftItemImage:settings
-                                                     rightItemImage:pen];
-    
-    tabBarController.leftBarItems = @[item1];
-    tabBarController.rightBarItems = @[item2];
-    tabBarController.centerButtonImage = [UIImage imageNamed:@"plus_icon"];
-    tabBarController.selectedIndex = 0;
-    tabBarController.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight;
-    tabBarController.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset;
-    tabBarController.tabBarView.backgroundColor = [UIColor clearColor];
-    tabBarController.tabBarView.tabBarColor = [UIColor blackColor];
-    tabBarController.tabBarViewHeight = YALTabBarViewDefaultHeight;
-    tabBarController.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets;
-    tabBarController.tabBarView.tabBarItemsEdgeInsets = YALTabBarViewItemsDefaultEdgeInsets;
 }
 
 - (void)realmMigration
 {
     RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
+        
+        
+        if (oldSchemaVersion < 7) {
+            [migration enumerateObjects:Note.className
+                                 block:^(RLMObject *oldObject, RLMObject *newObject) {
+                                                     newObject[@"deleted"] = @NO;
+            }];
+        }
+        
+        
         NSLog(@"Migration complete.");
     };
-    [RLMRealm setDefaultRealmSchemaVersion:6 withMigrationBlock:migrationBlock];
+    [RLMRealm setDefaultRealmSchemaVersion:7 withMigrationBlock:migrationBlock];
 
-    [[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
+    //[[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -87,8 +68,7 @@
     
     [self setUpParse];
     [self setUpAppearance];
-    [self setUpTabController];
-    // [self realmMigration];
+    [self realmMigration];
     
     return YES;
 }

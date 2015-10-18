@@ -1,4 +1,5 @@
 PODS:
+  - AMWaveTransition (0.6.0)
   - Bolts/Tasks (1.2.0)
   - DZNEmptyDataSet (1.7.1)
   - EDHFontSelector (0.2.1):
@@ -7,6 +8,7 @@ PODS:
   - FoldingTabBar (1.0.1)
   - GHMarkdownParser (0.1.2)
   - Kiwi (2.4.0)
+  - LGSideMenuController (1.0.3)
   - MCSwipeTableViewCell (2.1.4)
   - Parse (1.8.0):
     - Bolts/Tasks (>= 1.2.0)
@@ -21,11 +23,13 @@ PODS:
   - UIImage-ResizeMagick (0.0.1)
 
 DEPENDENCIES:
+  - AMWaveTransition
   - DZNEmptyDataSet
   - EDHFontSelector
   - FoldingTabBar
   - GHMarkdownParser
   - Kiwi
+  - LGSideMenuController
   - MCSwipeTableViewCell
   - Parse
   - Realm
@@ -35,6 +39,7 @@ DEPENDENCIES:
   - UIImage-ResizeMagick
 
 SPEC CHECKSUMS:
+  AMWaveTransition: a00588006f144d289a390aabcfa1fa1e16bb9296
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   EDHFontSelector: a6f382c263073b0ca9cfc5d3e38de772c08d1640
@@ -42,6 +47,7 @@ SPEC CHECKSUMS:
   FoldingTabBar: 3e04c49dbe2b02c529561a4182bf017b928d04d2
   GHMarkdownParser: 14cbf59d0ab9450017d843dffd4a3ef691e5bd77
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  LGSideMenuController: 565ca94043437552cda5a88384e0a481169c3f32
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
   Parse: 6ea05adb378fbfd6f8726ab67ef74330d96fc903
   Realm: d999a6cf0b41577a077349c9cc9d496cc62a7d17
@@ -50,4 +56,4 @@ SPEC CHECKSUMS:
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

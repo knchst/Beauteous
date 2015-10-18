@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Kenichi Saito. All rights reserved.
 //
 
-#import "RLMObject.h"
+#import <Realm/Realm.h>
 
 @interface Note : RLMObject
 
@@ -17,6 +17,7 @@
 @property NSDate   *created_at;
 @property NSDate   *updated_at;
 @property BOOL     starred;
+@property BOOL     deleted;
 @property NSString *photoUrl;
 
 @end

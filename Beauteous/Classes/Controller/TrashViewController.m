@@ -1,14 +1,15 @@
 //
-//  AllViewController.m
+//  TrashViewController.m
 //  Beauteous
 //
-//  Created by Kenichi Saito on 7/29/15.
-//  Copyright (c) 2015 Kenichi Saito. All rights reserved.
+//  Created by Kenichi Saito on 10/19/15.
+//  Copyright © 2015 Kenichi Saito. All rights reserved.
 //
+
+#import "TrashViewController.h"
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-#import "AllViewController.h"
 #import "PreviewViewController.h"
 #import "BOUtility.h"
 #import "BOConst.h"
@@ -24,24 +25,19 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "AMWaveTransition.h"
 
-@interface AllViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface TrashViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UISearchController *searchViewController;
-@property (strong, nonatomic) RLMResults *searchResults;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
-@implementation AllViewController
-
-#pragma mark - Life Cycle
+@implementation TrashViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"All";
+    self.title = @"Trash";
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -51,26 +47,19 @@
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    [self setUpSearchViewController];
+    //    self.edgesForExtendedLayout = UIRectEdgeAll;
+    //    self.extendedLayoutIncludesOpaqueBars = YES;
+    //    self.definesPresentationContext = YES;
     
-//    self.edgesForExtendedLayout = UIRectEdgeAll;
-//    self.extendedLayoutIncludesOpaqueBars = YES;
-//    self.definesPresentationContext = YES;
-
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(write)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [[NoteManager sharedManager] fetchAllNotes];
+    [[NoteManager sharedManager] fetchAllDeletedNotes];
     [self.tableView reloadData];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -83,10 +72,6 @@
 {
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarHidden = NO;
-    if (self.searchViewController.active) {
-        self.searchViewController.active = NO;
-        [self.searchViewController.searchBar removeFromSuperview];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,49 +84,16 @@
     [self.navigationController setDelegate:nil];
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    CGRect keyboardFrame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    self.bottomConstraint.constant = keyboardFrame.size.height;
-    
-    [UIView animateWithDuration:duration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    self.bottomConstraint.constant = 0;
-    
-    [UIView animateWithDuration:duration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.searchViewController.active) {
-        return self.searchResults.count;
-    }
-    
     return [NoteManager sharedManager].notes.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Note *note = nil;
-    
-    if (self.searchViewController.active) {
-        note = self.searchResults[indexPath.row];
-    } else {
-        note = [NoteManager sharedManager].notes[indexPath.row];
-    }
+    Note *note = [NoteManager sharedManager].notes[indexPath.row];
     
     if ([note.photoUrl isEqualToString:@""]) {
         
@@ -153,7 +105,7 @@
         
         return cell;
     }
-
+    
     PhotoAllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BO_CELL_PHOTO];
     if (cell == nil) {
         cell = [[PhotoAllTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BO_CELL_PHOTO];
@@ -167,53 +119,45 @@
 {
     Note *note = nil;
     
-    if (self.searchViewController.active) {
-        note = self.searchResults[indexPath.row];
-    } else {
-        note = [NoteManager sharedManager].notes[indexPath.row];
-    }
+    note = [NoteManager sharedManager].notes[indexPath.row];
     
     [cell setDate:note];
     
-    __weak AllViewController *weakSelf = self;
+    __weak TrashViewController *weakSelf = self;
     
-    UIImage *image = [UIImage imageNamed:BO_ICON_STAR];
-    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
-    UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BO_ICON_TRASH]];
     
-    if (note.starred) {
-        starImage.tintColor = [UIColor blackColor];
-    } else {
-        starImage.tintColor = [BOUtility yellowColor];
-    }
-    
-    [cell setSwipeGestureWithView:starImage
+    [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]
                              mode:MCSwipeTableViewCellModeSwitch
                             state:MCSwipeTableViewCellState1
                   completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                       // Update Method
                       
-                      [[NoteManager sharedManager] starringNote:note];
+                      [[NoteManager sharedManager] deleteObject:note];
                       [weakSelf.tableView reloadData];
                       
-    }];
+                  }];
     
-    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BO_ICON_TRASH]];
-
-    [cell setSwipeGestureWithView:deleteImage
+    UIImage *image = [UIImage imageNamed:BO_ICON_TRASH];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+    UIImageView *deleteForever = [[UIImageView alloc] initWithImage:image];
+    deleteForever.tintColor = [UIColor redColor];
+    
+    [cell setSwipeGestureWithView:deleteForever
                             color:[UIColor whiteColor]
                              mode:MCSwipeTableViewCellModeSwitch
                             state:MCSwipeTableViewCellState3
                   completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                       
-                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the note?" preferredStyle:UIAlertControllerStyleAlert];
+                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the note forever?" preferredStyle:UIAlertControllerStyleAlert];
                       UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                           [alert dismissViewControllerAnimated:YES completion:nil];
                       }];
                       UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
-                          [[NoteManager sharedManager] deleteObject:note];
+                          [[NoteManager sharedManager] deleteForever:note];
                           [weakSelf.tableView reloadData];
                       }];
                       
@@ -221,60 +165,52 @@
                       [alert addAction:yesAction];
                       
                       [weakSelf presentViewController:alert animated:YES completion:nil];
-    }];
+                  }];
 }
 
 - (void)configurePhotoCell:(PhotoAllTableViewCell*)cell andIndexPath:(NSIndexPath *)indexPath
 {
     Note *note = nil;
     
-    if (self.searchViewController.active) {
-        note = self.searchResults[indexPath.row];
-    } else {
-        note = [NoteManager sharedManager].notes[indexPath.row];
-    }
+    note = [NoteManager sharedManager].notes[indexPath.row];
     
     [cell setDate:note];
     
-    __weak AllViewController *weakSelf = self;
+    __weak TrashViewController *weakSelf = self;
     
-    UIImage *image = [UIImage imageNamed:BO_ICON_STAR];
-    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    
-    UIImageView *starImage = [[UIImageView alloc] initWithImage:image];
-    
-    if (note.starred) {
-        starImage.tintColor = [UIColor blackColor];
-    } else {
-        starImage.tintColor = [BOUtility yellowColor];
-    }
-    
-    [cell setSwipeGestureWithView:starImage
-                            color:[UIColor whiteColor]
-                             mode:MCSwipeTableViewCellModeSwitch
-                            state:MCSwipeTableViewCellState1
-                  completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                      // Update Method
-                      
-                      [[NoteManager sharedManager] starringNote:note];
-                      [weakSelf.tableView reloadData];
-                      
-                  }];
     
     UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BO_ICON_TRASH]];
     
     [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]
                              mode:MCSwipeTableViewCellModeSwitch
+                            state:MCSwipeTableViewCellState1
+                  completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                      // Update Method
+                      
+                      [[NoteManager sharedManager] deleteObject:note];
+                      [weakSelf.tableView reloadData];
+                      
+                  }];
+    
+    UIImage *image = [UIImage imageNamed:BO_ICON_TRASH];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+    UIImageView *deleteForever = [[UIImageView alloc] initWithImage:image];
+    deleteForever.tintColor = [UIColor redColor];
+    
+    [cell setSwipeGestureWithView:deleteForever
+                            color:[UIColor whiteColor]
+                             mode:MCSwipeTableViewCellModeSwitch
                             state:MCSwipeTableViewCellState3
                   completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                       
-                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the cell?" preferredStyle:UIAlertControllerStyleAlert];
+                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete?" message:@"Are you sure want to delete the note forever?" preferredStyle:UIAlertControllerStyleAlert];
                       UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                           [alert dismissViewControllerAnimated:YES completion:nil];
                       }];
                       UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
-                          [[NoteManager sharedManager] deleteObject:note];
+                          [[NoteManager sharedManager] deleteForever:note];
                           [weakSelf.tableView reloadData];
                       }];
                       
@@ -290,15 +226,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Note *note;
-    
-    if (self.searchViewController.active) {
-        note = self.searchResults[indexPath.row];
-    } else {
-        note = [NoteManager sharedManager].notes[indexPath.row];
-    }
+    note = [NoteManager sharedManager].notes[indexPath.row];
     
     NSLog(@"%@", note);
-        
+    
     DetailViewController *detailVC = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Detail"];
     detailVC.note = note;
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
@@ -310,7 +241,7 @@
     if ([BOUtility checkDevice]) {
         return 150;
     }
-        
+    
     return 100;
 }
 
@@ -318,20 +249,14 @@
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
-    if (self.searchViewController.active) {
-        return [UIImage imageNamed:@"sad53"];
-    }
-    return [UIImage imageNamed:@"Pen-100"];
+    return [UIImage imageNamed:@"Trash-512"];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
     NSString *text;
-    if (self.searchViewController.active) {
-        text = @"No results.";
-    } else {
-        text = @"Let's write your first note.";
-    }
+    text = @"No deleted note.";
+    
     
     NSDictionary *attributes = @{NSFontAttributeName: [BOUtility fontTypeHeavyWithSize:20],
                                  NSForegroundColorAttributeName: [UIColor blackColor]};
@@ -342,11 +267,7 @@
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
     NSString *text;
-    if (self.searchViewController.active) {
-        text = [NSString stringWithFormat:@"We couldn’t find any notes matching '%@'", self.searchViewController.searchBar.text];
-    } else {
-        text = @"All notes you write will display here.To swipe right can star note and to swipe left can delete note.";
-    }
+    text = @"There are no deleted notes.You can meke your notes undeleted to swipe right and swipe left to delete note forever.";
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -362,45 +283,6 @@
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
 {
     return self.tableView.tableHeaderView.frame.size.height/3.0f;
-}
-
-#pragma mark - SearchViewController
-
-- (void)setUpSearchViewController
-{
-    self.searchViewController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    self.searchViewController.searchResultsUpdater = self;
-    self.searchViewController.delegate = self;
-    self.searchViewController.dimsBackgroundDuringPresentation = NO;
-    self.searchViewController.searchBar.backgroundColor = [UIColor clearColor];
-    self.searchViewController.searchBar.tintColor = [UIColor blackColor];
-    self.searchViewController.searchBar.barTintColor = [UIColor whiteColor];
-    self.searchViewController.searchBar.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.searchViewController.searchBar.layer.borderWidth = 1.0;
-    self.searchViewController.searchBar.placeholder = @"Tap to Search";
-    self.searchViewController.searchBar.delegate = self;
-    [self.searchViewController.searchBar sizeToFit];
-    
-    self.tableView.tableHeaderView = self.searchViewController.searchBar;
-}
-
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
-{
-    self.searchResults = nil;
-    NSString *searchString = [NSString stringWithFormat:@"planeString CONTAINS[c] '%@'", self.searchViewController.searchBar.text];
-    NSLog(@"%@", searchString);
-    self.searchResults = [[NoteManager sharedManager].notes objectsWhere:searchString];
-    [self.tableView reloadData];
-}
-
-- (void)willPresentSearchController:(UISearchController *)searchController
-{
-    searchController.searchBar.placeholder = @"Search";
-}
-
-- (void)willDismissSearchController:(UISearchController *)searchController
-{
-    searchController.searchBar.placeholder = @"Tap to Search";
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -425,12 +307,6 @@
 - (void)openLeftView
 {
     [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
-}
-
-- (void)write
-{
-    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 /*

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Note.h"
 
-#import "Realm.h"
+#import <Realm/Realm.h>
 
 @interface NoteManager : NSObject
 
@@ -17,8 +17,10 @@
 
 + (NoteManager*)sharedManager;
 - (void)fetchAllNotes;
+- (void)fetchAllDeletedNotes;
 - (void)saveNoteWithDictionary:(NSMutableDictionary*)dictionary;
 - (void)deleteObject:(Note*)note;
+- (void)deleteForever:(Note*)note;
 - (void)updateNoteWithDictionary:(NSMutableDictionary*)dictionary andNote:(Note*)note;
 - (RLMResults*)getNoteWithPrimaryKey:(NSString *)key;
 - (void)starringNote:(Note *)note;

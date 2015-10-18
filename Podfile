@@ -9,6 +9,8 @@ pod 'GHMarkdownParser'
 pod 'RFKeyboardToolbar'
 pod 'MCSwipeTableViewCell'
 pod 'UIImage-ResizeMagick'
+pod 'AMWaveTransition'
+pod 'LGSideMenuController'
 
 target :BeauteousTests do
   pod 'Kiwi'
