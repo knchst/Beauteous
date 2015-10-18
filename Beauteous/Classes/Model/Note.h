@@ -17,6 +17,7 @@
 @property NSDate   *created_at;
 @property NSDate   *updated_at;
 @property BOOL     starred;
+@property BOOL     deleted;
 @property NSString *photoUrl;
 
 @end

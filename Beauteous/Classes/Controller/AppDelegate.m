@@ -48,7 +48,7 @@
     RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
         NSLog(@"Migration complete.");
     };
-    [RLMRealm setDefaultRealmSchemaVersion:6 withMigrationBlock:migrationBlock];
+    [RLMRealm setDefaultRealmSchemaVersion:7 withMigrationBlock:migrationBlock];
 
     [[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
 }
@@ -58,7 +58,7 @@
     
     [self setUpParse];
     [self setUpAppearance];
-    // [self realmMigration];
+    [self realmMigration];
     
     return YES;
 }

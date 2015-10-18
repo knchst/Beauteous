@@ -32,12 +32,21 @@ static NoteManager *sharedManager = nil;
 
 - (void)fetchAllNotes
 {
-    self.notes = [[Note allObjects] sortedResultsUsingProperty:@"updated_at" ascending:NO];
+    //self.notes = [[Note allObjects] sortedResultsUsingProperty:@"updated_at" ascending:NO];
+    
+    RLMResults *notes = [Note objectsWhere:@"deleted = NO"];
+    self.notes = [notes sortedResultsUsingProperty:@"updated_at" ascending:NO];
 }
 
 - (void)fetchAllStarredNotes
 {
     RLMResults *notes = [Note objectsWhere:@"starred = YES"];
+    self.notes = [notes sortedResultsUsingProperty:@"updated_at" ascending:NO];
+}
+
+- (void)fetchAllDeletedNotes
+{
+    RLMResults *notes = [Note objectsWhere:@"deleted = YES"];
     self.notes = [notes sortedResultsUsingProperty:@"updated_at" ascending:NO];
 }
 
@@ -76,6 +85,7 @@ static NoteManager *sharedManager = nil;
     new_note.updated_at = dictionary[@"updated_at"];
     new_note.id = [dictionary[@"id"] integerValue];
     new_note.starred = note.starred;
+    new_note.deleted = note.deleted;
     new_note.photoUrl = [self detectPhotoURLWithString:dictionary[@"photoUrl"]];
     
     [[RLMRealm defaultRealm] beginWriteTransaction];
@@ -91,6 +101,7 @@ static NoteManager *sharedManager = nil;
     new_note.htmlString = note.htmlString;
     new_note.updated_at = note.updated_at;
     new_note.id = note.id;
+    new_note.deleted = note.deleted;
     new_note.photoUrl = [self detectPhotoURLWithString:note.planeString];
     
     if (note.starred) {
@@ -105,6 +116,29 @@ static NoteManager *sharedManager = nil;
 }
 
 - (void)deleteObject:(Note*)note
+{
+    Note *new_note = [[Note alloc] init];
+    new_note.title = note.title;
+    new_note.planeString = note.planeString;
+    new_note.htmlString = note.htmlString;
+    new_note.updated_at = note.updated_at;
+    new_note.id = note.id;
+    new_note.starred = note.starred;
+    new_note.photoUrl = [self detectPhotoURLWithString:note.planeString];
+    
+    if (note.deleted) {
+        new_note.deleted = NO;
+    } else {
+        new_note.deleted = YES;
+    }
+    
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [Note createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:new_note];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+
+}
+
+- (void)deleteForever:(Note*)note
 {
     [[RLMRealm defaultRealm] beginWriteTransaction];
     [[RLMRealm defaultRealm] deleteObject:note];

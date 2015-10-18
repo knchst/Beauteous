@@ -15,6 +15,7 @@
 		2725742B1BD3C839001CB44F /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574281BD3C839001CB44F /* LeftViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		2725742C1BD3C839001CB44F /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742A1BD3C839001CB44F /* LeftViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2725742F1BD3E670001CB44F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742E1BD3E670001CB44F /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		272574321BD4066B001CB44F /* TrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574311BD4066B001CB44F /* TrashViewController.m */; settings = {ASSET_TAGS = (); }; };
 		276280E11B75FA2B00A0D831 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BA1B75FA2B00A0D831 /* Icon-40.png */; };
 		276280E21B75FA2B00A0D831 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BB1B75FA2B00A0D831 /* Icon-40@2x.png */; };
 		276280E31B75FA2B00A0D831 /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BC1B75FA2B00A0D831 /* Icon-40@3x.png */; };
@@ -114,6 +115,8 @@
 		2725742A1BD3C839001CB44F /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		2725742D1BD3E670001CB44F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		2725742E1BD3E670001CB44F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		272574301BD4066B001CB44F /* TrashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrashViewController.h; sourceTree = "<group>"; };
+		272574311BD4066B001CB44F /* TrashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrashViewController.m; sourceTree = "<group>"; };
 		276280BA1B75FA2B00A0D831 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		276280BB1B75FA2B00A0D831 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		276280BC1B75FA2B00A0D831 /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
@@ -391,6 +394,8 @@
 				27D111181B749EF3003D3F8E /* AboutViewController.m */,
 				27D111201B74B107003D3F8E /* MarkViewController.h */,
 				27D111211B74B107003D3F8E /* MarkViewController.m */,
+				272574301BD4066B001CB44F /* TrashViewController.h */,
+				272574311BD4066B001CB44F /* TrashViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */,
 				27E4FCFC1B67E859005CE9EB /* BOUtility.m in Sources */,
 				27E4FCFF1B67EB63005CE9EB /* ComposeViewController.m in Sources */,
+				272574321BD4066B001CB44F /* TrashViewController.m in Sources */,
 				27E4FD0A1B68D584005CE9EB /* Note.m in Sources */,
 				2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */,
 				27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */,
