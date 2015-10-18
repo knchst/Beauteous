@@ -34,7 +34,7 @@
 {
     [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
     [UINavigationBar appearance].tintColor = [UIColor blackColor];
-    [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
+    [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:19]};
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"Back"];
     [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"Back"];
     [UITextView appearance].tintColor = [UIColor blackColor];

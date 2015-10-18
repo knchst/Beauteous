@@ -57,10 +57,9 @@
     
 //    self.edgesForExtendedLayout = UIRectEdgeAll;
 //    self.extendedLayoutIncludesOpaqueBars = YES;
-    self.definesPresentationContext = YES;
-    
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Left" style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
+    //self.definesPresentationContext = YES;
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
 }
 
 - (void)viewWillAppear:(BOOL)animated

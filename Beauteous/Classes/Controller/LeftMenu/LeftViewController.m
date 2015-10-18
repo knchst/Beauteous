@@ -72,8 +72,19 @@
     } else {
         cell.userInteractionEnabled = YES;
         cell.textLabel.font = [BOUtility fontTypeBookWithSize:20];
+        
+        if (indexPath.row == 2) {
+            cell.imageView.image = [[UIImage imageNamed:@"Note"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        } else if (indexPath.row == 3) {
+            cell.imageView.image = [[UIImage imageNamed:@"Star"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        } else if (indexPath.row == 4) {
+            cell.imageView.image = [[UIImage imageNamed:@"Trash"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        } else if (indexPath.row == 6) {
+            cell.imageView.image = [[UIImage imageNamed:@"Settings"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        }
     }
     
+    cell.imageView.tintColor = [UIColor whiteColor];
     cell.tintColor = _tintColor;
     
     return cell;
@@ -88,6 +99,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"index is %ld", (long)indexPath.row);
+    
+    if (indexPath.row != 0 && indexPath.row != 5) {
+        
+        UIViewController *viewController;
+        
+        if (indexPath.row == 2) {
+            viewController = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"All"];
+        } else if (indexPath.row == 3) {
+            viewController = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Starred"];
+        } else if (indexPath.row == 4) {
+            viewController = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Trash"];
+        } else if (indexPath.row == 6) {
+            viewController = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Settings"];
+        }
+        
+            
+        [kNavigationController pushViewController:viewController animated:YES];
+        [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
+    }
 }
 
 @end
