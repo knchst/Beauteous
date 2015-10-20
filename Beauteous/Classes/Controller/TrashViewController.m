@@ -126,7 +126,7 @@
     __weak TrashViewController *weakSelf = self;
     
     
-    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BO_ICON_TRASH]];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Undo"]];
     
     [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]
@@ -179,7 +179,7 @@
     __weak TrashViewController *weakSelf = self;
     
     
-    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BO_ICON_TRASH]];
+    UIImageView *deleteImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Undo"]];
     
     [cell setSwipeGestureWithView:deleteImage
                             color:[UIColor whiteColor]

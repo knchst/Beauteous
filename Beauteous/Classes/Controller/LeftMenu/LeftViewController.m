@@ -12,6 +12,7 @@
 #import "LeftViewCell.h"
 #import "MainViewController.h"
 #import "BOUtility.h"
+#import <Social/Social.h>
 
 @interface LeftViewController ()
 
@@ -25,7 +26,7 @@
 {
     [super awakeFromNib];
     
-    _titlesArray = @[@"Beauteous",
+    _titlesArray = @[@"eauteous",
                      @"",
                      @"All",
                      @"Starred",
@@ -64,11 +65,19 @@
     LeftViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LeftCell"];
     
     cell.textLabel.text = _titlesArray[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.separatorView.hidden = YES;
     
     if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 5) {
         cell.userInteractionEnabled = NO;
         cell.textLabel.font = [BOUtility fontTypeBookWithSize:25];
+        
+        if (indexPath.row == 0) {
+            cell.userInteractionEnabled = YES;
+            cell.imageView.image = [UIImage imageNamed:@"Icon-29"];
+            cell.imageView.layer.cornerRadius = 6.0f;
+        }
+        
     } else {
         cell.userInteractionEnabled = YES;
         cell.textLabel.font = [BOUtility fontTypeBookWithSize:20];
@@ -116,6 +125,14 @@
         
         [kNavigationController pushViewController:viewController animated:YES];
         [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
+        
+    } else if (indexPath.row == 0) {
+        SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [vc setInitialText:@"Beauteous - Markdown Editor for iOS - https://itun.es/i6Sk4Hv #beauteous_app"];
+        vc.completionHandler =^(SLComposeViewControllerResult result){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        };
+        [self presentViewController:vc animated:YES completion:nil];
     }
 }
 
