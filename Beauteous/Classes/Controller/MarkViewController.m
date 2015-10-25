@@ -9,9 +9,8 @@
 #import "MarkViewController.h"
 #import "BOUtility.h"
 #import "ComposeViewController.h"
-#import "YALTabBarInteracting.h"
 
-@interface MarkViewController () <YALTabBarInteracting>
+@interface MarkViewController ()
 
 @end
 
@@ -21,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     CGRect rect = [UIScreen mainScreen].bounds;
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, rect.size.width, rect.size.height - 64)];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:rect];
     [webView loadHTMLString:[BOUtility renderHTMLWithString:_string] baseURL:nil];
     [self.view addSubview:webView];
 }
@@ -34,50 +33,6 @@
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
-}
-
-#define debug 1
-
-#pragma mark - YALTabBarInteracting
-
-- (void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraLeftItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraRightItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 /*

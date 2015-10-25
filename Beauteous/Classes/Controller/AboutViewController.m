@@ -12,9 +12,7 @@
 #import "SettingsViewController.h"
 #import "ComposeViewController.h"
 
-#import "YALTabBarInteracting.h"
-
-@interface AboutViewController () <UITableViewDataSource, UITableViewDelegate, YALTabBarInteracting>
+@interface AboutViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -34,7 +32,7 @@
                    @"License"];
     
     CGRect rect = [UIScreen mainScreen].bounds;
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, rect.size.width, rect.size.height - 64)];
+    _tableView = [[UITableView alloc] initWithFrame:rect];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -132,51 +130,6 @@
 {
     return NO;
 }
-
-#define debug 1
-
-#pragma mark - YALTabBarInteracting
-
-- (void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraLeftItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraRightItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
-}
-
 
 /*
 #pragma mark - Navigation

@@ -41,6 +41,7 @@
     
     [UITextView appearance].tintColor = [UIColor blackColor];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]}];
+
 }
 
 - (void)realmMigration

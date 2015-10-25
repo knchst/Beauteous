@@ -12,11 +12,11 @@
 		2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C81B70C4050083D487 /* AllTableViewCell.m */; };
 		2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CB1B710DAC0083D487 /* EditViewController.m */; };
 		2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CE1B710E460083D487 /* DetailViewController.m */; };
-		2725742B1BD3C839001CB44F /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574281BD3C839001CB44F /* LeftViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		2725742C1BD3C839001CB44F /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742A1BD3C839001CB44F /* LeftViewController.m */; settings = {ASSET_TAGS = (); }; };
-		2725742F1BD3E670001CB44F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742E1BD3E670001CB44F /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
-		272574321BD4066B001CB44F /* TrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574311BD4066B001CB44F /* TrashViewController.m */; settings = {ASSET_TAGS = (); }; };
-		272574351BD41CD3001CB44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 272574331BD41CD3001CB44F /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		2725742B1BD3C839001CB44F /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574281BD3C839001CB44F /* LeftViewCell.m */; };
+		2725742C1BD3C839001CB44F /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742A1BD3C839001CB44F /* LeftViewController.m */; };
+		2725742F1BD3E670001CB44F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742E1BD3E670001CB44F /* MainViewController.m */; };
+		272574321BD4066B001CB44F /* TrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574311BD4066B001CB44F /* TrashViewController.m */; };
+		272574351BD41CD3001CB44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 272574331BD41CD3001CB44F /* Main.storyboard */; };
 		276280E11B75FA2B00A0D831 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BA1B75FA2B00A0D831 /* Icon-40.png */; };
 		276280E21B75FA2B00A0D831 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BB1B75FA2B00A0D831 /* Icon-40@2x.png */; };
 		276280E31B75FA2B00A0D831 /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BC1B75FA2B00A0D831 /* Icon-40@3x.png */; };
@@ -64,6 +64,21 @@
 		27635E511B85AE9A003FD8AA /* iPad_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4E1B85AE9A003FD8AA /* iPad_02.png */; };
 		27635E521B85AE9A003FD8AA /* iPad_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4F1B85AE9A003FD8AA /* iPad_03.png */; };
 		27635E551B85B259003FD8AA /* BOParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27635E541B85B259003FD8AA /* BOParseManager.m */; };
+		27A446B91BDCCF9D00D796FB /* 3.5-inch (iPhone 4) - Screenshot 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446AA1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 1.jpg */; };
+		27A446BA1BDCCF9D00D796FB /* 3.5-inch (iPhone 4) - Screenshot 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446AB1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 2.jpg */; };
+		27A446BB1BDCCF9D00D796FB /* 3.5-inch (iPhone 4) - Screenshot 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446AC1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 3.jpg */; };
+		27A446BC1BDCCF9D00D796FB /* 4-inch (iPhone 5) - Screenshot 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446AD1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 1.jpg */; };
+		27A446BD1BDCCF9D00D796FB /* 4-inch (iPhone 5) - Screenshot 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446AE1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 2.jpg */; };
+		27A446BE1BDCCF9D00D796FB /* 4-inch (iPhone 5) - Screenshot 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446AF1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 3.jpg */; };
+		27A446BF1BDCCF9D00D796FB /* 4.7-inch (iPhone 6) - Screenshot 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B01BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 1.jpg */; };
+		27A446C01BDCCF9D00D796FB /* 4.7-inch (iPhone 6) - Screenshot 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B11BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 2.jpg */; };
+		27A446C11BDCCF9D00D796FB /* 4.7-inch (iPhone 6) - Screenshot 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B21BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 3.jpg */; };
+		27A446C21BDCCF9D00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B31BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 1.jpg */; };
+		27A446C31BDCCF9D00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B41BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 2.jpg */; };
+		27A446C41BDCCF9D00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B51BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 3.jpg */; };
+		27A446C51BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B61BDCCF9C00D796FB /* 9.7-inch (iPad) - Screenshot 1.jpg */; };
+		27A446C61BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B71BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 2.jpg */; };
+		27A446C71BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B81BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 3.jpg */; };
 		27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */; };
 		27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */; };
 		27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111091B73BE1F003D3F8E /* PdfViewController.m */; };
@@ -166,6 +181,21 @@
 		27635E4F1B85AE9A003FD8AA /* iPad_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_03.png; sourceTree = "<group>"; };
 		27635E531B85B259003FD8AA /* BOParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOParseManager.h; sourceTree = "<group>"; };
 		27635E541B85B259003FD8AA /* BOParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOParseManager.m; sourceTree = "<group>"; };
+		27A446AA1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3.5-inch (iPhone 4) - Screenshot 1.jpg"; sourceTree = "<group>"; };
+		27A446AB1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3.5-inch (iPhone 4) - Screenshot 2.jpg"; sourceTree = "<group>"; };
+		27A446AC1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3.5-inch (iPhone 4) - Screenshot 3.jpg"; sourceTree = "<group>"; };
+		27A446AD1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4-inch (iPhone 5) - Screenshot 1.jpg"; sourceTree = "<group>"; };
+		27A446AE1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4-inch (iPhone 5) - Screenshot 2.jpg"; sourceTree = "<group>"; };
+		27A446AF1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4-inch (iPhone 5) - Screenshot 3.jpg"; sourceTree = "<group>"; };
+		27A446B01BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4.7-inch (iPhone 6) - Screenshot 1.jpg"; sourceTree = "<group>"; };
+		27A446B11BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4.7-inch (iPhone 6) - Screenshot 2.jpg"; sourceTree = "<group>"; };
+		27A446B21BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4.7-inch (iPhone 6) - Screenshot 3.jpg"; sourceTree = "<group>"; };
+		27A446B31BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "5.5-inch (iPhone 6+) - Screenshot 1.jpg"; sourceTree = "<group>"; };
+		27A446B41BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "5.5-inch (iPhone 6+) - Screenshot 2.jpg"; sourceTree = "<group>"; };
+		27A446B51BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "5.5-inch (iPhone 6+) - Screenshot 3.jpg"; sourceTree = "<group>"; };
+		27A446B61BDCCF9C00D796FB /* 9.7-inch (iPad) - Screenshot 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "9.7-inch (iPad) - Screenshot 1.jpg"; sourceTree = "<group>"; };
+		27A446B71BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "9.7-inch (iPad) - Screenshot 2.jpg"; sourceTree = "<group>"; };
+		27A446B81BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "9.7-inch (iPad) - Screenshot 3.jpg"; sourceTree = "<group>"; };
 		27D110FC1B73359C003D3F8E /* CustomRFToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRFToolbarButton.h; sourceTree = "<group>"; };
 		27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRFToolbarButton.m; sourceTree = "<group>"; };
 		27D111021B734701003D3F8E /* PhotoAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAllTableViewCell.h; sourceTree = "<group>"; };
@@ -259,6 +289,7 @@
 		276280A71B75FA2B00A0D831 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27A446A91BDCCF9C00D796FB /* SS */,
 				276280FE1B76053400A0D831 /* ScreenShot */,
 				276280A81B75FA2B00A0D831 /* icon */,
 			);
@@ -355,6 +386,28 @@
 				27635E4F1B85AE9A003FD8AA /* iPad_03.png */,
 			);
 			path = ScreenShot;
+			sourceTree = "<group>";
+		};
+		27A446A91BDCCF9C00D796FB /* SS */ = {
+			isa = PBXGroup;
+			children = (
+				27A446AA1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 1.jpg */,
+				27A446AB1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 2.jpg */,
+				27A446AC1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 3.jpg */,
+				27A446AD1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 1.jpg */,
+				27A446AE1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 2.jpg */,
+				27A446AF1BDCCF9C00D796FB /* 4-inch (iPhone 5) - Screenshot 3.jpg */,
+				27A446B01BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 1.jpg */,
+				27A446B11BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 2.jpg */,
+				27A446B21BDCCF9C00D796FB /* 4.7-inch (iPhone 6) - Screenshot 3.jpg */,
+				27A446B31BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 1.jpg */,
+				27A446B41BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 2.jpg */,
+				27A446B51BDCCF9C00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 3.jpg */,
+				27A446B61BDCCF9C00D796FB /* 9.7-inch (iPad) - Screenshot 1.jpg */,
+				27A446B71BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 2.jpg */,
+				27A446B81BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 3.jpg */,
+			);
+			path = SS;
 			sourceTree = "<group>";
 		};
 		27E4FCDF1B67A8E5005CE9EB /* Classes */ = {
@@ -592,10 +645,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A446C01BDCCF9D00D796FB /* 4.7-inch (iPhone 6) - Screenshot 2.jpg in Resources */,
 				276281151B76053400A0D831 /* 5_02.png in Resources */,
 				276280E51B75FA2B00A0D831 /* Icon-60@3x.png in Resources */,
 				276281161B76053400A0D831 /* 5_03.png in Resources */,
 				2762811E1B76053400A0D831 /* 6_03.png in Resources */,
+				27A446C11BDCCF9D00D796FB /* 4.7-inch (iPhone 6) - Screenshot 3.jpg in Resources */,
 				276281171B76053400A0D831 /* 5_04.png in Resources */,
 				276280EE1B75FA2B00A0D831 /* Icon-Small-50.png in Resources */,
 				276281131B76053400A0D831 /* 4s_04.png in Resources */,
@@ -603,18 +658,26 @@
 				276280F71B75FA2B00A0D831 /* Icon-27.5@2x.png in Resources */,
 				276280ED1B75FA2B00A0D831 /* Icon-72@2x.png in Resources */,
 				276280F81B75FA2B00A0D831 /* Icon-29@2x.png in Resources */,
+				27A446BC1BDCCF9D00D796FB /* 4-inch (iPhone 5) - Screenshot 1.jpg in Resources */,
 				27E4FD041B67F665005CE9EB /* github-markdown.css in Resources */,
 				27635E511B85AE9A003FD8AA /* iPad_02.png in Resources */,
+				27A446B91BDCCF9D00D796FB /* 3.5-inch (iPhone 4) - Screenshot 1.jpg in Resources */,
 				276280F21B75FA2B00A0D831 /* iTunesArtwork.png in Resources */,
 				276281141B76053400A0D831 /* 5_01.png in Resources */,
 				276280F11B75FA2B00A0D831 /* Icon@2x.png in Resources */,
 				2762811F1B76053400A0D831 /* 6_04.png in Resources */,
 				276280E71B75FA2B00A0D831 /* Icon-76@2x.png in Resources */,
+				27A446C71BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 3.jpg in Resources */,
+				27A446BD1BDCCF9D00D796FB /* 4-inch (iPhone 5) - Screenshot 2.jpg in Resources */,
+				27A446BE1BDCCF9D00D796FB /* 4-inch (iPhone 5) - Screenshot 3.jpg in Resources */,
+				27A446C61BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 2.jpg in Resources */,
+				27A446C21BDCCF9D00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 1.jpg in Resources */,
 				27ED35071B67934100C86498 /* LaunchScreen.xib in Resources */,
 				276280EA1B75FA2B00A0D831 /* Icon-Small@3x.png in Resources */,
 				276281121B76053400A0D831 /* 4s_03.png in Resources */,
 				276280EF1B75FA2B00A0D831 /* Icon-Small-50@2x.png in Resources */,
 				27D111261B74B616003D3F8E /* markdown.txt in Resources */,
+				27A446BB1BDCCF9D00D796FB /* 3.5-inch (iPhone 4) - Screenshot 3.jpg in Resources */,
 				276281111B76053400A0D831 /* 4s_02.png in Resources */,
 				276280F31B75FA2B00A0D831 /* iTunesArtwork@2x.png in Resources */,
 				276280E41B75FA2B00A0D831 /* Icon-60@2x.png in Resources */,
@@ -632,10 +695,13 @@
 				276281181B76053400A0D831 /* 6+_01.png in Resources */,
 				276280E31B75FA2B00A0D831 /* Icon-40@3x.png in Resources */,
 				27ED35041B67934100C86498 /* Images.xcassets in Resources */,
+				27A446C41BDCCF9D00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 3.jpg in Resources */,
 				276280FB1B75FA2B00A0D831 /* Icon-44@2x.png in Resources */,
 				276280F61B75FA2B00A0D831 /* Icon-24@2x.png in Resources */,
 				276280E81B75FA2B00A0D831 /* Icon-Small.png in Resources */,
 				276280E91B75FA2B00A0D831 /* Icon-Small@2x.png in Resources */,
+				27A446BF1BDCCF9D00D796FB /* 4.7-inch (iPhone 6) - Screenshot 1.jpg in Resources */,
+				27A446C31BDCCF9D00D796FB /* 5.5-inch (iPhone 6+) - Screenshot 2.jpg in Resources */,
 				276280FC1B75FA2B00A0D831 /* Icon-86@2x.png in Resources */,
 				27D111241B74B544003D3F8E /* License.txt in Resources */,
 				2762811C1B76053400A0D831 /* 6_01.png in Resources */,
@@ -644,6 +710,8 @@
 				276280F91B75FA2B00A0D831 /* Icon-29@3x.png in Resources */,
 				276280FD1B75FA2B00A0D831 /* Icon-98@2x.png in Resources */,
 				276280E11B75FA2B00A0D831 /* Icon-40.png in Resources */,
+				27A446BA1BDCCF9D00D796FB /* 3.5-inch (iPhone 4) - Screenshot 2.jpg in Resources */,
+				27A446C51BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
