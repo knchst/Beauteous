@@ -6,11 +6,11 @@ pod 'SVProgressHUD'
 pod 'EDHFontSelector'
 pod 'DZNEmptyDataSet'
 pod 'GHMarkdownParser'
+pod 'AMWaveTransition'
 pod 'RFKeyboardToolbar'
 pod 'MCSwipeTableViewCell'
 pod 'UIImage-ResizeMagick'
-pod 'AMWaveTransition'
-pod 'LGSideMenuController'
+pod 'REFrostedViewController'
 
 target :BeauteousTests do
   pod 'Kiwi'

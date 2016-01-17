@@ -388,6 +388,63 @@
 			path = SS;
 			sourceTree = "<group>";
 		};
+		27E303A51C4BF774007B78DC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2718E5C31B70B2360083D487 /* SettingsViewController.h */,
+				2718E5C41B70B2360083D487 /* SettingsViewController.m */,
+				27D111081B73BE1F003D3F8E /* PdfViewController.h */,
+				27D111091B73BE1F003D3F8E /* PdfViewController.m */,
+				27D111171B749EF3003D3F8E /* AboutViewController.h */,
+				27D111181B749EF3003D3F8E /* AboutViewController.m */,
+				27D111201B74B107003D3F8E /* MarkViewController.h */,
+				27D111211B74B107003D3F8E /* MarkViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		27E303A61C4BF7A3007B78DC /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				27E4FCFD1B67EB63005CE9EB /* ComposeViewController.h */,
+				27E4FCFE1B67EB63005CE9EB /* ComposeViewController.m */,
+				27E4FD001B67F258005CE9EB /* PreviewViewController.h */,
+				27E4FD011B67F258005CE9EB /* PreviewViewController.m */,
+				2718E5CA1B710DAC0083D487 /* EditViewController.h */,
+				2718E5CB1B710DAC0083D487 /* EditViewController.m */,
+				2718E5CD1B710E460083D487 /* DetailViewController.h */,
+				2718E5CE1B710E460083D487 /* DetailViewController.m */,
+			);
+			name = Compose;
+			sourceTree = "<group>";
+		};
+		27E303A71C4BF7C4007B78DC /* All */ = {
+			isa = PBXGroup;
+			children = (
+				27E4FD0E1B68F63C005CE9EB /* AllViewController.h */,
+				27E4FD0F1B68F63C005CE9EB /* AllViewController.m */,
+			);
+			name = All;
+			sourceTree = "<group>";
+		};
+		27E303A81C4BF7CE007B78DC /* Starred */ = {
+			isa = PBXGroup;
+			children = (
+				2718E5BD1B70B2190083D487 /* StarredViewController.h */,
+				2718E5BE1B70B2190083D487 /* StarredViewController.m */,
+			);
+			name = Starred;
+			sourceTree = "<group>";
+		};
+		27E303A91C4BF7D8007B78DC /* Trash */ = {
+			isa = PBXGroup;
+			children = (
+				272574301BD4066B001CB44F /* TrashViewController.h */,
+				272574311BD4066B001CB44F /* TrashViewController.m */,
+			);
+			name = Trash;
+			sourceTree = "<group>";
+		};
 		27E4FCDF1B67A8E5005CE9EB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,28 +461,11 @@
 			children = (
 				27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */,
 				27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */,
-				27E4FCFD1B67EB63005CE9EB /* ComposeViewController.h */,
-				27E4FCFE1B67EB63005CE9EB /* ComposeViewController.m */,
-				27E4FD001B67F258005CE9EB /* PreviewViewController.h */,
-				27E4FD011B67F258005CE9EB /* PreviewViewController.m */,
-				27E4FD0E1B68F63C005CE9EB /* AllViewController.h */,
-				27E4FD0F1B68F63C005CE9EB /* AllViewController.m */,
-				2718E5BD1B70B2190083D487 /* StarredViewController.h */,
-				2718E5BE1B70B2190083D487 /* StarredViewController.m */,
-				2718E5C31B70B2360083D487 /* SettingsViewController.h */,
-				2718E5C41B70B2360083D487 /* SettingsViewController.m */,
-				2718E5CA1B710DAC0083D487 /* EditViewController.h */,
-				2718E5CB1B710DAC0083D487 /* EditViewController.m */,
-				2718E5CD1B710E460083D487 /* DetailViewController.h */,
-				2718E5CE1B710E460083D487 /* DetailViewController.m */,
-				27D111081B73BE1F003D3F8E /* PdfViewController.h */,
-				27D111091B73BE1F003D3F8E /* PdfViewController.m */,
-				27D111171B749EF3003D3F8E /* AboutViewController.h */,
-				27D111181B749EF3003D3F8E /* AboutViewController.m */,
-				27D111201B74B107003D3F8E /* MarkViewController.h */,
-				27D111211B74B107003D3F8E /* MarkViewController.m */,
-				272574301BD4066B001CB44F /* TrashViewController.h */,
-				272574311BD4066B001CB44F /* TrashViewController.m */,
+				27E303A81C4BF7CE007B78DC /* Starred */,
+				27E303A61C4BF7A3007B78DC /* Compose */,
+				27E303A71C4BF7C4007B78DC /* All */,
+				27E303A91C4BF7D8007B78DC /* Trash */,
+				27E303A51C4BF774007B78DC /* Settings */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
