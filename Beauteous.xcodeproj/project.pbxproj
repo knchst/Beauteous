@@ -12,9 +12,6 @@
 		2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C81B70C4050083D487 /* AllTableViewCell.m */; };
 		2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CB1B710DAC0083D487 /* EditViewController.m */; };
 		2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5CE1B710E460083D487 /* DetailViewController.m */; };
-		2725742B1BD3C839001CB44F /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574281BD3C839001CB44F /* LeftViewCell.m */; };
-		2725742C1BD3C839001CB44F /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742A1BD3C839001CB44F /* LeftViewController.m */; };
-		2725742F1BD3E670001CB44F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725742E1BD3E670001CB44F /* MainViewController.m */; };
 		272574321BD4066B001CB44F /* TrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272574311BD4066B001CB44F /* TrashViewController.m */; };
 		272574351BD41CD3001CB44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 272574331BD41CD3001CB44F /* Main.storyboard */; };
 		276280E11B75FA2B00A0D831 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 276280BA1B75FA2B00A0D831 /* Icon-40.png */; };
@@ -124,12 +121,6 @@
 		2718E5CB1B710DAC0083D487 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		2718E5CD1B710E460083D487 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		2718E5CE1B710E460083D487 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		272574271BD3C839001CB44F /* LeftViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCell.h; sourceTree = "<group>"; };
-		272574281BD3C839001CB44F /* LeftViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCell.m; sourceTree = "<group>"; };
-		272574291BD3C839001CB44F /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
-		2725742A1BD3C839001CB44F /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
-		2725742D1BD3E670001CB44F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		2725742E1BD3E670001CB44F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		272574301BD4066B001CB44F /* TrashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrashViewController.h; sourceTree = "<group>"; };
 		272574311BD4066B001CB44F /* TrashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrashViewController.m; sourceTree = "<group>"; };
 		272574341BD41CD3001CB44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -273,19 +264,6 @@
 			path = Beauteous/Classes/View;
 			sourceTree = SOURCE_ROOT;
 		};
-		272574261BD3C839001CB44F /* LeftMenu */ = {
-			isa = PBXGroup;
-			children = (
-				2725742D1BD3E670001CB44F /* MainViewController.h */,
-				2725742E1BD3E670001CB44F /* MainViewController.m */,
-				272574271BD3C839001CB44F /* LeftViewCell.h */,
-				272574281BD3C839001CB44F /* LeftViewCell.m */,
-				272574291BD3C839001CB44F /* LeftViewController.h */,
-				2725742A1BD3C839001CB44F /* LeftViewController.m */,
-			);
-			path = LeftMenu;
-			sourceTree = "<group>";
-		};
 		276280A71B75FA2B00A0D831 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,7 +402,6 @@
 		27E4FCE01B67A8E5005CE9EB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				272574261BD3C839001CB44F /* LeftMenu */,
 				27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */,
 				27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */,
 				27E4FCFD1B67EB63005CE9EB /* ComposeViewController.h */,
@@ -829,11 +806,9 @@
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */,
 				27635E551B85B259003FD8AA /* BOParseManager.m in Sources */,
-				2725742B1BD3C839001CB44F /* LeftViewCell.m in Sources */,
 				27D111191B749EF3003D3F8E /* AboutViewController.m in Sources */,
 				27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
-				2725742F1BD3E670001CB44F /* MainViewController.m in Sources */,
 				27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */,
 				27E4FD021B67F258005CE9EB /* PreviewViewController.m in Sources */,
 				2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */,
@@ -843,7 +818,6 @@
 				27E4FD0A1B68D584005CE9EB /* Note.m in Sources */,
 				2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */,
 				27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */,
-				2725742C1BD3C839001CB44F /* LeftViewController.m in Sources */,
 				27E4FD101B68F63C005CE9EB /* AllViewController.m in Sources */,
 				2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */,
 			);

@@ -9,7 +9,6 @@
 #import "TrashViewController.h"
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
 #import "PreviewViewController.h"
 #import "BOUtility.h"
 #import "BOConst.h"
@@ -300,13 +299,6 @@
         return [AMWaveTransition transitionWithOperation:operation];
     }
     return nil;
-}
-
-#pragma mark -
-
-- (void)openLeftView
-{
-    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
 /*

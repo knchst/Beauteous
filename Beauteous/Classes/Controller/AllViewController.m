@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
 #import "AllViewController.h"
 #import "PreviewViewController.h"
 #import "BOUtility.h"
@@ -57,7 +56,7 @@
 //    self.extendedLayoutIncludesOpaqueBars = YES;
 //    self.definesPresentationContext = YES;
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(write)];
 }
@@ -418,13 +417,6 @@
         return [AMWaveTransition transitionWithOperation:operation];
     }
     return nil;
-}
-
-#pragma mark -
-
-- (void)openLeftView
-{
-    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
 - (void)write

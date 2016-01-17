@@ -13,7 +13,6 @@
 #import "BOConst.h"
 
 #import "ComposeViewController.h"
-#import "MainViewController.h"
 #import "AppDelegate.h"
 
 @interface SettingsViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -143,13 +142,6 @@
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
-}
-
-#pragma mark -
-
-- (void)openLeftView
-{
-    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
 /*

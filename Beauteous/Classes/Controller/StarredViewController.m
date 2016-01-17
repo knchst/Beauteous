@@ -20,7 +20,6 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "AMWaveTransition.h"
 
-#import "MainViewController.h"
 #import "AppDelegate.h"
 
 @interface StarredViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
@@ -44,8 +43,7 @@
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     
-    self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
+    //self.navigationItem.hidesBackButton = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -191,13 +189,6 @@
         return [AMWaveTransition transitionWithOperation:operation];
     }
     return nil;
-}
-
-#pragma mark -
-
-- (void)openLeftView
-{
-    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
 
