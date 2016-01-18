@@ -22,7 +22,6 @@
 
 #import "MCSwipeTableViewCell.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "AMWaveTransition.h"
 
 @interface TrashViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -285,18 +284,6 @@
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
-                                  animationControllerForOperation:(UINavigationControllerOperation)operation
-                                               fromViewController:(UIViewController*)fromVC
-                                                 toViewController:(UIViewController*)toVC
-{
-    if (operation != UINavigationControllerOperationNone) {
-        // Return your preferred transition operation
-        return [AMWaveTransition transitionWithOperation:operation];
-    }
-    return nil;
 }
 
 /*
