@@ -87,6 +87,7 @@
 		27E303AF1C4C0692007B78DC /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E303AE1C4C0692007B78DC /* MenuViewController.m */; };
 		27E303B21C4C0CE5007B78DC /* ChatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E303B11C4C0CE5007B78DC /* ChatsViewController.m */; };
 		27E303B81C4C116D007B78DC /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E303B71C4C116D007B78DC /* BaseViewController.m */; };
+		27E303BB1C4D0F4C007B78DC /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E303BA1C4D0F4C007B78DC /* UserViewController.m */; };
 		27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */; };
 		27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCF81B67B669005CE9EB /* BOConst.m */; };
 		27E4FCFC1B67E859005CE9EB /* BOUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4FCFB1B67E859005CE9EB /* BOUtility.m */; };
@@ -211,6 +212,8 @@
 		27E303B11C4C0CE5007B78DC /* ChatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatsViewController.m; sourceTree = "<group>"; };
 		27E303B61C4C116D007B78DC /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		27E303B71C4C116D007B78DC /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		27E303B91C4D0F4C007B78DC /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		27E303BA1C4D0F4C007B78DC /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		27E4FCE11B67A8E5005CE9EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27E4FCE21B67A8E5005CE9EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27E4FCF71B67B669005CE9EB /* BOConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOConst.h; sourceTree = "<group>"; };
@@ -486,6 +489,8 @@
 				27E303B11C4C0CE5007B78DC /* ChatsViewController.m */,
 				27E303B61C4C116D007B78DC /* BaseViewController.h */,
 				27E303B71C4C116D007B78DC /* BaseViewController.m */,
+				27E303B91C4D0F4C007B78DC /* UserViewController.h */,
+				27E303BA1C4D0F4C007B78DC /* UserViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -863,6 +868,7 @@
 				27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */,
 				27D111221B74B107003D3F8E /* MarkViewController.m in Sources */,
 				2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */,
+				27E303BB1C4D0F4C007B78DC /* UserViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
 				2718E5CC1B710DAC0083D487 /* EditViewController.m in Sources */,
 				27635E551B85B259003FD8AA /* BOParseManager.m in Sources */,

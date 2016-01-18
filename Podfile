@@ -10,6 +10,7 @@ pod 'RFKeyboardToolbar'
 pod 'MCSwipeTableViewCell'
 pod 'UIImage-ResizeMagick'
 pod 'REFrostedViewController'
+pod 'TPKeyboardAvoiding'
 
 target :BeauteousTests do
   pod 'Kiwi'

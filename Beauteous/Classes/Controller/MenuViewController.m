@@ -13,10 +13,10 @@
 #import "SettingsViewController.h"
 #import "BOUtility.h"
 
+#import "Parse.h"
 #import "UIViewController+REFrostedViewController.h"
 
 @interface MenuViewController ()
-
 @end
 
 @implementation MenuViewController
@@ -25,42 +25,76 @@
 {
     [super viewDidLoad];
     
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     blurEffectView.frame = self.view.frame;
     
     self.tableView.backgroundView = blurEffectView;
-    
+    self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.opaque = NO;
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        imageView.image = [UIImage imageNamed:@"avatar.jpg"];
-        imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 50.0;
-        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        imageView.layer.borderWidth = 1.0f;
-        imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        imageView.layer.shouldRasterize = YES;
-        imageView.clipsToBounds = YES;
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
-        label.text = @"Roman Efimov";
-        label.font = [BOUtility fontTypeBookWithSize:22];
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor whiteColor];
-        [label sizeToFit];
-        label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        
-        [view addSubview:imageView];
-        [view addSubview:label];
-        view;
-    });
+    
+    self.tableView.tableHeaderView.backgroundColor = [UIColor clearColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        self.tableView.tableHeaderView = ({
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
+            imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+            imageView.layer.masksToBounds = YES;
+            imageView.layer.cornerRadius = 50.0;
+            imageView.layer.borderColor = [UIColor blackColor].CGColor;
+            imageView.layer.borderWidth = 1.0f;
+            imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+            imageView.layer.shouldRasterize = YES;
+            imageView.clipsToBounds = YES;
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
+            
+            PFUser *currentUser = [PFUser currentUser];
+            if (currentUser) {
+                label.text = [NSString stringWithFormat:@"Hi, %@", currentUser.username];
+            } else {
+                label.text = @"Welcome back.";
+            }
+            
+            label.font = [BOUtility fontTypeBookWithSize:22];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor blackColor];
+            [label sizeToFit];
+            label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+            
+            [view addSubview:imageView];
+            [view addSubview:label];
+            
+            view;
+        });
+    } else {
+        self.tableView.tableHeaderView = ({
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 92.0f)];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 46, 0, 24)];
+            label.text = @"Beauteous";
+            label.font = [BOUtility fontTypeMediumWithSize:30];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor blackColor];
+            [label sizeToFit];
+            label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+            
+            [view addSubview:label];
+            
+            view;
+        });
+    }
 }
 
 #pragma mark -
@@ -69,7 +103,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor blackColor];
 }
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
