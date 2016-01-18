@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Kenichi Saito. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : BaseViewController
 
 @end

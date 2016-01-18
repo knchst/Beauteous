@@ -55,8 +55,6 @@
 //    self.edgesForExtendedLayout = UIRectEdgeAll;
 //    self.extendedLayoutIncludesOpaqueBars = YES;
 //    self.definesPresentationContext = YES;
-
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(write)];
 }

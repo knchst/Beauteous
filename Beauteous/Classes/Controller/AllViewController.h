@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Kenichi Saito. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface AllViewController : UIViewController
+@interface AllViewController : BaseViewController
 
 @end

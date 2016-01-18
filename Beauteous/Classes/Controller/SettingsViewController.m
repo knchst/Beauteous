@@ -51,7 +51,6 @@
     _menuArray = @[@"Export as PDF", @"Style", @"Support", @"About"];
     
     self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu"] style:UIBarButtonItemStylePlain target:self action:@selector(openLeftView)];
 }
 
 - (void)didReceiveMemoryWarning {
