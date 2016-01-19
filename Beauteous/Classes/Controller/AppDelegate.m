@@ -46,21 +46,24 @@
 
 - (void)realmMigration
 {
-    RLMMigrationBlock migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
-        
-        
-        if (oldSchemaVersion < 7) {
+    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
+    config.schemaVersion = 8;
+    config.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
+        if (oldSchemaVersion < 8) {
             [migration enumerateObjects:Note.className
-                                 block:^(RLMObject *oldObject, RLMObject *newObject) {
-                                                     newObject[@"deleted"] = @NO;
-            }];
+                                  block:^(RLMObject *oldObject, RLMObject *newObject) {
+                                      newObject[@"deleted"] = @NO;
+                                  }];
         }
-        
-        
-        NSLog(@"Migration complete.");
     };
-    [RLMRealm setDefaultRealmSchemaVersion:7 withMigrationBlock:migrationBlock];
-
+    
+    // Tell Realm to use this new configuration object for the default Realm
+    [RLMRealmConfiguration setDefaultConfiguration:config];
+    
+    // Now that we've told Realm how to handle the schema change, opening the file
+    // will automatically perform the migration
+    [RLMRealm defaultRealm];
+    
     //[[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
 }
 

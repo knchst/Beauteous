@@ -11,6 +11,7 @@
 #import "EDHFontSelector.h"
 #import "AboutViewController.h"
 #import "BOConst.h"
+#import "Parse.h"
 
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
@@ -39,6 +40,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [PFUser logOut];
     
     self.title = @"Settings";
     

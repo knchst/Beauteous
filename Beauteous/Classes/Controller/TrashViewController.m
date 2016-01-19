@@ -23,7 +23,7 @@
 #import "MCSwipeTableViewCell.h"
 #import "UIScrollView+EmptyDataSet.h"
 
-@interface TrashViewController () <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface TrashViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -61,7 +61,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.navigationController setDelegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

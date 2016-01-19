@@ -47,26 +47,22 @@
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         self.tableView.tableHeaderView = ({
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 164.0f)];
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 80, 80)];
             imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+            imageView.image = [UIImage imageNamed:@"thumb_IMG_0124_1024"];
             imageView.layer.masksToBounds = YES;
-            imageView.layer.cornerRadius = 50.0;
+            imageView.layer.cornerRadius = 40.0;
             imageView.layer.borderColor = [UIColor blackColor].CGColor;
             imageView.layer.borderWidth = 1.0f;
             imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
             imageView.layer.shouldRasterize = YES;
             imageView.clipsToBounds = YES;
             
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 130, 0, 24)];
             
             PFUser *currentUser = [PFUser currentUser];
-            if (currentUser) {
-                label.text = [NSString stringWithFormat:@"Hi, %@", currentUser.username];
-            } else {
-                label.text = @"Welcome back.";
-            }
-            
+            label.text = [NSString stringWithFormat:@"Hi, %@", currentUser.username];
             label.font = [BOUtility fontTypeBookWithSize:22];
             label.backgroundColor = [UIColor clearColor];
             label.textColor = [UIColor blackColor];
@@ -179,7 +175,7 @@
     }
     
     if (indexPath.section == 0) {
-        NSArray *titles = @[@"All", @"Starred", @"Chats", @"Trash", @"Settings"];
+        NSArray *titles = @[@"All", @"Starred", @"Chat", @"Trash", @"Settings"];
         cell.textLabel.font = [BOUtility fontTypeBookWithSize:18];
         cell.textLabel.text = titles[indexPath.row];
     } else {

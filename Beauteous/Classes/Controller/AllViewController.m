@@ -48,7 +48,6 @@
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.layoutMargins = UIEdgeInsetsMake(0, 8, 0, 0);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
     [self setUpSearchViewController];
     
 //    self.edgesForExtendedLayout = UIRectEdgeAll;
@@ -315,7 +314,7 @@
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
     if (self.searchViewController.active) {
-        return [UIImage imageNamed:@"sad53"];
+        return [UIImage imageNamed:@"Question-100"];
     }
     return [UIImage imageNamed:@"Pen-100"];
 }
@@ -339,7 +338,7 @@
 {
     NSString *text;
     if (self.searchViewController.active) {
-        text = [NSString stringWithFormat:@"We couldn’t find any notes matching '%@'", self.searchViewController.searchBar.text];
+        text = [NSString stringWithFormat:@"We couldn’t find any notes matching \"%@\"", self.searchViewController.searchBar.text];
     } else {
         text = @"All notes you write will display here.To swipe right can star note and to swipe left can delete note.";
     }

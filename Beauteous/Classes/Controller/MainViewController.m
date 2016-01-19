@@ -18,6 +18,7 @@
 {
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
+    self.animationDuration = 0.25;
 }
 
 - (void)viewDidLoad {
