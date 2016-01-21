@@ -14,9 +14,11 @@
 #import "BOUtility.h"
 
 #import "Parse.h"
+#import "SVProgressHUD.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "UIViewController+REFrostedViewController.h"
 
-@interface MenuViewController ()
+@interface MenuViewController () <UIImagePickerControllerDelegate>
 @end
 
 @implementation MenuViewController
@@ -46,34 +48,7 @@
     
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
-        self.tableView.tableHeaderView = ({
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 164.0f)];
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 80, 80)];
-            imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-            imageView.image = [UIImage imageNamed:@"thumb_IMG_0124_1024"];
-            imageView.layer.masksToBounds = YES;
-            imageView.layer.cornerRadius = 40.0;
-            imageView.layer.borderColor = [UIColor blackColor].CGColor;
-            imageView.layer.borderWidth = 1.0f;
-            imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-            imageView.layer.shouldRasterize = YES;
-            imageView.clipsToBounds = YES;
-            
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 130, 0, 24)];
-            
-            PFUser *currentUser = [PFUser currentUser];
-            label.text = [NSString stringWithFormat:@"Hi, %@", currentUser.username];
-            label.font = [BOUtility fontTypeBookWithSize:22];
-            label.backgroundColor = [UIColor clearColor];
-            label.textColor = [UIColor blackColor];
-            [label sizeToFit];
-            label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-            
-            [view addSubview:imageView];
-            [view addSubview:label];
-            
-            view;
-        });
+        [self headerView];
     } else {
         self.tableView.tableHeaderView = ({
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 92.0f)];
@@ -93,6 +68,151 @@
     }
 }
 
+- (void)changeProfileImage
+{
+    UIAlertController *alert = [[UIAlertController alloc] init];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Change Avatar" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+
+        [self showImagePicker];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    }];
+    
+    [alert addAction:action];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)headerView
+{
+    self.tableView.tableHeaderView = ({
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 164.0f)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 80, 80)];
+        imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        
+        PFQuery *query= [PFUser query];
+        [query whereKey:@"username" equalTo:[[PFUser currentUser] username]];
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *user, NSError *error){
+            PFFile *imageFile = user[@"avatar"];
+            
+            [self reloadAvatarWithURL:imageFile.url];
+            
+            if (error) {
+                NSString *errorString = [error userInfo][@"error"];
+                NSLog(@"%@", errorString);
+                [SVProgressHUD showErrorWithStatus:errorString];
+            }
+        }];
+        
+        imageView.layer.masksToBounds = YES;
+        imageView.layer.cornerRadius = 40.0;
+        imageView.layer.borderColor = [UIColor blackColor].CGColor;
+        imageView.layer.borderWidth = 1.0f;
+        imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        imageView.layer.shouldRasterize = YES;
+        imageView.clipsToBounds = YES;
+        
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeProfileImage)];
+        imageView.userInteractionEnabled = YES;
+        imageView.gestureRecognizers = @[gesture];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 130, 0, 24)];
+        
+        PFUser *currentUser = [PFUser currentUser];
+        label.text = [NSString stringWithFormat:@"Hi, %@", currentUser.username];
+        label.font = [BOUtility fontTypeBookWithSize:22];
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor blackColor];
+        [label sizeToFit];
+        label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        
+        [view addSubview:imageView];
+        [view addSubview:label];
+        
+        view;
+    });
+}
+
+- (void)showImagePicker
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.delegate = self;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:imagePickerController animated:YES completion:nil];
+        }];
+        
+    } else {
+        UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Please allow Beauteous to use your PhotoLibrary"
+                                                                    message:@""
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * action) {
+                                                                 
+                                                             }];
+        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Settings"
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * action) {
+                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                                               }];
+        [ac addAction:cancelAction];
+        [ac addAction:settingsAction];
+        
+        [self presentViewController:ac animated:YES completion:nil];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSData *imageData = [BOUtility resizeImageWithImage:info[UIImagePickerControllerOriginalImage]];
+    
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"Uploading.."];
+    
+    PFQuery *query= [PFUser query];
+    
+    [query whereKey:@"username" equalTo:[[PFUser currentUser] username]];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *user, NSError *error){
+        
+        PFFile *file = [PFFile fileWithData:imageData];
+        user[@"avatar"] = file;
+        
+        NSLog(@"%@%@", user, [PFUser currentUser].objectId);
+        
+        [user saveInBackgroundWithBlock:^(BOOL finished, NSError *error){
+            [self reloadAvatarWithURL:file.url];
+        }];
+        
+        [SVProgressHUD dismiss];
+        if (error) {
+            NSString *errorString = [error userInfo][@"error"];
+            NSLog(@"%@", errorString);
+            [SVProgressHUD showErrorWithStatus:errorString];
+        }
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        
+    }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)reloadAvatarWithURL:(NSString*)url
+{
+    UIImageView *imageView = self.tableView.tableHeaderView.subviews[0];
+    
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:url] options:SDWebImageCacheMemoryOnly progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL){
+        imageView.image = image;
+    }];
+}
+
 #pragma mark -
 #pragma mark UITableView Delegate
 
@@ -101,33 +221,6 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor blackColor];
 }
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
-//{
-//    if (sectionIndex == 0)
-//        return nil;
-//    
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
-//    view.backgroundColor = [UIColor colorWithRed:167/255.0f green:167/255.0f blue:167/255.0f alpha:0.6f];
-//    
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
-//    label.text = @"Friends Online";
-//    label.font = [UIFont systemFontOfSize:15];
-//    label.textColor = [UIColor whiteColor];
-//    label.backgroundColor = [UIColor clearColor];
-//    [label sizeToFit];
-//    [view addSubview:label];
-//    
-//    return view;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
-//{
-//    if (sectionIndex == 0)
-//        return 0;
-//    
-//    return 34;
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

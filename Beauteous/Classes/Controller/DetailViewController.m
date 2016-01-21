@@ -72,9 +72,7 @@
 
 - (void)showActionSheet
 {
-    UIAlertController * ac = [UIAlertController alertControllerWithTitle:@"What do you want to do?"
-                                                                 message:@""
-                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController * ac = [[UIAlertController alloc] init];
     
     if ([BOUtility checkDevice]) {
         CGRect rect = CGRectMake(self.view.frame.size.width - 50, 64, 0, 0);

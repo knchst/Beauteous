@@ -468,6 +468,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD showWithStatus:@"Uploading.."];
     
     NSData *imageData = [BOUtility resizeImageWithImage:info[UIImagePickerControllerOriginalImage]];
