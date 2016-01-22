@@ -122,12 +122,12 @@
     PFUser *user = [PFUser user];
     user.username = username;
     user.password = password;
-    
+    __weak typeof(self) weakSelf = self;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             [SVProgressHUD dismiss];
             NSLog(@"Sign Up Success!!");
-            [self close];
+            [weakSelf close];
         } else {
             NSString *errorString = [error userInfo][@"error"];
             NSLog(@"%@", errorString);
@@ -139,11 +139,12 @@
 
 - (void)signInWith:(NSString*)username and:(NSString*)password
 {
+    __weak typeof(self) weakSelf = self;
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
         if (user) {
             // Do stuff after successful login.
             NSLog(@"Sign In Success!!");
-            [self close];
+            [weakSelf close];
             [SVProgressHUD dismiss];
         } else {
             NSString *errorString = [error userInfo][@"error"];

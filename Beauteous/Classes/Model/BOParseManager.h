@@ -10,4 +10,8 @@
 
 @interface BOParseManager : NSObject
 
+@property (copy, nonatomic) NSArray *friends;
++ (BOParseManager*)sharedManager;
+- (void)addFriendWithUsername:(NSString *)username andBlock:(void (^)(NSError *error))block;
+- (void)fetchFriendsWithBlock:(void (^)(NSError *error))block;
 @end

@@ -9,13 +9,14 @@
 #import "ChatsViewController.h"
 #import "UserViewController.h"
 #import "BOUtility.h"
+#import "BOParseManager.h"
+#import "FriendViewController.h"
 
 #import "Parse.h"
 #import "UIScrollView+EmptyDataSet.h"
 
 @interface ChatsViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @end
 
 @implementation ChatsViewController
@@ -32,8 +33,18 @@
     self.tableView.emptyDataSetDelegate = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    //[PFUser logOut];
-    [self checkUser];
+    BOOL isLogin = [self isLogin];
+    if (isLogin) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(write)];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([PFUser currentUser]) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(write)];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,15 +52,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)checkUser
+- (BOOL)isLogin
 {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         // do stuff with the user
+        return YES;
     } else {
         UserViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"User"];
         [self.navigationController presentViewController:vc animated:YES completion:nil];
     }
+    
+    return NO;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -109,6 +123,13 @@
     return self.tableView.tableHeaderView.frame.size.height/3.0f;
 }
 
+- (void)write
+{
+    FriendViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Friend"];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+
+    [self.navigationController presentViewController:nvc animated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation

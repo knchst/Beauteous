@@ -40,10 +40,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [PFUser logOut];
-    
-    self.title = @"Settings";
+        
+    self.title = @"Setting";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

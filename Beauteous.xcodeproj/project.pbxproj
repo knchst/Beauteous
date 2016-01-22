@@ -77,7 +77,7 @@
 		27A446C61BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B71BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 2.jpg */; };
 		27A446C71BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446B81BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 3.jpg */; };
 		27B946FB1C51434300298923 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B946FA1C51434300298923 /* FriendViewController.m */; };
-		27B946FE1C5143A100298923 /* SearchFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B946FD1C5143A100298923 /* SearchFriendViewController.m */; };
+		27B947011C520DEE00298923 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B947001C520DEE00298923 /* FriendTableViewCell.m */; };
 		27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */; };
 		27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */; };
 		27D1110A1B73BE1F003D3F8E /* PdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D111091B73BE1F003D3F8E /* PdfViewController.m */; };
@@ -196,8 +196,8 @@
 		27A446B81BDCCF9D00D796FB /* 9.7-inch (iPad) - Screenshot 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "9.7-inch (iPad) - Screenshot 3.jpg"; sourceTree = "<group>"; };
 		27B946F91C51434300298923 /* FriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendViewController.h; sourceTree = "<group>"; };
 		27B946FA1C51434300298923 /* FriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendViewController.m; sourceTree = "<group>"; };
-		27B946FC1C5143A100298923 /* SearchFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendViewController.h; sourceTree = "<group>"; };
-		27B946FD1C5143A100298923 /* SearchFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendViewController.m; sourceTree = "<group>"; };
+		27B946FF1C520DEE00298923 /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
+		27B947001C520DEE00298923 /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
 		27D110FC1B73359C003D3F8E /* CustomRFToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRFToolbarButton.h; sourceTree = "<group>"; };
 		27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRFToolbarButton.m; sourceTree = "<group>"; };
 		27D111021B734701003D3F8E /* PhotoAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAllTableViewCell.h; sourceTree = "<group>"; };
@@ -280,6 +280,8 @@
 				27D110FD1B73359C003D3F8E /* CustomRFToolbarButton.m */,
 				27D111021B734701003D3F8E /* PhotoAllTableViewCell.h */,
 				27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */,
+				27B946FF1C520DEE00298923 /* FriendTableViewCell.h */,
+				27B947001C520DEE00298923 /* FriendTableViewCell.m */,
 			);
 			name = View;
 			path = Beauteous/Classes/View;
@@ -486,8 +488,6 @@
 				27E303BA1C4D0F4C007B78DC /* UserViewController.m */,
 				27B946F91C51434300298923 /* FriendViewController.h */,
 				27B946FA1C51434300298923 /* FriendViewController.m */,
-				27B946FC1C5143A100298923 /* SearchFriendViewController.h */,
-				27B946FD1C5143A100298923 /* SearchFriendViewController.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -891,10 +891,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E4FD0D1B68D785005CE9EB /* NoteManager.m in Sources */,
+				27B947011C520DEE00298923 /* FriendTableViewCell.m in Sources */,
 				27D111041B734701003D3F8E /* PhotoAllTableViewCell.m in Sources */,
 				27D111221B74B107003D3F8E /* MarkViewController.m in Sources */,
 				2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */,
-				27B946FE1C5143A100298923 /* SearchFriendViewController.m in Sources */,
 				27B946FB1C51434300298923 /* FriendViewController.m in Sources */,
 				27E303BB1C4D0F4C007B78DC /* UserViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,
