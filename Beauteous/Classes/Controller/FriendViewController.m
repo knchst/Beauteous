@@ -59,7 +59,6 @@
 {
     FriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell" forIndexPath:indexPath];
     PFObject *user = [BOParseManager sharedManager].friends[indexPath.row];
-    NSLog(@"%@", user);
     cell.usernameLabel.text = user[@"username"];
     PFFile *file = user[@"avatar"];
     

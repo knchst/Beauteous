@@ -11,8 +11,11 @@
 #import "BOUtility.h"
 #import "BOParseManager.h"
 #import "FriendViewController.h"
+#import "ChatTableViewCell.h"
+#import "ChatPhotoTableViewCell.h"
 
 #import "Parse.h"
+#import "SVProgressHUD.h"
 #import "UIScrollView+EmptyDataSet.h"
 
 @interface ChatsViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
@@ -32,7 +35,7 @@
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+    self.tableView.separatorColor = [UIColor clearColor];
     BOOL isLogin = [self isLogin];
     if (isLogin) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(write)];
@@ -44,6 +47,7 @@
     [super viewWillAppear:animated];
     if ([PFUser currentUser]) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(write)];
+        [self refresh];
     }
 }
 
@@ -68,14 +72,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [BOParseManager sharedManager].messages.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    
-    return cell;
+    PFObject *message = [BOParseManager sharedManager].messages[indexPath.row];
+    if ([message[@"photoUrl"] isEqualToString:@""]) {
+        ChatTableViewCell *chatCell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell"];
+        if (chatCell == nil) {
+            chatCell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChatCell"];
+        }
+        [chatCell setData:message];
+        return chatCell;
+    } else {
+        ChatPhotoTableViewCell *chatPhotoCell = [tableView dequeueReusableCellWithIdentifier:@"ChatPhotoCell"];
+        chatPhotoCell = [[ChatPhotoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChatPhotoCell"];
+        [chatPhotoCell setData:message];
+        NSLog(@"%@", chatPhotoCell);
+        return chatPhotoCell;
+    }
 }
 
 #pragma mark - UIScrollView+EmptyDataSet
@@ -129,6 +145,23 @@
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
 
     [self.navigationController presentViewController:nvc animated:YES completion:nil];
+}
+
+- (void)refresh
+{
+    __weak typeof(self) weakSelf = self;
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD show];
+    [[BOParseManager sharedManager] fetchMessagesWithBlock:^(NSError *error){
+        if (error) {
+            NSString *errorString = [error userInfo][@"error"];
+            NSLog(@"%@", errorString);
+            [SVProgressHUD showErrorWithStatus:errorString];
+        } else {
+            [weakSelf.tableView reloadData];
+            [SVProgressHUD dismiss];
+        }
+    }];
 }
 
 /*

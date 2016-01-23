@@ -11,10 +11,12 @@
 @interface BOParseManager : NSObject
 
 @property (copy, nonatomic) NSMutableArray *friends;
+@property (copy, nonatomic) NSMutableArray *messages;
 
 + (BOParseManager*)sharedManager;
 - (void)addFriendWithUsername:(NSString *)username andBlock:(void (^)(NSError *error))block;
 - (void)deleteFriendWithUsername:(NSString*)username andBlock:(void (^)(NSError *error))block;
 - (void)fetchFriendsWithBlock:(void (^)(NSError *error))block;
 - (void)sendNoteWithUsername:(NSString*)username andNote:(NSDictionary*)note andBlock:(void (^)(NSError *error))block;
+- (void)fetchMessagesWithBlock:(void (^)(NSError *error))block;
 @end

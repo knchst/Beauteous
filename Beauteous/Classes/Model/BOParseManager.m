@@ -28,6 +28,7 @@ static BOParseManager *sharedManager = nil;
     if (self) {
         NSLog(@"Init BOParseManager");
         self.friends = [NSMutableArray array];
+        self.messages = [NSMutableArray array];
     }
     return self;
 }
@@ -98,8 +99,20 @@ static BOParseManager *sharedManager = nil;
     noteObject[@"to"] = username;
     
     [noteObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-        NSLog(@"%d", succeeded);
-        NSLog(@"boparsemanager - %@", error);
+        block(error);
+    }];
+}
+
+- (void)fetchMessagesWithBlock:(void (^)(NSError *_Nullable error))block
+{
+    NSString *username = [PFUser currentUser].username;
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    [query whereKey:@"to" equalTo:username];
+    __weak typeof(self) weakSelf = self;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        NSLog(@"%@", objects);
+        weakSelf.messages = [objects mutableCopy];
         block(error);
     }];
 }
