@@ -128,6 +128,10 @@
             [SVProgressHUD dismiss];
             NSLog(@"Sign Up Success!!");
             [weakSelf close];
+            
+            [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"user"];
+            [[PFInstallation currentInstallation] saveEventually];
+
         } else {
             NSString *errorString = [error userInfo][@"error"];
             NSLog(@"%@", errorString);
@@ -146,6 +150,10 @@
             NSLog(@"Sign In Success!!");
             [weakSelf close];
             [SVProgressHUD dismiss];
+            
+            [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"user"];
+            [[PFInstallation currentInstallation] saveEventually];
+
         } else {
             NSString *errorString = [error userInfo][@"error"];
             NSLog(@"%@", errorString);

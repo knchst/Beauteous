@@ -98,6 +98,8 @@ static BOParseManager *sharedManager = nil;
     noteObject[@"to"] = username;
     
     [noteObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        NSLog(@"%d", succeeded);
+        NSLog(@"boparsemanager - %@", error);
         block(error);
     }];
 }

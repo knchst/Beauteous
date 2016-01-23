@@ -24,10 +24,17 @@
 
 @implementation AppDelegate
 
-- (void)setUpParse
+- (void)setUpParseWithApplication:(UIApplication*)application
 {
     [Parse setApplicationId:PARSE_ID
                   clientKey:PARSE_CLIENT_KEY];
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
 }
 
 - (void)setUpAppearance
@@ -67,14 +74,37 @@
     //[[NSFileManager defaultManager] removeItemAtPath:[RLMRealm defaultRealmPath] error:nil];
 }
 
+- (void)clearBadge
+{
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    installation.badge = 0;
+    [installation saveInBackground];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [self setUpParse];
+    [self setUpParseWithApplication:application];
     [self setUpAppearance];
     [self realmMigration];
     
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation setDeviceTokenFromData:deviceToken];
+    installation.channels = @[@"chat", @"news"];
+    
+    if ([PFUser currentUser]) {
+        [installation setObject:[PFUser currentUser] forKey:@"user"];
+    }
+    [installation saveEventually];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -93,6 +123,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self clearBadge];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

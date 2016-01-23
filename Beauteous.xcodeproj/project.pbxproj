@@ -687,6 +687,11 @@
 					27ED34F21B67934100C86498 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = G4S9VFQ7U4;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					27ED350B1B67934100C86498 = {
 						CreatedOnToolsVersion = 6.4;

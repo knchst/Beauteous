@@ -19,6 +19,7 @@
 #import <Realm/Realm.h>
 #import "SVProgressHUD.h"
 #import "EDHFontSelector.h"
+#import <Bolts/Bolts.h>
 
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -99,10 +100,9 @@
     
     if (_isChat) {
         // send action
+        __weak typeof(self) weakSelf = self;
         
-        __weak ComposeViewController *weakSelf = self;
-        
-        NSString *message = [NSString stringWithFormat:@"I will send an note to %@.", self.user[@"username"]];
+        NSString *message = [NSString stringWithFormat:@"I will send note to %@.", self.user[@"username"]];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm" message:message preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             [weakSelf sendNote];
@@ -139,7 +139,7 @@
 
 - (void)sendNote
 {
-    __weak ComposeViewController *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     NSMutableDictionary *note = [NSMutableDictionary dictionary];
     
     if (_textView.text.length <= 0) {
@@ -150,20 +150,38 @@
     
     note[@"planeString"] = _textView.text;
     note[@"htmlString"] = [BOUtility renderHTMLWithString:_textView.text];
-    note[@"created_at"] = [NSDate date];
-    note[@"updated_at"] = [NSDate date];
     note[@"photoUrl"] = [[NoteManager sharedManager] detectPhotoURLWithString:_textView.text];
     
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD show];
-    [[BOParseManager sharedManager] sendNoteWithUsername:self.user[@"username"] andNote:note andBlock:^(NSError *error){
+    [[BOParseManager sharedManager] sendNoteWithUsername:self.user[@"username"] andNote:note andBlock:^(NSError *error) {
         if (error) {
             NSString *errorString = [error userInfo][@"error"];
             NSLog(@"%@", errorString);
             [SVProgressHUD showErrorWithStatus:errorString];
         } else {
             [SVProgressHUD showSuccessWithStatus:@"You have sent note."];
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            
+            NSString *message = [NSString stringWithFormat:@"You recieved note from %@", [PFUser currentUser].username];
+            
+            NSDictionary *data = @{
+                                   @"alert" : message,
+                                   @"badge" : @"Increment",
+                                   @"sound" : @"default"
+                                   };
+            
+            PFUser *user = (PFUser*)weakSelf.user;
+            
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"user" equalTo:user];
+            
+            PFPush *push = [[PFPush alloc] init];
+            [push setQuery:pushQuery];
+            [push setData:data];
+            [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                NSLog(@"Push error is %@", error);
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            }];
         }
     }];
 }
