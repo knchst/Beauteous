@@ -13,9 +13,9 @@
 #import "BOConst.h"
 #import "Note.h"
 #import "CustomRFToolbarButton.h"
+#import "BOParseManager.h"
 
 #import "RFKeyBoardToolbar.h"
-#import "Parse.h"
 #import <Realm/Realm.h>
 #import "SVProgressHUD.h"
 #import "EDHFontSelector.h"
@@ -32,7 +32,11 @@
 {
     [super viewDidLoad];
     
-    self.title = @"New";
+    if (_isChat) {
+        self.title = [NSString stringWithFormat:@"To %@", self.user[@"username"]];
+    } else {
+        self.title = @"New";
+    }
     
     [self setUpToolBar];
     
@@ -88,11 +92,54 @@
     previewVC.htmlString = _textView.text;
     self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
     [self.navigationController pushViewController:previewVC animated:YES];
-    
 }
 
 - (IBAction)done:(id)sender
 {
+    
+    if (_isChat) {
+        // send action
+        
+        __weak ComposeViewController *weakSelf = self;
+        
+        NSString *message = [NSString stringWithFormat:@"I will send an note to %@.", self.user[@"username"]];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm" message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [weakSelf sendNote];
+        }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        }];
+        
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        
+        [self.navigationController presentViewController:alert animated:YES completion:nil];
+        
+    } else {
+        
+        NSMutableDictionary *note = [NSMutableDictionary dictionary];
+        
+        if (_textView.text.length <= 0) {
+            note[@"title"] = @"No title";
+        } else {
+            note[@"title"] = [_textView.text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]][0];
+        }
+        
+        note[@"planeString"] = _textView.text;
+        note[@"htmlString"] = [BOUtility renderHTMLWithString:_textView.text];
+        note[@"created_at"] = [NSDate date];
+        note[@"updated_at"] = [NSDate date];
+        note[@"photoUrl"] = [[NoteManager sharedManager] detectPhotoURLWithString:_textView.text];
+        
+        [[NoteManager sharedManager] saveNoteWithDictionary:note];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)sendNote
+{
+    __weak ComposeViewController *weakSelf = self;
     NSMutableDictionary *note = [NSMutableDictionary dictionary];
     
     if (_textView.text.length <= 0) {
@@ -107,9 +154,18 @@
     note[@"updated_at"] = [NSDate date];
     note[@"photoUrl"] = [[NoteManager sharedManager] detectPhotoURLWithString:_textView.text];
     
-    [[NoteManager sharedManager] saveNoteWithDictionary:note];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD show];
+    [[BOParseManager sharedManager] sendNoteWithUsername:self.user[@"username"] andNote:note andBlock:^(NSError *error){
+        if (error) {
+            NSString *errorString = [error userInfo][@"error"];
+            NSLog(@"%@", errorString);
+            [SVProgressHUD showErrorWithStatus:errorString];
+        } else {
+            [SVProgressHUD showSuccessWithStatus:@"You have sent note."];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
 }
 
 - (void)setUpToolBar
@@ -522,6 +578,7 @@
 
 - (void)dealloc
 {
+    
 }
 
 - (BOOL)prefersStatusBarHidden

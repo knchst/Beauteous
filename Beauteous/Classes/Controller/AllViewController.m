@@ -406,7 +406,9 @@
 - (void)write
 {
     ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    [self.navigationController presentViewController:nvc animated:YES completion:nil];
 }
 
 /*

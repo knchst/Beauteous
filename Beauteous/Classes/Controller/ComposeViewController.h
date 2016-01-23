@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parse.h"
 
 @interface ComposeViewController : UIViewController
-
+@property (assign, nonatomic) BOOL isChat;
+@property (strong, nonatomic) PFObject *user;
 @end

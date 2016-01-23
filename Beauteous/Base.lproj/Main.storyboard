@@ -420,7 +420,7 @@
         <!--Compose View Controller-->
         <scene sceneID="1M4-w7-xM4">
             <objects>
-                <viewController id="Lcx-cX-00J" customClass="ComposeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Compose" id="Lcx-cX-00J" customClass="ComposeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hvb-E0-qgl"/>
                         <viewControllerLayoutGuide type="bottom" id="frF-fj-dVG"/>
@@ -752,7 +752,7 @@
         <!--Navigation Controller-->
         <scene sceneID="WTp-HV-lSI">
             <objects>
-                <navigationController storyboardIdentifier="Compose" automaticallyAdjustsScrollViewInsets="NO" id="GVT-7w-FXx" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GVT-7w-FXx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3DB-Yk-DVd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

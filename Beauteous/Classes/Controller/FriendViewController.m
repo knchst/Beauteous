@@ -8,7 +8,9 @@
 
 #import "FriendViewController.h"
 #import "FriendTableViewCell.h"
+#import "ComposeViewController.h"
 #import "BOParseManager.h"
+#import "BOUtility.h"
 
 #import "Parse.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -72,6 +74,20 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:[[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"]];
+    
+    PFObject *user = [BOParseManager sharedManager].friends[indexPath.row];
+    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
+    vc.isChat = YES;
+    vc.user = user;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma - mark
+
 - (void)close
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -111,6 +127,7 @@
     [[BOParseManager sharedManager] addFriendWithUsername:username andBlock:^(NSError *error){
         if (error) {
             NSString *errorString = [error userInfo][@"error"];
+            NSLog(@"%@", errorString);
             [SVProgressHUD showErrorWithStatus:errorString];
         } else {
             [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@, is added!!", username]];
@@ -122,8 +139,17 @@
 - (void)refresh
 {
     __weak typeof(self) weakSelf = self;
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD show];
     [[BOParseManager sharedManager] fetchFriendsWithBlock:^(NSError *error){
-        [weakSelf.tableView reloadData];
+        if (error) {
+            NSString *errorString = [error userInfo][@"error"];
+            NSLog(@"%@", errorString);
+            [SVProgressHUD showErrorWithStatus:errorString];
+        } else {
+            [weakSelf.tableView reloadData];
+            [SVProgressHUD dismiss];
+        }
     }];
 }
 
