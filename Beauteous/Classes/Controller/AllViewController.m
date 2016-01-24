@@ -71,7 +71,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.navigationController setDelegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -91,7 +90,7 @@
 
 - (void)dealloc
 {
-    [self.navigationController setDelegate:nil];
+
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {

@@ -80,7 +80,7 @@
         ac.popoverPresentationController.sourceRect = rect;
     }
     
-    __weak DetailViewController *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     
     UIAlertAction * editAction = [UIAlertAction actionWithTitle:@"Edit"
                                                          style:UIAlertActionStyleDefault
@@ -111,56 +111,6 @@
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
-}
-
-#define debug 1
-
-#pragma mark - YALTabBarInteracting
-
-- (void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraLeftItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    SettingsViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Settings"];
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)extraRightItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    EditViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Edit"];
-    vc.note = self.note;
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:vc];
-    //self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController presentViewController:navigationVC animated:YES completion:nil];
 }
 
 /*

@@ -74,6 +74,14 @@
     __weak typeof(self) weakSelf = self;
     UIAlertController *alert = [[UIAlertController alloc] init];
     
+    if ([BOUtility checkDevice]) {
+        alert.popoverPresentationController.sourceView = self.tableView;
+        
+        UIImageView *view = self.tableView.tableHeaderView.subviews[0];
+        
+        alert.popoverPresentationController.sourceRect = view.frame;
+    }
+    
     UIAlertAction *changeAvatar = [UIAlertAction actionWithTitle:@"Change Avatar" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
 
         [weakSelf showImagePicker];
@@ -274,7 +282,7 @@
     }
     
     if (indexPath.section == 0) {
-        NSArray *titles = @[@"All", @"Starred", @"Chat", @"Trash", @"Settings"];
+        NSArray *titles = @[@"All", @"Starred", @"Message", @"Trash", @"Settings"];
         NSArray *icons = @[
                            [UIImage imageNamed:@"Note"],
                            [UIImage imageNamed:@"Star"],

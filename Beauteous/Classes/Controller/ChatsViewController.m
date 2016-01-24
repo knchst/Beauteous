@@ -27,7 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"Chat";
+    self.title = @"Message";
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

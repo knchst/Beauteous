@@ -40,9 +40,7 @@
     [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:closeButton];
     
-    CGRect rect = [UIScreen mainScreen].bounds;
-    
-    _signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(rect.size.width - 108, 44, 100, 30)];
+    _signUpButton = [[UIButton alloc] init];//WithFrame:CGRectMake(rect.size.width - 108, 44, 100, 30)];
     _signUpButton.backgroundColor = [UIColor blackColor];
     _signUpButton.layer.cornerRadius = 15.0f;
     _signUpButton.layer.borderWidth = 1.0f;
@@ -50,12 +48,23 @@
     [_signUpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_signUpButton.titleLabel setFont:[BOUtility fontTypeBookWithSize:17]];
     [_signUpButton addTarget:self action:@selector(changeSignUp) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self rotate];
+    
     [self.contentView addSubview:closeButton];
     [self.contentView addSubview:_signUpButton];
     
     [_signInButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     _signInButton.backgroundColor = [UIColor whiteColor];
     _signInButton.layer.borderWidth = 1.0f;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rotate) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)rotate
+{
+    CGRect rect = [UIScreen mainScreen].bounds;
+    _signUpButton.frame = CGRectMake(rect.size.width - 108, 44, 100, 30);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,6 +191,11 @@
     }
     
     return YES;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 /*

@@ -398,9 +398,8 @@
 
 - (void)showActionSheet
 {
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Image from.."
-                                                                 message:@""
-                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *ac = [[UIAlertController alloc] init];
+    
     if ([BOUtility checkDevice]) {
         ac.popoverPresentationController.sourceView = self.textView;
         
