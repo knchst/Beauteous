@@ -13,11 +13,6 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    self.containerView.layer.cornerRadius = 10;
-    self.containerView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.containerView.layer.borderWidth = 1;
-    self.containerView.clipsToBounds = YES;
-    self.containerView.layer.masksToBounds = YES;
     
     self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.width / 2;
     self.avatarImageView.clipsToBounds = YES;
@@ -36,15 +31,9 @@
     self.usernameLabel.text = data[@"from"];
     __weak typeof(self) weakSelf = self;
     
-//    PFQuery *query = [PFUser query];
-//    [query whereKey:@"username" equalTo:data[@"from"]];
-//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
-//        PFFile *file = object[@"avatar"];
-//        NSURL *url = [NSURL URLWithString:file.url];
-//        [weakSelf.avatarImageView sd_setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
-//            weakSelf.avatarImageView.image = image;
-//        }];
-//    }];
+    NSURL *avatarUrl = [NSURL URLWithString:data[@"avatar"]];
+    [weakSelf.avatarImageView sd_setImageWithURL:avatarUrl completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+    }];
 }
 
 @end

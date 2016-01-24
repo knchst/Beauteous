@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2708FDB41C55188900A18F90 /* Icon-84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2708FDB31C55188900A18F90 /* Icon-84@2x.png */; };
 		2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5BE1B70B2190083D487 /* StarredViewController.m */; };
 		2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C41B70B2360083D487 /* SettingsViewController.m */; };
 		2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C81B70C4050083D487 /* AllTableViewCell.m */; };
@@ -62,7 +63,6 @@
 		27635E521B85AE9A003FD8AA /* iPad_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 27635E4F1B85AE9A003FD8AA /* iPad_03.png */; };
 		27635E551B85B259003FD8AA /* BOParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27635E541B85B259003FD8AA /* BOParseManager.m */; };
 		276764341C53676500DDADA1 /* BaseTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276764331C53676500DDADA1 /* BaseTextViewController.m */; };
-		276764371C53B86500DDADA1 /* ChatPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 276764361C53B86500DDADA1 /* ChatPhotoTableViewCell.m */; };
 		2767643A1C53B87700DDADA1 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 276764391C53B87700DDADA1 /* ChatTableViewCell.m */; };
 		27A446B91BDCCF9D00D796FB /* 3.5-inch (iPhone 4) - Screenshot 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446AA1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 1.jpg */; };
 		27A446BA1BDCCF9D00D796FB /* 3.5-inch (iPhone 4) - Screenshot 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27A446AB1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 2.jpg */; };
@@ -121,6 +121,7 @@
 
 /* Begin PBXFileReference section */
 		215CE886FBFF839F6E314373 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2708FDB31C55188900A18F90 /* Icon-84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-84@2x.png"; sourceTree = "<group>"; };
 		2718E5BD1B70B2190083D487 /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
 		2718E5BE1B70B2190083D487 /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
 		2718E5C31B70B2360083D487 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -184,8 +185,6 @@
 		27635E541B85B259003FD8AA /* BOParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOParseManager.m; sourceTree = "<group>"; };
 		276764321C53676500DDADA1 /* BaseTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextViewController.h; sourceTree = "<group>"; };
 		276764331C53676500DDADA1 /* BaseTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextViewController.m; sourceTree = "<group>"; };
-		276764351C53B86500DDADA1 /* ChatPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatPhotoTableViewCell.h; sourceTree = "<group>"; };
-		276764361C53B86500DDADA1 /* ChatPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatPhotoTableViewCell.m; sourceTree = "<group>"; };
 		276764381C53B87700DDADA1 /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
 		276764391C53B87700DDADA1 /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
 		27A446AA1BDCCF9C00D796FB /* 3.5-inch (iPhone 4) - Screenshot 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3.5-inch (iPhone 4) - Screenshot 1.jpg"; sourceTree = "<group>"; };
@@ -291,8 +290,6 @@
 				27D111031B734701003D3F8E /* PhotoAllTableViewCell.m */,
 				27B946FF1C520DEE00298923 /* FriendTableViewCell.h */,
 				27B947001C520DEE00298923 /* FriendTableViewCell.m */,
-				276764351C53B86500DDADA1 /* ChatPhotoTableViewCell.h */,
-				276764361C53B86500DDADA1 /* ChatPhotoTableViewCell.m */,
 				276764381C53B87700DDADA1 /* ChatTableViewCell.h */,
 				276764391C53B87700DDADA1 /* ChatTableViewCell.m */,
 			);
@@ -324,6 +321,7 @@
 			children = (
 				276280B81B75FA2B00A0D831 /* AppIcon.appiconset */,
 				276280C41B75FA2B00A0D831 /* Icon-60.png */,
+				2708FDB31C55188900A18F90 /* Icon-84@2x.png */,
 				276280C51B75FA2B00A0D831 /* Icon-72.png */,
 				276280C61B75FA2B00A0D831 /* Icon-72@2x.png */,
 				276280C71B75FA2B00A0D831 /* Icon-Small-50.png */,
@@ -734,6 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A446C01BDCCF9D00D796FB /* 4.7-inch (iPhone 6) - Screenshot 2.jpg in Resources */,
+				2708FDB41C55188900A18F90 /* Icon-84@2x.png in Resources */,
 				276281151B76053400A0D831 /* 5_02.png in Resources */,
 				276280E51B75FA2B00A0D831 /* Icon-60@3x.png in Resources */,
 				276281161B76053400A0D831 /* 5_03.png in Resources */,
@@ -916,7 +915,6 @@
 				27D111221B74B107003D3F8E /* MarkViewController.m in Sources */,
 				2718E5CF1B710E460083D487 /* DetailViewController.m in Sources */,
 				276764341C53676500DDADA1 /* BaseTextViewController.m in Sources */,
-				276764371C53B86500DDADA1 /* ChatPhotoTableViewCell.m in Sources */,
 				27B946FB1C51434300298923 /* FriendViewController.m in Sources */,
 				27E303BB1C4D0F4C007B78DC /* UserViewController.m in Sources */,
 				27E4FCE71B67A8E5005CE9EB /* AppDelegate.m in Sources */,

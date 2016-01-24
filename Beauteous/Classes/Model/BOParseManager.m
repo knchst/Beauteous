@@ -98,8 +98,16 @@ static BOParseManager *sharedManager = nil;
     noteObject[@"from"] = [PFUser currentUser].username;
     noteObject[@"to"] = username;
     
-    [noteObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-        block(error);
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:[PFUser currentUser].username];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+        PFFile *file = object[@"avatar"];
+        noteObject[@"avatar"] = file.url;
+        
+        [noteObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            block(error);
+        }];
+
     }];
 }
 

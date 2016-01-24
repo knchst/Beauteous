@@ -12,7 +12,6 @@
 #import "BOParseManager.h"
 #import "FriendViewController.h"
 #import "ChatTableViewCell.h"
-#import "ChatPhotoTableViewCell.h"
 
 #import "Parse.h"
 #import "SVProgressHUD.h"
@@ -35,7 +34,7 @@
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.separatorColor = [UIColor clearColor];
+    
     BOOL isLogin = [self isLogin];
     if (isLogin) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Pen"] style:UIBarButtonItemStylePlain target:self action:@selector(write)];
@@ -78,20 +77,38 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PFObject *message = [BOParseManager sharedManager].messages[indexPath.row];
-    if ([message[@"photoUrl"] isEqualToString:@""]) {
-        ChatTableViewCell *chatCell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell"];
-        if (chatCell == nil) {
-            chatCell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChatCell"];
-        }
-        [chatCell setData:message];
-        return chatCell;
-    } else {
-        ChatPhotoTableViewCell *chatPhotoCell = [tableView dequeueReusableCellWithIdentifier:@"ChatPhotoCell"];
-        chatPhotoCell = [[ChatPhotoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChatPhotoCell"];
-        [chatPhotoCell setData:message];
-        NSLog(@"%@", chatPhotoCell);
-        return chatPhotoCell;
+    ChatTableViewCell *chatCell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell"];
+    if (chatCell == nil) {
+        chatCell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChatCell"];
     }
+    [chatCell setData:message];
+    return chatCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // textの文字数に合わせてCellの高さを修正する
+    PFObject *message = [BOParseManager sharedManager].messages[indexPath.row];
+    
+    CGFloat height = [self textHeight:message[@"planeString"]];
+    
+    if (height > 150) {
+        return 150;
+    }
+    
+    return height;
+}
+
+- (CGFloat)textHeight:(NSString *)text {
+    CGSize maxSize = CGSizeMake(230, CGFLOAT_MAX);
+    NSDictionary *attr = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
+    CGSize modifiedSize = [text boundingRectWithSize:maxSize
+                                             options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                          attributes:attr
+                                             context:nil
+                           ].size;
+    
+    return MAX(modifiedSize.height / 2 + 45, 95);
 }
 
 #pragma mark - UIScrollView+EmptyDataSet
