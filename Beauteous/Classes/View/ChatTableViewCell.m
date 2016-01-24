@@ -16,6 +16,8 @@
     
     self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.width / 2;
     self.avatarImageView.clipsToBounds = YES;
+    
+    self.separatorInset = UIEdgeInsetsZero;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -29,6 +31,9 @@
     NSLog(@"%@", data);
     self.bodyLabel.text = data[@"planeString"];
     self.usernameLabel.text = data[@"from"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MM/dd HH:mm";
+    self.dateLabel.text = [formatter stringFromDate:data.createdAt];
     __weak typeof(self) weakSelf = self;
     
     NSURL *avatarUrl = [NSURL URLWithString:data[@"avatar"]];
