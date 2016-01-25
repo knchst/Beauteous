@@ -163,4 +163,19 @@ static NoteManager *sharedManager = nil;
     self.notes = [[Note allObjects] sortedResultsUsingProperty:@"updated_at" ascending:NO];
 }
 
+- (NSUInteger)allNoteCount
+{
+    return [Note objectsWhere:@"deleted = NO"].count;
+}
+
+- (NSUInteger)starredNoteCount
+{
+    return [Note objectsWhere:@"starred = YES AND deleted = NO"].count;
+}
+
+- (NSUInteger)deletedNoteCount
+{
+    return [Note objectsWhere:@"deleted = YES"].count;
+}
+
 @end

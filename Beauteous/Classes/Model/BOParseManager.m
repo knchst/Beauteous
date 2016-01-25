@@ -179,4 +179,9 @@ static BOParseManager *sharedManager = nil;
     }];
 }
 
+- (NSUInteger)allMessageCount
+{
+    return [Message allObjects].count;
+}
+
 @end

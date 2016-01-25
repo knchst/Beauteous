@@ -21,5 +21,5 @@
 - (void)sendNoteWithUsername:(NSString*)username andNote:(NSDictionary*)note andBlock:(void (^)(NSError *error))block;
 - (void)fetchMessagesWithBlock:(void (^)(NSError *error))block;
 - (void)removeMessageWithObjectId:(NSString*)objectId;
-
+- (NSUInteger)allMessageCount;
 @end

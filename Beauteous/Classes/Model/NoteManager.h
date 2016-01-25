@@ -27,5 +27,8 @@
 - (void)fetchAllStarredNotes;
 - (NSString*)detectPhotoURLWithString:(NSString*)string;
 - (void)getLatestNotes;
+- (NSUInteger)allNoteCount;
+- (NSUInteger)starredNoteCount;
+- (NSUInteger)deletedNoteCount;
 
 @end

@@ -14,10 +14,6 @@
 #import <Realm/Realm.h>
 #import "Parse.h"
 
-#import "YALFoldingTabBarController.h"
-#import "YALAnimatingTabBarConstants.h"
-#import "YALTabBarItem.h"
-
 @interface AppDelegate ()
 
 @end

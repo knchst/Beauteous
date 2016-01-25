@@ -12,9 +12,8 @@
 #import "NoteManager.h"
 #import "BOUtility.h"
 #import "ComposeViewController.h"
-#import "YALTabBarInteracting.h"
 
-@interface PdfViewController () <UITableViewDataSource, UITableViewDelegate, YALTabBarInteracting>
+@interface PdfViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -25,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"Select note you want to export as PDF";
+    self.title = @"Select note.";
         
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -93,50 +92,6 @@
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
-}
-
-#define debug 1
-
-#pragma mark - YALTabBarInteracting
-
-- (void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraLeftItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-- (void)extraRightItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    ComposeViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Compose"];
-    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 /*
