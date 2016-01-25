@@ -1,7 +1,6 @@
 pod 'Parse'
 pod 'Realm'
 pod 'SDWebImage'
-pod 'FoldingTabBar'
 pod 'SVProgressHUD', :head
 pod 'EDHFontSelector'
 pod 'DZNEmptyDataSet'

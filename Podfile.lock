@@ -4,7 +4,6 @@ PODS:
   - EDHFontSelector (0.2.1):
     - EDHUtility (~> 0.1)
   - EDHUtility (0.1.2)
-  - FoldingTabBar (1.0.2)
   - GHMarkdownParser (0.1.2)
   - Kiwi (2.4.0)
   - MCSwipeTableViewCell (2.1.4)
@@ -18,14 +17,13 @@ PODS:
   - SDWebImage (3.7.4):
     - SDWebImage/Core (= 3.7.4)
   - SDWebImage/Core (3.7.4)
-  - SVProgressHUD (HEAD based on 2.0-beta2)
+  - SVProgressHUD (HEAD based on 2.0-beta6)
   - TPKeyboardAvoiding (1.2.11)
   - UIImage-ResizeMagick (0.0.1)
 
 DEPENDENCIES:
   - DZNEmptyDataSet
   - EDHFontSelector
-  - FoldingTabBar
   - GHMarkdownParser
   - Kiwi
   - MCSwipeTableViewCell
@@ -43,7 +41,6 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   EDHFontSelector: a6f382c263073b0ca9cfc5d3e38de772c08d1640
   EDHUtility: 9e888c6880f52318e6f018374adb3d15c749f4a5
-  FoldingTabBar: 79df76dfd5a84c0a369beaa378a31c07aa53b6b2
   GHMarkdownParser: 14cbf59d0ab9450017d843dffd4a3ef691e5bd77
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
@@ -52,7 +49,7 @@ SPEC CHECKSUMS:
   REFrostedViewController: a893b4979ba1f200c547aef9ff4c3fd5a18f5923
   RFKeyboardToolbar: c96a7d9458564d1fedc8ef6844b6c467934aade2
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
-  SVProgressHUD: 29ebaaa2574f11c0726421a77d41cb1bd190801e
+  SVProgressHUD: d259ee0b07e9a3f19724c25e4a3625d69e4bc38e
   TPKeyboardAvoiding: e5ce146b313de063957bfa75a13f1e9b0ff18ab7
   UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7
 
