@@ -11,6 +11,7 @@
 #import "BOUtility.h"
 #import "BOParseManager.h"
 #import "FriendViewController.h"
+#import "MessageViewController.h"
 #import "ChatTableViewCell.h"
 #import "Message.h"
 
@@ -86,6 +87,15 @@
     }
     [chatCell setData:message];
     return chatCell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Message *message = [BOParseManager sharedManager].messages[indexPath.row];
+    MessageViewController *vc = [[BOUtility storyboard] instantiateViewControllerWithIdentifier:@"Message"];
+    vc.message = message;
+    self.navigationItem.backBarButtonItem = [BOUtility blankBarButton];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -683,6 +683,39 @@
             </objects>
             <point key="canvasLocation" x="1486" y="-358"/>
         </scene>
+        <!--Message View Controller-->
+        <scene sceneID="GR9-wu-nfS">
+            <objects>
+                <viewController storyboardIdentifier="Message" id="kDM-ep-9Kt" customClass="MessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JZF-bI-aJ6"/>
+                        <viewControllerLayoutGuide type="bottom" id="2m3-Hy-aya"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J5V-D5-0lA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZN-Dv-RMM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NZN-Dv-RMM" firstAttribute="leading" secondItem="J5V-D5-0lA" secondAttribute="leading" id="AUe-r8-bFP"/>
+                            <constraint firstAttribute="trailing" secondItem="NZN-Dv-RMM" secondAttribute="trailing" id="Dh8-pC-jgM"/>
+                            <constraint firstItem="2m3-Hy-aya" firstAttribute="top" secondItem="NZN-Dv-RMM" secondAttribute="bottom" id="LNw-Sa-6Wg"/>
+                            <constraint firstItem="NZN-Dv-RMM" firstAttribute="top" secondItem="J5V-D5-0lA" secondAttribute="top" id="euK-Hx-A4S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="NZN-Dv-RMM" id="JlK-z4-5cv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1n5-HB-Kq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2192" y="-640"/>
+        </scene>
         <!--Chats View Controller-->
         <scene sceneID="3kk-KT-dcO">
             <objects>
