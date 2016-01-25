@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2708FDB41C55188900A18F90 /* Icon-84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2708FDB31C55188900A18F90 /* Icon-84@2x.png */; };
+		2708FDB71C55D52A00A18F90 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708FDB61C55D52A00A18F90 /* Message.m */; };
 		2718E5BF1B70B2190083D487 /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5BE1B70B2190083D487 /* StarredViewController.m */; };
 		2718E5C51B70B2360083D487 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C41B70B2360083D487 /* SettingsViewController.m */; };
 		2718E5C91B70C4050083D487 /* AllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718E5C81B70C4050083D487 /* AllTableViewCell.m */; };
@@ -122,6 +123,8 @@
 /* Begin PBXFileReference section */
 		215CE886FBFF839F6E314373 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2708FDB31C55188900A18F90 /* Icon-84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-84@2x.png"; sourceTree = "<group>"; };
+		2708FDB51C55D52A00A18F90 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		2708FDB61C55D52A00A18F90 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		2718E5BD1B70B2190083D487 /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
 		2718E5BE1B70B2190083D487 /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
 		2718E5C31B70B2360083D487 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -543,6 +546,8 @@
 				27E4FD0C1B68D785005CE9EB /* NoteManager.m */,
 				27635E531B85B259003FD8AA /* BOParseManager.h */,
 				27635E541B85B259003FD8AA /* BOParseManager.m */,
+				2708FDB51C55D52A00A18F90 /* Message.h */,
+				2708FDB61C55D52A00A18F90 /* Message.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -923,6 +928,7 @@
 				27D111191B749EF3003D3F8E /* AboutViewController.m in Sources */,
 				27E4FCF91B67B669005CE9EB /* BOConst.m in Sources */,
 				27ED34F91B67934100C86498 /* main.m in Sources */,
+				2708FDB71C55D52A00A18F90 /* Message.m in Sources */,
 				27D110FE1B73359C003D3F8E /* CustomRFToolbarButton.m in Sources */,
 				27E303B81C4C116D007B78DC /* BaseViewController.m in Sources */,
 				27E303AC1C4C03DE007B78DC /* MainViewController.m in Sources */,

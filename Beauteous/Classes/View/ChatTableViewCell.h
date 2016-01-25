@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Parse.h"
+#import "Message.h"
 
 @interface ChatTableViewCell : UITableViewCell
 
@@ -16,6 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
-- (void)setData:(PFObject*)data;
+- (void)setData:(Message*)data;
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Realm/Realm.h>
 
 @interface BOParseManager : NSObject
 
 @property (copy, nonatomic) NSMutableArray *friends;
-@property (copy, nonatomic) NSMutableArray *messages;
+@property RLMResults *messages;
 
 + (BOParseManager*)sharedManager;
 - (void)addFriendWithUsername:(NSString *)username andBlock:(void (^)(NSError *error))block;
@@ -19,4 +20,6 @@
 - (void)fetchFriendsWithBlock:(void (^)(NSError *error))block;
 - (void)sendNoteWithUsername:(NSString*)username andNote:(NSDictionary*)note andBlock:(void (^)(NSError *error))block;
 - (void)fetchMessagesWithBlock:(void (^)(NSError *error))block;
+- (void)removeMessageWithObjectId:(NSString*)objectId;
+
 @end

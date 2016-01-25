@@ -12,13 +12,16 @@
 #import "BOParseManager.h"
 #import "FriendViewController.h"
 #import "ChatTableViewCell.h"
+#import "Message.h"
 
 #import "Parse.h"
 #import "SVProgressHUD.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import <Realm/Realm.h>
 
 @interface ChatsViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) RLMNotificationToken *notificationToken;
 @end
 
 @implementation ChatsViewController
@@ -76,7 +79,7 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFObject *message = [BOParseManager sharedManager].messages[indexPath.row];
+    Message *message = [BOParseManager sharedManager].messages[indexPath.row];
     ChatTableViewCell *chatCell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell"];
     if (chatCell == nil) {
         chatCell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChatCell"];
@@ -99,9 +102,23 @@
     return height;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return true;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFObject *message = [BOParseManager sharedManager].messages[indexPath.row];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [[BOParseManager sharedManager] removeMessageWithObjectId:message.objectId];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 - (CGFloat)textHeight:(NSString *)text {
     CGSize maxSize = CGSizeMake(230, CGFLOAT_MAX);
-    NSDictionary *attr = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:17]};
+    NSDictionary *attr = @{NSFontAttributeName: [BOUtility fontTypeBookWithSize:14]};
     CGSize modifiedSize = [text boundingRectWithSize:maxSize
                                              options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                                           attributes:attr
@@ -179,6 +196,11 @@
             [SVProgressHUD dismiss];
         }
     }];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
 }
 
 /*

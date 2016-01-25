@@ -26,17 +26,16 @@
     // Configure the view for the selected state
 }
 
-- (void)setData:(PFObject *)data
+- (void)setData:(Message *)data
 {
-    NSLog(@"%@", data);
-    self.bodyLabel.text = data[@"planeString"];
-    self.usernameLabel.text = data[@"from"];
+    self.bodyLabel.text = data.planeString;
+    self.usernameLabel.text = data.from;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM/dd HH:mm";
-    self.dateLabel.text = [formatter stringFromDate:data.createdAt];
+    self.dateLabel.text = [formatter stringFromDate:data.created_at];
     __weak typeof(self) weakSelf = self;
     
-    NSURL *avatarUrl = [NSURL URLWithString:data[@"avatar"]];
+    NSURL *avatarUrl = [NSURL URLWithString:data.avatar];
     [weakSelf.avatarImageView sd_setImageWithURL:avatarUrl completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
     }];
 }

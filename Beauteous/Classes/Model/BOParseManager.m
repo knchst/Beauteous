@@ -7,6 +7,8 @@
 //
 
 #import "BOParseManager.h"
+#import "Message.h"
+
 #import "Parse.h"
 
 static BOParseManager *sharedManager = nil;
@@ -28,7 +30,6 @@ static BOParseManager *sharedManager = nil;
     if (self) {
         NSLog(@"Init BOParseManager");
         self.friends = [NSMutableArray array];
-        self.messages = [NSMutableArray array];
     }
     return self;
 }
@@ -119,9 +120,62 @@ static BOParseManager *sharedManager = nil;
     __weak typeof(self) weakSelf = self;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        NSLog(@"%@", objects);
-        weakSelf.messages = [objects mutableCopy];
+        NSLog(@"FETCHED %@", objects);
+        //weakSelf.messages = [objects mutableCopy];
+        [weakSelf saveMessagesToRealmWithObjects:objects];
+        [weakSelf fetchAllMessages];
         block(error);
+    }];
+}
+
+- (void)fetchAllMessages
+{
+    RLMResults *notes = [Message allObjects];
+    self.messages = [notes sortedResultsUsingProperty:@"updated_at" ascending:NO];
+    
+    NSLog(@"%@", notes);
+}
+
+- (void)saveMessagesToRealmWithObjects:(NSArray*)objects
+{
+    RLMResults *allMessages = [Message allObjects];
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[RLMRealm defaultRealm] deleteObjects:allMessages];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [objects enumerateObjectsUsingBlock:^(PFObject *object, NSUInteger idx, BOOL *stop){
+        NSLog(@"save %@", object);
+        Message *message = [[Message alloc] init];
+        message.id = idx;
+        message.objectId = object.objectId;
+        message.title = object[@"title"];
+        message.planeString = object[@"planeString"];
+        message.htmlString = object[@"htmlString"];
+        message.avatar = object[@"avatar"];
+        message.created_at = object.createdAt;
+        message.updated_at = object.updatedAt;
+        message.photoUrl = object[@"photoUrl"];
+        message.to = object[@"to"];
+        message.from = object[@"from"];
+        [[RLMRealm defaultRealm] addObject:message];
+    }];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+    NSLog(@"finished");
+}
+
+- (void)removeMessageWithObjectId:(NSString*)objectId
+{
+    NSString *queryString = [NSString stringWithFormat:@"objectId = '%@'", objectId];
+    RLMResults *message = [Message objectsWhere:queryString];
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[RLMRealm defaultRealm] deleteObject:message.firstObject];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    [query whereKey:@"objectId" equalTo:objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+        [object deleteInBackground];
     }];
 }
 
